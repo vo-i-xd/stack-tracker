@@ -1,0 +1,90 @@
+html {
+  font-size: 22px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgba(7, 7, 7, 0.85);
+}
+body::before {
+  position: absolute;
+  content: "";
+  background-color: rgba(7, 112, 7, 0.9);
+  height: 100vh;
+  width: 100vw;
+  bottom: 0px;
+  z-index: -1;
+  transition: 1s;
+}
+body div.timer {
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10rem;
+  width: 15rem;
+  background-color: rgba(7, 7, 7, 0.85);
+  color: rgb(155, 62, 62);
+}
+body div.timer .jk {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 7rem;
+}
+body div.timer .jk div.holder {
+  display: flex;
+  font-size: 2.5rem;
+}
+body div.timer .jk div.holder input, body div.timer .jk div.holder select, body div.timer .jk div.holder textarea {
+  color: rgb(155, 62, 62);
+}
+body div.timer .jk div.holder input {
+  background-color: transparent;
+  border: none;
+  font-size: 2.5rem;
+  width: 2.812rem;
+  outline: none;
+}
+body div.timer .jk div.button {
+  display: flex;
+  justify-content: space-around;
+  width: 15rem;
+}
+body div.timer .jk div.button .button {
+  border-radius: 7px;
+  border: none;
+  color: white;
+  height: 1.7rem;
+  opacity: 0.9;
+  cursor: pointer;
+}
+body div.timer .jk div.button .button:hover {
+  opacity: 1;
+  background-color: aquamarine;
+}
+body div.timer .jk div.button #start {
+  background-color: rgb(57, 177, 57);
+  width: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body div.timer .jk div.button #reset {
+  background-color: rgb(206, 51, 51);
+  width: 4.7rem;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+body div.timer .jk div.button #pause {
+  background-color: rgb(30, 30, 241);
+  width: 4.7rem;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}/*# sourceMappingURL=style.css.map */

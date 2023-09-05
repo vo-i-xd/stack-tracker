@@ -1,0 +1,95 @@
+html{
+    font-size: 22px;
+}
+body{
+    &::before{
+        position: absolute;
+        content:'';
+        background-color: rgba(7, 112, 7, 0.9);
+        height: 100vh;
+        width: 100vw;
+        bottom: 0px;
+        z-index: -1;
+        transition: 1s;
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color:rgb(7, 7, 7, 0.85);
+
+    div.timer{
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 10rem;
+        width: 15rem;
+        background-color: rgb(7, 7, 7, 0.85);
+        color: rgb(155, 62, 62);
+
+        .jk{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 7rem;
+
+            div.holder{
+                display: flex;
+                font-size: 2.5rem;
+                input, select, textarea{
+                    color: rgb(155, 62, 62);
+                }
+                input{
+                    background-color: transparent;
+                    border: none;
+                    font-size: 2.5rem;
+                    width: 2.812rem;
+                    outline: none;
+                }
+            }
+            div.button{
+                display: flex;
+                justify-content: space-around;
+                width: 15rem;
+                
+                .button{
+                    border-radius: 7px;
+                    border: none;
+                    color: white;
+                    height: 1.7rem;
+                    opacity: 0.9;
+                    cursor: pointer;
+
+                    &:hover{
+                        opacity: 1;
+                        background-color: aquamarine;
+                   }
+                }                
+                #start{
+                    background-color: rgb(57, 177, 57);
+                    width: 7rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                #reset{
+                    background-color: rgb(206, 51, 51);
+                    width: 4.7rem;
+                    display: none;
+                    justify-content: center;
+                    align-items: center;
+                }
+                #pause{
+                    background-color: rgb(30, 30, 241);
+                    width: 4.7rem;
+                    display: none;
+                    justify-content: center;
+                    align-items: center;
+
+                }
+            }
+        }
+    }
+}
