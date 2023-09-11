@@ -9,15 +9,21 @@
     <style>
 
     </style>
-
 </head>
-
 <body>
+  <div id="progress-indicator">
+
+    <div class="circle-container center">
+      <div class="semicircle" ></div>
+      <div class="semicircle" ></div>
+      <div class="semicircle" ></div>
+      <div class="outermost-circle" ></div>
+    </div>
+  </div>
 
     <div class="timer">
         <div class="jk">
-            <div class="holder"><input type="text" placeholder="00" id="hour" ></input>:<input type="text" placeholder="00" id="minute" ></input>:<input type="text" placeholder="00" id="second" ></input></div>
-
+            <div class="holder"><input type="text" placeholder="00" id="hour" ></input>:<input type="text" placeholder="30" id="minute" ></input>:<input type="text" placeholder="00" id="second" ></input></div>
 
           <div class="button">
 
@@ -25,7 +31,6 @@
             <button id="pause" class="button">pause</button>
             <button id="start" class="button">start</button>
 
-          
           </div>
         </div>
     </div>

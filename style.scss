@@ -2,44 +2,120 @@ html{
     font-size: 22px;
 }
 body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color:rgb(7, 7, 7, 0.78);
     &::before{
         position: absolute;
         content:'';
-        background-color: rgba(7, 112, 7, 0.9);
+        background-color: rgb(13, 9, 36);
         height: 100vh;
         width: 100vw;
         bottom: 0px;
         z-index: -1;
         transition: 1s;
     }
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color:rgb(7, 7, 7, 0.85);
 
-    div.timer{
-        border-radius: 20px;
+    #progress-indicator{
+        font-size: 24px;//using "em", so i can use it again later in the graph part
+        position: absolute;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 10rem;
-        width: 15rem;
-        background-color: rgb(7, 7, 7, 0.85);
-        color: rgb(155, 62, 62);
+        width: 20rem;
+        height: 20rem;
+
+    .circle-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 18.18em;
+        height: 18.18em;
+        background-color: white;
+        border-radius: 50%;
+        position: absolute;
+        overflow: hidden;
+
+        .semicircle{
+            z-index: 8;
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: 1s linear;
+            transform-origin: right center;
+
+            &:nth-child(1){
+                background-color: rgb(0, 105, 0);
+                z-index: 2;
+            }
+            &:nth-child(2){
+                z-index: 3;
+                background-color: rgb(0, 105, 0);
+            }
+            &:nth-child(3){
+                z-index: 4;
+                background-color: rgb(255, 255, 255);
+              //  display: none;
+            
+            }
+        }
+        .outermost-circle{
+            width: 17em;
+            height: 17em;
+            background-color: rgba(9, 22, 36, 0.97);
+            border-radius: 50%;
+            z-index: 5;
+        }
+    }
+
+    // .circle-container:hover {///vira, vira test
+
+    //     .semicircle:nth-child(1)  {
+    //         transform: rotate(180deg);  
+    //          transition: 3s linear;
+    //          background-color: rgb(0, 255, 0);
+    //     }
+
+    //     .semicircle:nth-child(2)  {
+    //         transform: rotate(360deg);
+    //          transition: 6s linear;
+    //          background-color:rgb(0, 255, 0);
+    //     }
+
+    //     .semicircle:nth-child(3)  {
+    //         opacity: 0;
+    //         transition: opacity 0s 3s;
+    //     }
+    // }
+}
+    div.timer{
+        border-radius: 20%;
+        //display: none;
+        z-index: 6;
+        justify-content: center;
+        align-items: center;
+        height: 11rem;
+        width: 14rem;
+        background-color: rgba(0, 0, 0, 0.9);
+        color: rgb(233, 233, 233);
 
         .jk{
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-            height: 7rem;
+            justify-content: space-around;
+            height: 90%;
 
             div.holder{
                 display: flex;
                 font-size: 2.5rem;
                 input, select, textarea{
-                    color: rgb(155, 62, 62);
+                    color: rgb(75, 84, 214);
+                   // color: rgb(211, 73, 73);
                 }
                 input{
                     background-color: transparent;
@@ -64,7 +140,6 @@ body{
 
                     &:hover{
                         opacity: 1;
-                        background-color: aquamarine;
                    }
                 }                
                 #start{

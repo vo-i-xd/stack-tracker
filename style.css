@@ -7,41 +7,90 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: rgba(7, 7, 7, 0.85);
+  background-color: rgba(7, 7, 7, 0.78);
 }
 body::before {
   position: absolute;
   content: "";
-  background-color: rgba(7, 112, 7, 0.9);
+  background-color: rgb(13, 9, 36);
   height: 100vh;
   width: 100vw;
   bottom: 0px;
   z-index: -1;
   transition: 1s;
 }
-body div.timer {
-  border-radius: 20px;
+body #progress-indicator {
+  font-size: 24px;
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 10rem;
-  width: 15rem;
-  background-color: rgba(7, 7, 7, 0.85);
-  color: rgb(155, 62, 62);
+  width: 20rem;
+  height: 20rem;
+}
+body #progress-indicator .circle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 18.18em;
+  height: 18.18em;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  overflow: hidden;
+}
+body #progress-indicator .circle-container .semicircle {
+  z-index: 8;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 1s linear;
+  transform-origin: right center;
+}
+body #progress-indicator .circle-container .semicircle:nth-child(1) {
+  background-color: rgb(0, 105, 0);
+  z-index: 2;
+}
+body #progress-indicator .circle-container .semicircle:nth-child(2) {
+  z-index: 3;
+  background-color: rgb(0, 105, 0);
+}
+body #progress-indicator .circle-container .semicircle:nth-child(3) {
+  z-index: 4;
+  background-color: rgb(255, 255, 255);
+}
+body #progress-indicator .circle-container .outermost-circle {
+  width: 17em;
+  height: 17em;
+  background-color: rgba(9, 22, 36, 0.97);
+  border-radius: 50%;
+  z-index: 5;
+}
+body div.timer {
+  border-radius: 20%;
+  z-index: 6;
+  justify-content: center;
+  align-items: center;
+  height: 11rem;
+  width: 14rem;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: rgb(233, 233, 233);
 }
 body div.timer .jk {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  height: 7rem;
+  justify-content: space-around;
+  height: 90%;
 }
 body div.timer .jk div.holder {
   display: flex;
   font-size: 2.5rem;
 }
 body div.timer .jk div.holder input, body div.timer .jk div.holder select, body div.timer .jk div.holder textarea {
-  color: rgb(155, 62, 62);
+  color: rgb(75, 84, 214);
 }
 body div.timer .jk div.holder input {
   background-color: transparent;
@@ -65,7 +114,6 @@ body div.timer .jk div.button .button {
 }
 body div.timer .jk div.button .button:hover {
   opacity: 1;
-  background-color: aquamarine;
 }
 body div.timer .jk div.button #start {
   background-color: rgb(57, 177, 57);
