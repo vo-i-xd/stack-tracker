@@ -1,3 +1,7 @@
+@import "./variables.scss";
+
+
+
 html{
     font-size: 22px;
 }
@@ -6,11 +10,10 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color:rgb(7, 7, 7, 0.78);
     &::before{
         position: absolute;
         content:'';
-        background-color: rgb(13, 9, 36);
+        background-color: $darkBlue;
         height: 100vh;
         width: 100vw;
         bottom: 0px;
@@ -18,153 +21,157 @@ body{
         transition: 1s;
     }
 
-    #progress-indicator{
-        font-size: 24px;//using "em", so i can use it again later in the graph part
-        position: absolute;
+
+
+    .timer{
+        position: fixed;
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 20rem;
-        height: 20rem;
-
-    .circle-container{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 18.18em;
-        height: 18.18em;
-        background-color: white;
-        border-radius: 50%;
-        position: absolute;
-        overflow: hidden;
-
-        .semicircle{
-            z-index: 8;
-            width: 50%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            transition: 1s linear;
-            transform-origin: right center;
-
-            &:nth-child(1){
-                background-color: rgb(0, 105, 0);
-                z-index: 2;
-            }
-            &:nth-child(2){
-                z-index: 3;
-                background-color: rgb(0, 105, 0);
-            }
-            &:nth-child(3){
-                z-index: 4;
-                background-color: rgb(255, 255, 255);
-              //  display: none;
-            
-            }
-        }
-        .outermost-circle{
-            width: 17em;
-            height: 17em;
-            background-color: rgba(9, 22, 36, 0.97);
-            border-radius: 50%;
-            z-index: 5;
-        }
-    }
-
-    // .circle-container:hover {///vira, vira test
-
-    //     .semicircle:nth-child(1)  {
-    //         transform: rotate(180deg);  
-    //          transition: 3s linear;
-    //          background-color: rgb(0, 255, 0);
-    //     }
-
-    //     .semicircle:nth-child(2)  {
-    //         transform: rotate(360deg);
-    //          transition: 6s linear;
-    //          background-color:rgb(0, 255, 0);
-    //     }
-
-    //     .semicircle:nth-child(3)  {
-    //         opacity: 0;
-    //         transition: opacity 0s 3s;
-    //     }
-    // }
-}
-    div.timer{
-        border-radius: 20%;
-        //display: none;
-        z-index: 6;
-        justify-content: center;
-        align-items: center;
-        height: 11rem;
-        width: 14rem;
-        background-color: rgba(0, 0, 0, 0.9);
+        align-self: flex-end;
+        z-index: 10;
+        height: 100vh;
+        width: 100vw;
+        background-color: $darkBlue;
+        font-size: 18px;
         color: rgb(233, 233, 233);
+        //background-color: red;
+        transition: .3s linear;
+        
 
         .jk{
+            background-color: $lightGray;
+            box-shadow:0 0 0.27em $shadowBlue, 0 0 1.38em $shadowBlue;             
+            position: absolute;
+            border-radius: 40px;
+            z-index: 6;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: space-around;
-            height: 90%;
+            height: 12em;
 
             div.holder{
-                display: flex;
-                font-size: 2.5rem;
-                input, select, textarea{
-                    color: rgb(75, 84, 214);
-                   // color: rgb(211, 73, 73);
+                .colon{
+                font-size: 2.5em;
                 }
+
+                display: flex;
+                input, select, textarea{
+                color: white;
+                text-shadow: 0 0 9px $textShadow;
+                font-size: 2.7em;
+                }
+
                 input{
+                    &::placeholder{
+                        color:rgb(255, 255, 255);
+                    }
                     background-color: transparent;
                     border: none;
-                    font-size: 2.5rem;
-                    width: 2.812rem;
+                    width: 1.1em;
                     outline: none;
                 }
             }
             div.button{
                 display: flex;
                 justify-content: space-around;
-                width: 15rem;
+                width: 15em;
                 
                 .button{
                     border-radius: 7px;
                     border: none;
                     color: white;
-                    height: 1.7rem;
+                    height: 3em;
                     opacity: 0.9;
                     cursor: pointer;
 
                     &:hover{
                         opacity: 1;
                    }
-                }                
+                }
                 #start{
-                    background-color: rgb(57, 177, 57);
-                    width: 7rem;
+                    background-color: $green;
+                    box-shadow:0 0 0.27em $greenShadowBorder, 0 0 1.38em $greenShadow;                
+                    width: 12em;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                 }
                 #reset{
-                    background-color: rgb(206, 51, 51);
-                    width: 4.7rem;
+                    background-color: $red;
+                    box-shadow:0 0 0.27em $redShadowBorder, 0 0 1.38em $redShadow; 
+                    width: 8em;
                     display: none;
                     justify-content: center;
                     align-items: center;
                 }
                 #pause{
-                    background-color: rgb(30, 30, 241);
-                    width: 4.7rem;
+                    background-color: $Blue;
+                    box-shadow:0 0 0.27em $BlueShadowBorder, 0 0 1.38em $blueShadow; 
+                    width: 8em;
                     display: none;
                     justify-content: center;
                     align-items: center;
 
                 }
+
+            }
+
+        }
+        .progressIndicator{
+            font-size: 1.5em;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 10em;
+            height: 10em;          //>>not
+    
+        .circle-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 15.15em;
+            height: 15.15em;
+            background-color: white;
+            box-shadow: 0 0 1.38em $greenShadow; 
+            border-radius: 50%;
+            position: absolute;
+            overflow: hidden;
+            
+            .semicircle{
+                z-index: 8;
+                width: 50%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                transition: 1s linear;
+                transform-origin: right center;
+    
+                &:nth-child(1){
+                    background-color: $green;
+                    z-index: 2;
+                }
+                &:nth-child(2){
+                    z-index: 3;
+                    background-color: $green;
+                }
+                &:nth-child(3){
+                    z-index: 4;
+                    background-color: rgb(255, 255, 255);
+                }
+            }
+            .outermost-circle{
+                width: 14em;
+                height: 14em;
+                background-color: $darkBlue;
+                border-radius: 50%;
+                z-index: 5;
             }
         }
+    
     }
+}
 }

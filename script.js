@@ -1,3 +1,7 @@
+  const timer = document.querySelector(".timer");
+  const jk = document.querySelector(".jk");
+  //const progressIndicator = querySelector(".progressIndicator");
+
   const start = document.querySelector("#start");
   const pause = document.querySelector("#pause");
   const reset = document.querySelector("#reset");
@@ -8,19 +12,22 @@
 
   const semicircleOne = document.querySelector(".semicircle:nth-child(1)");
   const semicircleTwo = document.querySelector(".semicircle:nth-child(2)");
-  const semicircleThree = document.querySelector(".semicircle:nth-child(3)")
+  const semicircleThree = document.querySelector(".semicircle:nth-child(3)");
+
+  const holder = document.querySelector(".holder")
 
   let semigreen =0;
   let samired = 0;
 
   let countDown;
   let setFlow = true; //countDown = true //countUp = false;
+  let toggleTimer = false; // false no toggle yet;
   
   let startTime = 0;
   let elapsedTime = 0;
   let paused = true;
   let intervalId;
-  let angle;
+  let angle = 0;
 
 
 function updateTime(){
@@ -28,11 +35,13 @@ function updateTime(){
 elapsedTime = (Math.floor( (Date.now() - startTime) / 1000) )*1000;
 
 if(setFlow){         
-  if(countDown < 15*1000){
-sec.style = "color:  rgb(211, 73, 73); font-size: 2.7rem;";
-min.style = "color:  rgb(211, 73, 73); font-size: 2.7rem;";
-hour.style = "color:  rgb(211, 73, 73); font-size: 2.7rem;";
-  }            
+
+//   if(countDown < 15*1000){
+// sec.style = "color:  rgb(211, 73, 73); font-size: 2.7em;";
+// min.style = "color:  rgb(211, 73, 73); font-size: 2.rem;";
+// hour.style = "color:  rgb(211, 73, 73); font-size: 2.rem;";
+// holder.style = "text-shadow: 0 0 20px rgb(68, 0, 255);";
+//   }            
 
 countDown =  sumDown - elapsedTime;
 angle =Math.floor((elapsedTime/sumDown)*360);
@@ -70,11 +79,6 @@ console.log("\ncountDown: " + countDown);
   console.log("test077");
  }
 
-
-
-
-
-
 //  if( angle > 180){
 //   semicircleThree.style.display = "none";
 //   semicircleOne.style.transform = `rotate(180deg)`;
@@ -101,7 +105,9 @@ if(countDown <= 0){//stop interval
   currentTime = 0;
 
 
-setInterval(()=>{  start.style = "display: flex;"
+setInterval(()=>{  
+
+start.style = "display: flex;"
 pause.style = "display: none;"
 reset.style = "display: none;"}, 1000);
 
@@ -112,9 +118,9 @@ reset.style = "display: none;"}, 1000);
   hour.value = "00";
   min.value = "00";
 
-sec.style = "color: rgb(75, 84, 214); font-size: 2.7rem;";
-min.style = "color: rgb(75, 84, 214); font-size: 2.7rem;";
-hour.style = "color:rgb(75, 84, 214); font-size: 2.7rem;";
+sec.style = "color: #fff ; font-size: 2.7em;";
+min.style = "color: #fff ; font-size: 2.7em;";
+hour.style = "color:#fff; font-size: 2.7em;";
 
  // window.alert("it's over");
  //countDown = Math.abs(countDown); we can work on that later put a - in front of the timer make it red, and bigger
@@ -131,6 +137,8 @@ hour.style = "color:rgb(75, 84, 214); font-size: 2.7rem;";
 }
 
   start.addEventListener("click", () => {
+
+    
 
       if(paused){
           paused = false;
@@ -150,12 +158,17 @@ hour.style = "color:rgb(75, 84, 214); font-size: 2.7rem;";
           start.style = "display: none;"
           pause.style = "display: flex;"
           reset.style = "display: flex;"
+          sec.style = "color: rgb(111, 0, 255); font-size: 2.7em;";
+          min.style = "color: rgb(111, 0, 255); font-size: 2.7em;";
+          hour.style = "color:rgb(111, 0, 255); font-size: 2.7em;";
           semicircleThree.style.display = "block";
           semicircleOne.style.transform = `rotate(0deg)`;
           semicircleTwo.style.transform = `rotate(0deg)`;
   });
 
   pause.addEventListener("click", () => {
+
+    
 
       if(!paused){
         pause.innerHTML ="keep";
@@ -182,10 +195,14 @@ hour.style = "color:rgb(75, 84, 214); font-size: 2.7rem;";
       start.style = "display: flex;"
       pause.style = "display: none;"
       reset.style = "display: none;"
+      sec.style = "color:  rgb(255, 255, 255);";
+      min.style = "color:  rgb(255, 255, 255);";
+      hour.style = "color:  rgb(255, 255, 255);";
       pause.innerHTML ="pause";
       sec.value = "00";
       hour.value = "00";
       min.value = "00";
+
   });
 
 
@@ -202,3 +219,33 @@ hour.style = "color:rgb(75, 84, 214); font-size: 2.7rem;";
       e.target.value = updatedValue;
     });
   });
+////                                \\\..> > > new < < <..///
+
+
+timer.addEventListener("dblclick", ()=>{
+
+
+
+if(!toggleTimer){
+  toggleTimer = true;
+  timer.id = "littleTimer";
+}
+else{
+  toggleTimer = false;
+  timer.removeAttribute('id')  ;
+  
+  //timer.id = "bygod";
+  console.log("heyy");
+}
+
+
+
+
+
+
+
+
+  });
+
+  // header.classList.remove('open');
+  // noScrool.classList.remove('no_scrool');

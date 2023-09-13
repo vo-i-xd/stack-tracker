@@ -1,0 +1,123 @@
+
+$purple: rgb(111, 0, 255);
+
+$darkBlue: rgb(14, 0, 40);
+$shadowBlue: rgb(14, 0, 65);
+
+$textBlue: rgb(75, 84, 214);
+$textShadow: rgb(68, 0, 255);
+
+$gray: rgb(7, 7, 7, .8);
+$lightGray: rgb(0, 0, 0, .2);
+
+
+////buttons
+
+$green: rgb(26, 110, 26);
+$greenShadowBorder: rgb(37, 255, 37);
+$greenShadow: rgb(46, 184, 46); 
+
+
+
+
+$red: rgb(110, 26, 26);
+$redShadowBorder: rgb(255, 37, 37);
+$redShadow: rgb(184, 46, 46);
+
+$Blue: rgb(26, 26, 110);
+$BlueShadowBorder: rgb(37, 37, 255);
+$blueShadow: rgb(48, 46, 184);
+
+
+
+//progressIndicator bar
+
+$circle-container: rgb(127, 255, 110);
+
+
+
+
+
+#littleTimer{
+    min-width: 180px;
+    min-height: 70px;
+    position: relative;
+    border-radius: 20px;
+    align-items: space-between;
+    font-size: 2.5px;
+    width: 180px;
+    height: 70px;
+    //background-color: green;
+    margin-bottom: 80px;
+    box-shadow:0 0 0.27em $greenShadowBorder, 0 0 2.38em $greenShadow;  
+
+    .jk{
+        width: 180px;
+        height: 70px;
+        margin: right 0em;
+        
+        .holder{
+            display: flex;
+
+            left: 9px;
+            position: absolute;
+            font-size: 5em;
+
+            #hour{
+                display: none;
+            }
+            #second{
+                display: none;
+            }
+            .colon{
+                display: none;
+            }
+        }
+    }
+
+
+    div.button{
+        position: absolute;
+        justify-content: space-around;
+        width: 43em;
+        left: 25em;
+        
+        .button{
+            border-radius: 7px;
+            border: none;
+            color: white;
+            height: 3em;
+            opacity: 0.9;
+            cursor: pointer;
+
+            &:hover{
+                opacity: 1;
+           }
+        }
+        #start{
+            width: 20em;
+        }
+        #reset{
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        #pause{
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+.progressIndicator{
+left: 10px;
+}
+
+
+}
+
+
+
+
+
+

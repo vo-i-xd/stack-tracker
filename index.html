@@ -11,28 +11,57 @@
     </style>
 </head>
 <body>
-  <div id="progress-indicator">
+  
+   <div class="timer">
 
-    <div class="circle-container center">
-      <div class="semicircle" ></div>
-      <div class="semicircle" ></div>
-      <div class="semicircle" ></div>
-      <div class="outermost-circle" ></div>
-    </div>
-  </div>
-
-    <div class="timer">
         <div class="jk">
-            <div class="holder"><input type="text" placeholder="00" id="hour" ></input>:<input type="text" placeholder="30" id="minute" ></input>:<input type="text" placeholder="00" id="second" ></input></div>
+
+            <div class="holder">
+              <input type="text" data-text="00" placeholder="00" class="input" id="hour" ></input>
+              <span class="colon">:</span>
+              <input type="text" data-text="00" placeholder="30" class="input" id="minute" ></input>
+              <span class="colon">:</span>
+              <input type="text" data-text="00" placeholder="00" class="input" id="second" ></input>              
+            </div>
 
           <div class="button">
-
             <button id="reset" class="button">reset</button>
             <button id="pause" class="button">pause</button>
             <button id="start" class="button">start</button>
+          </div>
 
+        </div>
+
+        <div class="progressIndicator">
+
+          
+
+          <div class="circle-container center">
+            <div class="semicircle" ></div>
+            <div class="semicircle" ></div>
+            <div class="semicircle" ></div>
+            <div class="outermost-circle" ></div>
           </div>
         </div>
     </div>
+
+
+
+
+
+    <div>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
 </body>
 </html>
