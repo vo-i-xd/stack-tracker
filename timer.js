@@ -14,12 +14,12 @@
   const semicircleTwo = document.querySelector(".semicircle:nth-child(2)");
   const semicircleThree = document.querySelector(".semicircle:nth-child(3)");
 
-  const holder = document.querySelector(".holder")
+  const holder = document.querySelector(".holder");
 
   let semigreen =0;
   let samired = 0;
 
-  let countDown;
+  let countDown; 
   let setFlow = true; //countDown = true //countUp = false;
   let toggleTimer = false; // false no toggle yet;
   
@@ -99,18 +99,14 @@ if(countDown <= 0){//stop interval
   paused = true;
   clearInterval(intervalId);
 
-
   startTime = 0;
   elapsedTime = 0;
   currentTime = 0;
 
-
 setInterval(()=>{  
-
 start.style = "display: flex;"
 pause.style = "display: none;"
 reset.style = "display: none;"}, 1000);
-
 
   pause.innerHTML ="pause";
 
@@ -126,7 +122,6 @@ hour.style = "color:#fff; font-size: 2.7em;";
  //countDown = Math.abs(countDown); we can work on that later put a - in front of the timer make it red, and bigger
  // and save that elapsed time when reache 0
 }
-
     sec.value = pad(Math.floor((countDown / 1000) % 60));
     min.value = pad(Math.floor((countDown / (1000 * 60)) % 60));
     hour.value = pad(Math.floor((countDown / (1000 * 60 * 60)) % 60));
@@ -136,9 +131,9 @@ hour.style = "color:#fff; font-size: 2.7em;";
     }
 }
 
-  start.addEventListener("click", () => {
 
-    
+
+  start.addEventListener("click", () => {
 
       if(paused){
           paused = false;
@@ -154,7 +149,6 @@ hour.style = "color:#fff; font-size: 2.7em;";
 
           intervalId = setInterval(updateTime, 1000);
       }
-
           start.style = "display: none;"
           pause.style = "display: flex;"
           reset.style = "display: flex;"
@@ -166,27 +160,36 @@ hour.style = "color:#fff; font-size: 2.7em;";
           semicircleTwo.style.transform = `rotate(0deg)`;
   });
 
-  pause.addEventListener("click", () => {
 
-    
+  pause.addEventListener("click", () => {
+    let checker = document.querySelector("#littleTimer");
 
       if(!paused){
-        pause.innerHTML ="keep";
+
+        if(checker == null){
+          pause.innerHTML ="keep";
+          console.log("sddfkeep");
+        }
         paused = true;
         clearInterval(intervalId);
       }
       else{
+
+        if(checker == null){
           pause.innerHTML ="pause";
+          console.log("sddfpause");
+        }
           paused = false;
           startTime = Date.now() - elapsedTime;
           intervalId = setInterval(updateTime, 1000);
-          }
-
+      }
   });
 
+
   reset.addEventListener("click", () => {
+    let checker = document.querySelector("#littleTimer");
       paused = true;
-      clearInterval(intervalId);
+      
 
       startTime = 0;
       elapsedTime = 0;
@@ -198,13 +201,17 @@ hour.style = "color:#fff; font-size: 2.7em;";
       sec.style = "color:  rgb(255, 255, 255);";
       min.style = "color:  rgb(255, 255, 255);";
       hour.style = "color:  rgb(255, 255, 255);";
-      pause.innerHTML ="pause";
+
+      if(checker == null){
+        pause.innerHTML ="pause";
+      }
+
       sec.value = "00";
       hour.value = "00";
       min.value = "00";
 
+      clearInterval(intervalId);
   });
-
 
 
 
@@ -225,27 +232,35 @@ hour.style = "color:#fff; font-size: 2.7em;";
 timer.addEventListener("dblclick", ()=>{
 
 
-
+  
 if(!toggleTimer){
   toggleTimer = true;
   timer.id = "littleTimer";
+  start.classList.add("fa-play");
+  reset.classList.add("fa-stop");
+  pause.classList.add("fa-pause");
+  start.innerHTML = "";
+  reset.innerHTML = "";
+  pause.innerHTML = "";
 }
 else{
   toggleTimer = false;
-  timer.removeAttribute('id')  ;
-  
-  //timer.id = "bygod";
-  console.log("heyy");
+  timer.removeAttribute('id');
+  start.classList.remove("fa-play");
+  reset.classList.remove("fa-stop");
+  pause.classList.remove("fa-pause");
+  start.innerHTML = "start";
+  reset.innerHTML = "reset";
+  pause.innerHTML = "pause";
+
+
 }
-
-
-
-
-
 
 
 
   });
+
+
 
   // header.classList.remove('open');
   // noScrool.classList.remove('no_scrool');

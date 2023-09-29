@@ -1,0 +1,514 @@
+#littleTimer {
+  min-width: 180px;
+  min-height: 50px;
+  position: absolute;
+  border-radius: 20px;
+  align-items: space-between;
+  font-size: 2.5px;
+  width: 180px;
+  height: 50px;
+  margin-bottom: 80px;
+  box-shadow: 0 0 0.27em rgb(37, 255, 37), 0 0 2.38em rgb(46, 184, 46);
+}
+#littleTimer .jk {
+  width: 180px;
+  height: 50px;
+  margin: right 0em;
+}
+#littleTimer .jk .holder {
+  left: 1.1em;
+  position: absolute;
+  font-size: 5em;
+}
+#littleTimer .jk .holder #hour {
+  display: none;
+}
+#littleTimer .jk .holder #second {
+  display: none;
+}
+#littleTimer .jk .holder .colon {
+  display: none;
+}
+#littleTimer div.button {
+  position: relative;
+  justify-content: space-around;
+  width: 43em;
+  left: 12em;
+}
+#littleTimer div.button .button {
+  border-radius: 7px;
+  border: none;
+  color: white;
+  height: 2em;
+  opacity: 0.9;
+  cursor: pointer;
+}
+#littleTimer div.button .button:hover {
+  opacity: 1;
+}
+#littleTimer div.button #start {
+  width: 6em;
+  background-color: rgb(14, 0, 40);
+}
+#littleTimer div.button #reset {
+  width: 2em;
+  background-color: rgb(14, 0, 40);
+}
+#littleTimer div.button #pause {
+  width: 2em;
+  background-color: rgb(14, 0, 40);
+}
+#littleTimer .progressIndicator {
+  left: -17em;
+  font-size: 1.3em;
+}
+
+#sidebar.open {
+  width: 17em;
+}
+#sidebar.open .sidebar-items {
+  display: flex;
+  justify-content: center;
+}
+#sidebar.open .sidebar-items ul {
+  width: 100%;
+  align-items: start;
+}
+#sidebar.open .sidebar-items ul li {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1em;
+  width: 90.5%;
+  margin-left: 0.565em;
+}
+#sidebar.open .sidebar-items ul li span {
+  margin-left: 0.5em;
+}
+#sidebar.open .sidebar-items ul li h4 {
+  display: block;
+}
+#sidebar.open .sidebar-items ul li.todo-list-header {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+#sidebar.open .sidebar-items ul li.todo-list-header .todo-header {
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1em;
+  width: 100%;
+  height: 2em;
+}
+#sidebar.open .sidebar-items ul li.todo-list-header .projects-container {
+  display: block;
+  width: 100%;
+}
+#sidebar.open .sidebar-items ul li.todo-list-header .projects-container .project {
+  margin-left: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 90.5%;
+  gap: 1em;
+}
+
+#littleTimer {
+  min-width: 180px;
+  min-height: 50px;
+  position: absolute;
+  border-radius: 20px;
+  align-items: space-between;
+  font-size: 2.5px;
+  width: 180px;
+  height: 50px;
+  margin-bottom: 80px;
+  box-shadow: 0 0 0.27em rgb(37, 255, 37), 0 0 2.38em rgb(46, 184, 46);
+}
+#littleTimer .jk {
+  width: 180px;
+  height: 50px;
+  margin: right 0em;
+}
+#littleTimer .jk .holder {
+  left: 1.1em;
+  position: absolute;
+  font-size: 5em;
+}
+#littleTimer .jk .holder #hour {
+  display: none;
+}
+#littleTimer .jk .holder #second {
+  display: none;
+}
+#littleTimer .jk .holder .colon {
+  display: none;
+}
+#littleTimer div.button {
+  position: relative;
+  justify-content: space-around;
+  width: 43em;
+  left: 12em;
+}
+#littleTimer div.button .button {
+  border-radius: 7px;
+  border: none;
+  color: white;
+  height: 2em;
+  opacity: 0.9;
+  cursor: pointer;
+}
+#littleTimer div.button .button:hover {
+  opacity: 1;
+}
+#littleTimer div.button #start {
+  width: 6em;
+  background-color: rgb(14, 0, 40);
+}
+#littleTimer div.button #reset {
+  width: 2em;
+  background-color: rgb(14, 0, 40);
+}
+#littleTimer div.button #pause {
+  width: 2em;
+  background-color: rgb(14, 0, 40);
+}
+#littleTimer .progressIndicator {
+  left: -17em;
+  font-size: 1.3em;
+}
+
+#sidebar.open {
+  width: 17em;
+}
+#sidebar.open .sidebar-items {
+  display: flex;
+  justify-content: center;
+}
+#sidebar.open .sidebar-items ul {
+  width: 100%;
+  align-items: start;
+}
+#sidebar.open .sidebar-items ul li {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1em;
+  width: 90.5%;
+  margin-left: 0.565em;
+}
+#sidebar.open .sidebar-items ul li span {
+  margin-left: 0.5em;
+}
+#sidebar.open .sidebar-items ul li h4 {
+  display: block;
+}
+#sidebar.open .sidebar-items ul li.todo-list-header {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+#sidebar.open .sidebar-items ul li.todo-list-header .todo-header {
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1em;
+  width: 100%;
+  height: 2em;
+}
+#sidebar.open .sidebar-items ul li.todo-list-header .projects-container {
+  display: block;
+  width: 100%;
+}
+#sidebar.open .sidebar-items ul li.todo-list-header .projects-container .project {
+  margin-left: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 90.5%;
+  gap: 1em;
+}
+
+body {
+  height: 100vh;
+}
+
+*, html, body {
+  margin: 0px;
+  padding: 0px;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+section.Management {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  margin: 0px;
+}
+section.Management .sidebar {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  background-color: rgb(31, 31, 31);
+  width: 40px;
+  height: 100%;
+  position: relative;
+  color: rgb(100, 100, 100);
+}
+section.Management .sidebar .sidebar-title {
+  display: flex;
+  align-items: center;
+  margin: 0.5em 0 0 0.5em;
+}
+section.Management .sidebar .sidebar-title .inner-sidebar-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5em 0 0.5em 0;
+  width: 2em;
+  height: 2em;
+  border-radius: 20px;
+}
+section.Management .sidebar .sidebar-title .inner-sidebar-title span {
+  font-size: 1.2em;
+}
+section.Management .sidebar .sidebar-title .inner-sidebar-title:hover {
+  background-color: #444444;
+}
+section.Management .sidebar .sidebar-items {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: flex-start;
+  align-items: center;
+  flex-grow: 1;
+}
+section.Management .sidebar .sidebar-items ul {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  list-style: none;
+}
+section.Management .sidebar .sidebar-items ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.15em 0 0.15em 0.15em;
+  width: 2em;
+  height: 2em;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+section.Management .sidebar .sidebar-items ul li h4 {
+  display: none;
+}
+section.Management .sidebar .sidebar-items ul li:not(.todo-list-header) {
+  margin-bottom: 0em;
+}
+section.Management .sidebar .sidebar-items ul li:not(.todo-list-header):hover {
+  background-color: #444444;
+}
+section.Management .sidebar .sidebar-items ul li.todo-list-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+section.Management .sidebar .sidebar-items ul li.todo-list-header div.todo-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.2em 0.5em 0.2em 0.5em;
+  width: 2em;
+  height: 2em;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+section.Management .sidebar .sidebar-items ul li.todo-list-header div.todo-header:hover {
+  background-color: #444444;
+}
+section.Management .sidebar .sidebar-items ul li.todo-list-header .projects-container {
+  overflow: scroll;
+}
+section.Management .sidebar .sidebar-items ul li.todo-list-header .projects-container .project {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5em 0.2em;
+  min-width: 2em;
+  height: 2em;
+  border-radius: 20px;
+}
+section.Management .sidebar .sidebar-items ul li.todo-list-header .projects-container .project h4 {
+  display: none;
+}
+section.Management .sidebar .sidebar-items ul li.todo-list-header .projects-container .project:hover {
+  background-color: #444444;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+html {
+  font-size: 22px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0px;
+  background-image: linear-gradient(to left bottom, #0e0028, #140f4d, #211474, #33179d, #4a16c7, #4d17ce, #4f18d4, #5219db, #401ec0, #301fa4, #231d89, #1a1a6e);
+  width: 100vw;
+}
+body::before {
+  position: absolute;
+  content: "";
+  bottom: 0px;
+  z-index: -1;
+  transition: 1s;
+}
+body .timer {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-end;
+  z-index: 10;
+  height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(to left bottom, #0e0028, #140f4d, #211474, #33179d, #4a16c7, #4d17ce, #4f18d4, #5219db, #401ec0, #301fa4, #231d89, #1a1a6e);
+  width: 100vw;
+  font-size: 18px;
+  color: rgb(233, 233, 233);
+  transition: 0.3s linear;
+}
+body .timer .jk {
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0.27em rgb(14, 0, 65), 0 0 1.38em rgb(14, 0, 65);
+  position: absolute;
+  border-radius: 40px;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 12em;
+}
+body .timer .jk div.holder {
+  display: flex;
+}
+body .timer .jk div.holder .colon {
+  font-size: 2.5em;
+}
+body .timer .jk div.holder input, body .timer .jk div.holder select, body .timer .jk div.holder textarea {
+  color: white;
+  text-shadow: 0 0 9px rgb(68, 0, 255);
+  font-size: 2.7em;
+}
+body .timer .jk div.holder input {
+  background-color: transparent;
+  border: none;
+  width: 1.1em;
+  outline: none;
+}
+body .timer .jk div.holder input::-moz-placeholder {
+  color: rgb(255, 255, 255);
+}
+body .timer .jk div.holder input::placeholder {
+  color: rgb(255, 255, 255);
+}
+body .timer .jk div.button {
+  display: flex;
+  justify-content: space-around;
+  width: 15em;
+}
+body .timer .jk div.button .button {
+  border-radius: 7px;
+  border: none;
+  color: white;
+  height: 3em;
+  opacity: 0.9;
+  cursor: pointer;
+}
+body .timer .jk div.button .button:hover {
+  opacity: 1;
+}
+body .timer .jk div.button #start {
+  background-color: rgb(26, 110, 26);
+  box-shadow: 0 0 0.27em rgb(37, 255, 37), 0 0 1.38em rgb(46, 184, 46);
+  width: 12em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .timer .jk div.button #reset {
+  background-color: rgb(110, 26, 26);
+  box-shadow: 0 0 0.27em rgb(255, 37, 37), 0 0 1.38em rgb(184, 46, 46);
+  width: 8em;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+body .timer .jk div.button #pause {
+  background-color: rgb(26, 26, 110);
+  box-shadow: 0 0 0.27em rgb(37, 37, 255), 0 0 1.38em rgb(48, 46, 184);
+  width: 8em;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+body .timer .progressIndicator {
+  font-size: 1.5em;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10em;
+  height: 10em;
+}
+body .timer .progressIndicator .circle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15.15em;
+  height: 15.15em;
+  background-color: white;
+  box-shadow: 0 0 1.38em rgb(46, 184, 46);
+  border-radius: 50%;
+  position: absolute;
+  overflow: hidden;
+}
+body .timer .progressIndicator .circle-container .semicircle {
+  z-index: 8;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 1s linear;
+  transform-origin: right center;
+}
+body .timer .progressIndicator .circle-container .semicircle:nth-child(1) {
+  background-color: rgb(26, 110, 26);
+  z-index: 2;
+}
+body .timer .progressIndicator .circle-container .semicircle:nth-child(2) {
+  z-index: 3;
+  background-color: rgb(26, 110, 26);
+}
+body .timer .progressIndicator .circle-container .semicircle:nth-child(3) {
+  z-index: 4;
+  background-color: rgb(255, 255, 255);
+}
+body .timer .progressIndicator .circle-container .outermost-circle {
+  width: 14em;
+  height: 14em;
+  background-color: rgb(14, 0, 40);
+  border-radius: 50%;
+  z-index: 5;
+}/*# sourceMappingURL=style.css.map */

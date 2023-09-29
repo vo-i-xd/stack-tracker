@@ -1,0 +1,134 @@
+@import "./variables";
+
+
+body{
+    height: 100vh;
+}
+
+*, html, body{
+    margin: 0px;
+    padding: 0px;
+}
+*::-webkit-scrollbar{
+    display: none;
+  }
+
+
+
+section.Management{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+
+
+
+
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    background-color: rgb(31, 31, 31, 1);
+    width: 40px;
+    height: 100%;
+    position: relative;
+    color:rgb(100 100 100);
+    
+    .sidebar-title{
+        display: flex;
+        align-items: center;
+        margin: .5em 0 0 .5em;
+
+        .inner-sidebar-title{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: .5em 0 .5em 0;
+            width: 2em;
+            height: 2em;
+            border-radius: 20px;
+            span{
+                font-size: 1.2em;
+            }
+            &:hover{
+                background-color: #444444;
+            }
+        }       
+    }
+
+    .sidebar-items{
+       display: flex;
+       flex-direction: column;
+       flex-grow: 1;
+       justify-content: flex-start;
+       align-items: center;
+       flex-grow: 1;
+
+       ul{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        list-style: none;
+        li{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: .15em 0 .15em .15em;
+                width: 2em;
+                height: 2em;
+                border-radius: 20px;
+                flex-shrink: 0;
+                h4{
+                    display: none;
+                }
+                &:not(.todo-list-header){
+                    margin-bottom: 0em;
+                    &:hover{
+                        background-color: #444444;
+                    }
+                }
+
+            &.todo-list-header{
+                display: flex;
+                flex-direction: column;
+                justify-content:flex-start;
+
+                div.todo-header{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: .2em .5em .2em .5em;
+                    width: 2em;
+                    height: 2em;
+                    border-radius: 20px;
+                    flex-shrink: 0;
+                    &:hover{
+                        background-color: #444444 ;
+                    }
+                }
+                .projects-container{
+                    overflow: scroll;
+                    .project{
+                        display: none;
+                        align-items: center;
+                        justify-content: center;
+                        margin: .5em .2em;
+                        min-width: 2em;
+                        height: 2em;
+                        border-radius: 20px;
+                        h4{
+                            display: none;
+                        }
+                        &:hover{
+                            background-color: #444444 ;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+}
+}

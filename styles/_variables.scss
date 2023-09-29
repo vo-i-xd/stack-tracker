@@ -1,0 +1,168 @@
+
+$purple: rgb(111, 0, 255);
+
+$darkBlue: rgb(14, 0, 40);
+$shadowBlue: rgb(14, 0, 65);
+
+$textBlue: rgb(75, 84, 214);
+$textShadow: rgb(68, 0, 255);
+
+$gray: rgb(7, 7, 7, .8);
+$lightGray: rgb(0, 0, 0, .2);
+
+
+
+////buttons
+
+$green: rgb(26, 110, 26);
+$greenShadowBorder: rgb(37, 255, 37);
+$greenShadow: rgb(46, 184, 46);
+
+$red: rgb(110, 26, 26);
+$redShadowBorder: rgb(255, 37, 37);
+$redShadow: rgb(184, 46, 46);
+
+$Blue: rgb(26, 26, 110);
+$BlueShadowBorder: rgb(37, 37, 255);
+$blueShadow: rgb(48, 46, 184);
+
+
+
+//progressIndicator bar
+
+$circle-container: rgb(127, 255, 110);
+
+
+
+
+
+#littleTimer{
+    min-width: 180px;
+    min-height: 50px;
+    position: absolute;
+    border-radius: 20px;
+    align-items: space-between;
+    font-size: 2.5px;
+    width: 180px;
+    height: 50px;
+    margin-bottom: 80px;
+    box-shadow:0 0 0.27em $greenShadowBorder, 0 0 2.38em $greenShadow;  
+
+    .jk{
+        width: 180px;
+        height: 50px;
+        margin: right 0em;
+        
+        .holder{
+            left: 1.1em;
+            position: absolute;
+            font-size: 5em;
+
+            #hour{
+                display: none;
+            }
+            #second{
+                display: none;
+            }
+            .colon{
+                display: none;
+            }
+        }
+    }
+    div.button{
+        position: relative;
+        justify-content: space-around;
+        width: 43em;
+        left: 12em;
+        
+        .button{
+            border-radius: 7px;
+            border: none;
+            color: white;
+            height: 2em;
+            opacity: 0.9;
+            cursor: pointer;
+
+            &:hover{
+                opacity: 1;
+           }
+        }
+        #start{
+            width: 6em;
+            background-color: $darkBlue;
+        }
+        #reset{
+            width: 2em;
+            background-color: $darkBlue;
+        }
+        #pause{
+            width: 2em;
+            background-color: $darkBlue;
+        }
+    }
+.progressIndicator{
+left: -17em;
+font-size: 1.3em; 
+}
+}
+
+
+
+
+
+#sidebar.open{
+   width: 17em;
+    .sidebar-items{
+        display: flex;
+        justify-content: center;
+        ul{
+            width: 100%;
+            align-items: start;
+            li{
+                display: flex;
+                justify-content: flex-start;
+                gap: 1em;
+                width: 90.5%;
+                margin-left: .565em;
+                span{
+                    margin-left: .5em;
+                }
+                h4{
+                    display: block;
+                }
+
+                &.todo-list-header{
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1;
+                    
+                    .todo-header{
+                        align-items: center;
+                        justify-content: flex-start;
+                        gap: 1em;
+                        width: 100%;
+                        height: 2em;
+                    }
+
+                    .projects-container{
+                        display: block;
+                        width: 100%;
+
+
+                    .project{
+                        margin-left: 1em;
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+                        width: 90.5%;
+                        gap: 1em;
+                        
+                        
+                    }
+                }
+            }
+        }
+    }
+}
+}
+
