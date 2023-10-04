@@ -1,21 +1,30 @@
 @import "./variables";
 
 
-body{
+body {
     height: 100vh;
+    font-family: 'Ubuntu', sans-serif;
 }
 
-*, html, body{
+*,
+html,
+body {
     margin: 0px;
     padding: 0px;
 }
-*::-webkit-scrollbar{
+
+*::-webkit-scrollbar {
     display: none;
-  }
+}
+input[type="checkbox"], [type="radio"]{
+    display: none;
+}
 
 
 
-section.Management{
+
+section.Management {
+    justify-content: space-between;
     display: flex;
     width: 100vw;
     height: 100vh;
@@ -24,111 +33,404 @@ section.Management{
 
 
 
-.sidebar{
-    display: flex;
-    flex-direction: column;
-    font-size: 14px;
-    background-color: rgb(31, 31, 31, 1);
-    width: 40px;
-    height: 100%;
-    position: relative;
-    color:rgb(100 100 100);
-    
-    .sidebar-title{
-        display: flex;
-        align-items: center;
-        margin: .5em 0 0 .5em;
-
-        .inner-sidebar-title{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: .5em 0 .5em 0;
-            width: 2em;
-            height: 2em;
-            border-radius: 20px;
-            span{
-                font-size: 1.2em;
-            }
-            &:hover{
-                background-color: #444444;
-            }
-        }       
-    }
-
-    .sidebar-items{
-       display: flex;
-       flex-direction: column;
-       flex-grow: 1;
-       justify-content: flex-start;
-       align-items: center;
-       flex-grow: 1;
-
-       ul{
-        height: 100%;
+    .sidebar {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        list-style: none;
-        li{
+        font-size: 14px;
+        background-color: $background;
+        width: 40px;
+        flex-shrink: 0;
+        height: 100%;
+        position: relative;
+        color: $grayText;
+
+        .sidebar-title {
+            display: flex;
+            align-items: center;
+            margin: .5em 0 0 .5em;
+
+            .inner-sidebar-title {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                margin: .15em 0 .15em .15em;
+                margin: .5em 0 .5em 0;
                 width: 2em;
                 height: 2em;
                 border-radius: 20px;
-                flex-shrink: 0;
-                h4{
-                    display: none;
-                }
-                &:not(.todo-list-header){
-                    margin-bottom: 0em;
-                    &:hover{
-                        background-color: #444444;
-                    }
+
+                span {
+                    font-size: 1.2em;
                 }
 
-            &.todo-list-header{
+                &:hover {
+                    background-color: $hover;
+                }
+            }
+        }
+
+        .sidebar-items {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+
+            ul {
+                height: 100%;
+                width: 100%;
                 display: flex;
                 flex-direction: column;
-                justify-content:flex-start;
+                justify-content: flex-start;
+                align-items: center;
+                list-style: none;
+                gap: .5em .2em;
 
-                div.todo-header{
+                li {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    margin: .2em .5em .2em .5em;
+                    gap: 0em 1em;
                     width: 2em;
                     height: 2em;
                     border-radius: 20px;
                     flex-shrink: 0;
-                    &:hover{
-                        background-color: #444444 ;
-                    }
-                }
-                .projects-container{
-                    overflow: scroll;
-                    .project{
+
+                    h4 {
                         display: none;
-                        align-items: center;
-                        justify-content: center;
-                        margin: .5em .2em;
-                        min-width: 2em;
-                        height: 2em;
-                        border-radius: 20px;
-                        h4{
-                            display: none;
+                    }
+
+                    ::before {
+                        display: block;
+                        width: 1.035em;
+                    }
+
+                    &:not(.todo-list-header) {
+                        margin-bottom: 0em;
+
+                        &:hover {
+                            color: $projecColortHover;
+                            background-color: $hover;
                         }
-                        &:hover{
-                            background-color: #444444 ;
+                    }
+
+                    &.todo-list-header {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        flex-grow: 1;
+                        width: 100%;
+
+                        div.todo-header {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 2em;
+                            height: 2em;
+                            border-radius: 20px;
+                            flex-shrink: 0;
+
+                            span {
+                                margin-left: .3em;
+                            }
+
+                            &:hover {
+                                color: $projecColortHover;
+                                background-color: $hover;
+                            }
+                        }
+
+                        .sidebar-projects-container {
+                            display: none;
+                            flex-direction: column;
+                            align-items: normal;
+                            overflow: scroll;
+                            width: 100%;
+
+                            .project{
+                                display: none;
+                                align-items: center;
+                                justify-content: flex-start;
+                                flex-shrink: 0;
+                                width: 93%;
+                                height: 2em;
+                                border-radius: 20px;
+                                margin: .5em 0 .5em 0;
+                                overflow: scroll;
+                                span {
+                                    border-radius: 50%;
+                                    padding: .1em;
+                                    margin-right: .5em;
+                                    justify-self: flex-end;
+            
+                                    &.minor {
+                                        border: solid #25A85D;
+                                    }
+            
+                                    &.normal {
+                                        border: solid #FFD952;
+            
+                                    }
+            
+                                    &.critical {
+                                        border: solid #E85656;
+                                    }
+                                }
+                                h4 {
+                                    display: none;
+                                    width: 10.7em;
+                                }
+
+                                &:hover {
+                                    color: $projecColortHover;
+                                    background-color: $hover;
+                                }
+                            }
                         }
                     }
                 }
             }
         }
     }
-}
-}
+
+    main.projects {
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        align-self: center;
+        flex-grow: 1;
+        flex-shrink: 1;
+        width: 60em;
+        height: 95%;
+        background-color: $background;
+        margin: 2em;
+        border-radius: 20px;
+        color: $grayText;
+
+
+        header.form-header {
+            display: flex;
+            background-color: $purple;
+            border-radius: 15px;
+            flex-direction: column;
+            flex-grow: 0;
+
+            form#new-todo-form {
+                padding: 1em;
+                gap: 1em;
+                display: flex;
+                flex-direction: column;
+            
+
+            .header-header {
+                display: flex;
+                height: 1.5em;
+                width: 100%;
+                gap: .5em;
+
+                >input{
+                    display: flex;
+                    border-radius: 5px;
+                    height: 2em;
+                    width: 100%;
+                    padding: .2em .5em;
+                    border-radius: 0.3rem;
+                    appearance: none;
+                    border: none;
+                }
+
+                >label {
+                    display: flex;
+                    font-size: 1rem;
+                    padding: .3rem .5em;
+                    width: 1em;
+                    background-color: $darkBlue;
+                    border-radius: 0.5em;
+                    color: #fff;
+                    box-shadow: $blueShadow;
+                    cursor: pointer;
+                    transition: 0.2s ease-in-out;
+                    &:hover {
+                        opacity: 0.80;
+                    }
+                    input {
+                        display: none;
+
+                        &.checkbox{
+
+                            &:checked{
+                                background-color: #25A85D;
+                            }
+                        }
+                    }
+                }
+            }
+            .form_options{
+                display: flex;
+                justify-content: space-between;
+                
+                &.close{
+                    display: none;
+                }
+                
+                .stacks{
+                    display: flex;
+                    //flex-direction: column;
+                    gap: 1em;
+                    flex-wrap: wrap;
+                    width: 9em;
+                    height: 5em;
+
+                    label{
+                        display: flex;
+                        width: 1em;
+                        height: 1em;
+
+                        input[type="checkbox"]{
+
+                            &:checked ~ .icon{
+                                filter: grayscale(0%);
+
+                                
+                        }
+                        }
+
+                        >.icon{
+                            filter: grayscale(100%);
+                           
+                        }
+                    }
+                }
+                .project-priority-form{
+                    label{
+                        width: 5em;
+                        display: flex;
+                        align-items: center;
+                        
+                        input[type="radio"]{
+
+                            &:checked ~ {
+                                span.normal + p{
+                                    color: #FFD952;
+                                }
+                                span.minor + p{
+                                    color: #25A85D; 
+                                }
+                                span.critical + p{
+                                    color: #E85656;   
+                                }
+                        }
+
+                        }
+    
+                        span {
+                            border-radius: 50%;
+                            padding: .1em;
+                            margin-right: .5em;
+    
+                            &.minor {
+                                border: solid #25A85D;
+                            }
+    
+                            &.normal {
+                                border: solid #FFD952;
+    
+                            }
+    
+                            &.critical {
+                                border: solid #E85656;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        }
+
+        div.projects-container {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            overflow: scroll;
+            width: 100%;
+            &:nth-child(1){
+                margin-top: 2em;
+            }
+
+            .project {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-radius: 20px;
+                width: 97%;
+                gap: 1em;
+                height: 2.5em;
+                margin: .5em 0 .5em 0;
+                font-size: .636em;
+                flex-shrink: 0;
+
+                .project-tittle {
+                    display: flex;
+                    align-items: center;
+                    height: 100%;
+                    gap: 1em;
+                    width: 17em;
+                }
+
+                .project-priority {
+                    width: 5em;
+                    display: flex;
+                    align-items: center;
+
+                    span {
+                        border-radius: 50%;
+                        padding: .1em;
+                        margin-right: .5em;
+
+                        &.minor {
+                            border: solid #25A85D;
+                        }
+
+                        &.normal {
+                            border: solid #FFD952;
+
+                        }
+
+                        &.critical {
+                            border: solid #E85656;
+                        }
+                    }
+                }
+
+                .project-stacks {
+                    display: flex;
+                    align-items: center;
+                    width: 14em;
+                    margin-right: .5em;
+                    gap: .3em;
+                }
+
+                span {
+                    margin-left: .5em;
+                }
+
+                &:hover {
+                    color: $projecColortHover;
+                    background-color: $hover;
+                }
+
+                &:hover div.project-priority {
+                    &.minor {
+                        color: #25A85D;
+                    }
+
+                    &.normal {
+                        color: #FFD952;
+
+                    }
+
+                    &.critical {
+                        color: #E85656;
+                    }
+                }
+            }
+        }
+    }
 }

@@ -1,280 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHALLENGE_stopwatch-program⏱️</title>
-    <script src="timer.js" defer></script>
-    <script src="./management.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./styles/style.css">
-    <style>
 
-    </style>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHALLENGE_stopwatch-program⏱️</title>
+  <script src="timer.js" defer></script>
+  <script src="./management.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./styles/style.css">
+  <style>
+
+  </style>
 </head>
+
 <body>
   <main>
 
   </main>
   <section class="Management">
 
-    <aside id="sidebar" class="sidebar open">
+    <aside id="sidebar" class="sidebar">
 
       <div class="sidebar-title">
-      <div class="inner-sidebar-title">
-        <span class="fa-sharp fa-solid fa-bars"></span>
-        <!-- <h3>tasks</h3> -->
+        <div class="inner-sidebar-title">
+          <span class="fa-sharp fa-solid fa-bars"></span>
+          <!-- <h3>tasks</h3> -->
+        </div>
       </div>
-    </div>
-      
-      
+
+
       <div class="sidebar-items">
 
         <ul>
 
           <li class="dashboard">
 
-              <span class="fa-solid fa-chart-simple"></span>
-             <h4>dashboard</h4>
-        </li>
+            <span class="fa-solid fa-chart-simple"></span>
+            <h4>dashboard</h4>
+          </li>
 
           <li class="settings">
-                <span class="fa-solid fa-gear"></span>
-              <h4>settings</h4>
+            <span class="fa-solid fa-gear"></span>
+            <h4>settings</h4>
           </li>
 
           <li class="todo-list-header">
 
             <div class="todo-header">
-            <span class="fa-solid fa-clipboard-list"></span>
-            <h4>projects</h4>
-          </div>
+              <span class="fa-solid fa-clipboard-list"></span>
+              <h4>projects</h4>
+            </div>
 
-              <div class="projects-container" id="projects">
+            <div class="sidebar-projects-container" id="projects">
 
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>landing page</h4>
-                </div>
 
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>gallery</h4>
-                </div>
 
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>dashboard</h4>
-                </div>
 
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>whatsapp api</h4>
-                </div>
+              <div class="project">
+                <span class="fa-solid fa-folder"></span>
+                <h4>landing page</h4>
+                <span class="minor"></span>
+              </div>
 
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>okok</h4>
-                </div>
 
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>okok</h4>
-                </div>
 
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>okok</h4>
-                </div>
-
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>landing page</h4>
-                </div>
-
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>gallery</h4>
-                </div>
-
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>dashboard</h4>
-                </div>
-
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>whatsapp api</h4>
-                </div>
-
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>okok</h4>
-                </div>
-
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>okok</h4>
-                </div>
-
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>okok</h4>
-                </div>
-
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>landing page</h4>
-                </div>
-
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>gallery</h4>
-                </div>
-
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>dashboard</h4>
-                </div>
-
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>whatsapp api</h4>
-                </div>
-
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>okok</h4>
-                </div>
-
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>okok</h4>
-                </div>
-
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>okok</h4>
-                </div>
-
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>landing page</h4>
-                </div>
-
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>gallery</h4>
-                </div>
-
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>dashboard</h4>
-                </div>
-
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>whatsapp api</h4>
-                </div>
-
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>okok</h4>
-                </div>
-
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>okok</h4>
-                </div>
-
-                <div class="project">
-                  <span class="fa-solid fa-folder"></span>
-                  <h4>okok</h4>
-                </div>
 
             </div>
           </li>
-
-     
-
         </ul>
-
       </div>
-      
-    
-    
-    
-    
-    
-    
-    
-    
     </aside>
-  </section>
+
+    <main class="projects">
+
+      <header class="form-header">
+
+        <form id="new-todo-form">
+
+          <header class="header-header">
+            
+            <input type="text" id="content" name="content" placeholder="add a project"/>
+            <!-- todo:add labels and fix the labels -->
+
+            <label id="tag">
+              <span class="fa-solid fa-tag"></span>
+            </label>
+
+            <label name="submit" class="submit">
+              <span class="fa-solid fa-plus"></span>
+              <input class="submit" type="submit" value="Add todo">
+            </label>
+
+
+            
+          </header>
+
+
+          <div class="form_options close">
+              <div class="stacks">
+
+                <label>
+                  <input type="checkbox"  name="stack">
+                <img class="icon" src="./icons/javascript.svg">
+                </label>
+
+                <label>
+                  <input type="checkbox"  name="stack">
+                  <img class="icon" src="./icons/typescript.svg">
+                  </label>
   
+                  <label>
+                    <input type="checkbox"  name="stack">
+                    <img class="icon" src="./icons/react.svg">
+                    </label>
 
+                    <label>
+                      <input type="checkbox"  name="stack">
+                      <img class="icon" src="./icons/angular.svg">
+                      </label>
 
+                      <label>
+                        <input type="checkbox"  name="stack">
+                        <img class="icon" src="./icons/vue-js.svg">
+                        </label>
+                        
+                        <label>
+                          <input type="checkbox"  name="stack">
+                          <img class="icon" src="./icons/tailwindcss.svg">
+                          </label>
 
+                          <label>
+                            <input type="checkbox"  name="stack">
+                            <img class="icon" src="./icons/springboot.svg">
+                            </label>
+            
+                              <label>
+                                <input type="checkbox"  name="stack">
+                                <img class="icon" src="./icons/nodejs.svg">
+                                </label>
+                                
+                                <label>
+                                  <input type="checkbox"  name="stack">
+                                  <img class="icon" src="./icons/mongodb.svg">
+                                  </label>
 
+                                  <label>
+                                    <input type="checkbox"  name="stack">
+                                    <img class="icon" src="./icons/python.svg">
+                                    </label>
 
+                                    <label>
+                                      <input type="checkbox"  name="stack">
+                                      <img class="icon" src="./icons/c.svg">
+                                      </label>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   <div class="timer" id="littleTimer">
-        <div class="jk">
-          
-            <div class="holder">
-              <input type="text" data-text="00" placeholder="00" class="input" id="hour" ></input>
-              <span class="colon">:</span>
-              <input type="text" data-text="00" placeholder="30" class="input" id="minute" ></input>
-              <span class="colon">:</span>
-              <input type="text" data-text="00" placeholder="00" class="input" id="second" ></input>              
+                                      <label>
+                                        <input type="checkbox"  name="stack">
+                                        <img class="icon" src="./icons/c++.svg">
+                                        </label>
             </div>
 
-          <div class="button">
-            <button id="reset" class="button fa-solid">reset</button>
-            <button id="pause" class="button fa-solid">pause</button>
-            <button id="start" class="button fa-solid">start</button>
+            <div class="project-priority-form">          
+              
+              <label>
+                <input type="radio" name="priority" value="normal">
+                <span class="normal"></span>
+                <p>normal</p>
+              </label>
+
+              <label>
+                <input type="radio" name="priority" value="minor">
+                <span class="minor"></span>
+                <p>minor</p>
+              </label>
+
+              <label>
+                <input type="radio" name="priority" value="critical">
+                <span class="critical"></span>
+                <p>critical</p>
+              </label>
+            </div>
+
+            
           </div>
 
-        </div>
-
-        <div class="progressIndicator">
-
+          
+        </form>
 
 
-          <div class="circle-container center">
-            <div class="semicircle" ></div>
-            <div class="semicircle" ></div>
-            <div class="semicircle" ></div>
-            <div class="outermost-circle" ></div>
+
+
+      
+      </header>
+
+      <div class="projects-container" id="projects-container">
+
+        <!-- <div class="project">
+          
+          <div class="project-tittle">
+            <span class="fa-solid fa-folder"></span>
+            <h4>landing page</h4>
           </div>
-        </div>
+
+          <div class="project-priority normal">
+            <span class="normal"></span>
+            <p>normal</p>
+          </div>
+
+          <div class="project-stacks">
+            <i src="./icons/javascript.svg">
+              <i src="./icons/react.svg">
+                <i src="./icons/tailwindcss.svg">
+                  <i src="./icons/nodejs.svg">
+                    <i src="./icons/mongodb.svg">
+          </div>
+        </div>-->
+
+      </div>
+      </div> 
+    </main>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="timer" id="littleTimer">
+    <div class="jk">
+
+      <div class="holder">
+
+        <label for="hour">
+        <input  type="text" name="timer_input" data-text="00" placeholder="00" class="input" id="hour"></input>
+      </label>
+
+      <label for="minute">
+        <span class="colon">:</span>
+        <input  type="text" name="timer_input" data-text="00" placeholder="30" class="input" id="minute"></input>
+      </label>
+
+      <label for="second">
+        <span class="colon">:</span>
+        <input  type="text" name="timer_input" data-text="00" placeholder="00" class="input" id="second"></input>
+      </label>
+
+      </div>
+
+      <div class="button">
+        <button id="reset" class="button fa-solid">reset</button>
+        <button id="pause" class="button fa-solid">pause</button>
+        <button id="start" class="button fa-solid">start</button>
+      </div>
+
     </div>
 
+    <div class="progressIndicator">
 
 
 
-    <div>
+      <div class="circle-container center">
+        <div class="semicircle"></div>
+        <div class="semicircle"></div>
+        <div class="semicircle"></div>
+        <div class="outermost-circle"></div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div>
 
 
 
@@ -289,4 +312,5 @@
 
 
 </body>
+
 </html>

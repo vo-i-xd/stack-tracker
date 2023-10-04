@@ -1,115 +1,13 @@
-#littleTimer {
-  min-width: 180px;
-  min-height: 50px;
-  position: absolute;
-  border-radius: 20px;
-  align-items: space-between;
-  font-size: 2.5px;
-  width: 180px;
-  height: 50px;
-  margin-bottom: 80px;
-  box-shadow: 0 0 0.27em rgb(37, 255, 37), 0 0 2.38em rgb(46, 184, 46);
-}
-#littleTimer .jk {
-  width: 180px;
-  height: 50px;
-  margin: right 0em;
-}
-#littleTimer .jk .holder {
-  left: 1.1em;
-  position: absolute;
-  font-size: 5em;
-}
-#littleTimer .jk .holder #hour {
+#close {
   display: none;
-}
-#littleTimer .jk .holder #second {
-  display: none;
-}
-#littleTimer .jk .holder .colon {
-  display: none;
-}
-#littleTimer div.button {
-  position: relative;
-  justify-content: space-around;
-  width: 43em;
-  left: 12em;
-}
-#littleTimer div.button .button {
-  border-radius: 7px;
-  border: none;
-  color: white;
-  height: 2em;
-  opacity: 0.9;
-  cursor: pointer;
-}
-#littleTimer div.button .button:hover {
-  opacity: 1;
-}
-#littleTimer div.button #start {
-  width: 6em;
-  background-color: rgb(14, 0, 40);
-}
-#littleTimer div.button #reset {
-  width: 2em;
-  background-color: rgb(14, 0, 40);
-}
-#littleTimer div.button #pause {
-  width: 2em;
-  background-color: rgb(14, 0, 40);
-}
-#littleTimer .progressIndicator {
-  left: -17em;
-  font-size: 1.3em;
 }
 
-#sidebar.open {
-  width: 17em;
+.tagOpen {
+  height: 8.5em;
 }
-#sidebar.open .sidebar-items {
+
+.open {
   display: flex;
-  justify-content: center;
-}
-#sidebar.open .sidebar-items ul {
-  width: 100%;
-  align-items: start;
-}
-#sidebar.open .sidebar-items ul li {
-  display: flex;
-  justify-content: flex-start;
-  gap: 1em;
-  width: 90.5%;
-  margin-left: 0.565em;
-}
-#sidebar.open .sidebar-items ul li span {
-  margin-left: 0.5em;
-}
-#sidebar.open .sidebar-items ul li h4 {
-  display: block;
-}
-#sidebar.open .sidebar-items ul li.todo-list-header {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-#sidebar.open .sidebar-items ul li.todo-list-header .todo-header {
-  align-items: center;
-  justify-content: flex-start;
-  gap: 1em;
-  width: 100%;
-  height: 2em;
-}
-#sidebar.open .sidebar-items ul li.todo-list-header .projects-container {
-  display: block;
-  width: 100%;
-}
-#sidebar.open .sidebar-items ul li.todo-list-header .projects-container .project {
-  margin-left: 1em;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 90.5%;
-  gap: 1em;
 }
 
 #littleTimer {
@@ -180,20 +78,13 @@
 #sidebar.open {
   width: 17em;
 }
-#sidebar.open .sidebar-items {
-  display: flex;
-  justify-content: center;
-}
 #sidebar.open .sidebar-items ul {
-  width: 100%;
   align-items: start;
 }
 #sidebar.open .sidebar-items ul li {
-  display: flex;
   justify-content: flex-start;
-  gap: 1em;
   width: 90.5%;
-  margin-left: 0.565em;
+  margin-left: 0.41em;
 }
 #sidebar.open .sidebar-items ul li span {
   margin-left: 0.5em;
@@ -201,36 +92,142 @@
 #sidebar.open .sidebar-items ul li h4 {
   display: block;
 }
-#sidebar.open .sidebar-items ul li.todo-list-header {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
 #sidebar.open .sidebar-items ul li.todo-list-header .todo-header {
-  align-items: center;
   justify-content: flex-start;
   gap: 1em;
   width: 100%;
-  height: 2em;
 }
-#sidebar.open .sidebar-items ul li.todo-list-header .projects-container {
-  display: block;
-  width: 100%;
+#sidebar.open .sidebar-items ul li.todo-list-header .todo-header span {
+  margin-left: 0.65em;
 }
-#sidebar.open .sidebar-items ul li.todo-list-header .projects-container .project {
+#sidebar.open .sidebar-items ul li.todo-list-header .sidebar-projects-container {
+  display: flex;
+}
+#sidebar.open .sidebar-items ul li.todo-list-header .sidebar-projects-container .project {
   margin-left: 1em;
   display: flex;
-  align-items: center;
+  gap: 1em;
+}
+
+#close {
+  display: none;
+}
+
+.tagOpen {
+  height: 8.5em;
+}
+
+.open {
+  display: flex;
+}
+
+#littleTimer {
+  min-width: 180px;
+  min-height: 50px;
+  position: absolute;
+  border-radius: 20px;
+  align-items: space-between;
+  font-size: 2.5px;
+  width: 180px;
+  height: 50px;
+  margin-bottom: 80px;
+  box-shadow: 0 0 0.27em rgb(37, 255, 37), 0 0 2.38em rgb(46, 184, 46);
+}
+#littleTimer .jk {
+  width: 180px;
+  height: 50px;
+  margin: right 0em;
+}
+#littleTimer .jk .holder {
+  left: 1.1em;
+  position: absolute;
+  font-size: 5em;
+}
+#littleTimer .jk .holder #hour {
+  display: none;
+}
+#littleTimer .jk .holder #second {
+  display: none;
+}
+#littleTimer .jk .holder .colon {
+  display: none;
+}
+#littleTimer div.button {
+  position: relative;
+  justify-content: space-around;
+  width: 43em;
+  left: 12em;
+}
+#littleTimer div.button .button {
+  border-radius: 7px;
+  border: none;
+  color: white;
+  height: 2em;
+  opacity: 0.9;
+  cursor: pointer;
+}
+#littleTimer div.button .button:hover {
+  opacity: 1;
+}
+#littleTimer div.button #start {
+  width: 6em;
+  background-color: rgb(14, 0, 40);
+}
+#littleTimer div.button #reset {
+  width: 2em;
+  background-color: rgb(14, 0, 40);
+}
+#littleTimer div.button #pause {
+  width: 2em;
+  background-color: rgb(14, 0, 40);
+}
+#littleTimer .progressIndicator {
+  left: -17em;
+  font-size: 1.3em;
+}
+
+#sidebar.open {
+  width: 17em;
+}
+#sidebar.open .sidebar-items ul {
+  align-items: start;
+}
+#sidebar.open .sidebar-items ul li {
   justify-content: flex-start;
   width: 90.5%;
+  margin-left: 0.41em;
+}
+#sidebar.open .sidebar-items ul li span {
+  margin-left: 0.5em;
+}
+#sidebar.open .sidebar-items ul li h4 {
+  display: block;
+}
+#sidebar.open .sidebar-items ul li.todo-list-header .todo-header {
+  justify-content: flex-start;
+  gap: 1em;
+  width: 100%;
+}
+#sidebar.open .sidebar-items ul li.todo-list-header .todo-header span {
+  margin-left: 0.65em;
+}
+#sidebar.open .sidebar-items ul li.todo-list-header .sidebar-projects-container {
+  display: flex;
+}
+#sidebar.open .sidebar-items ul li.todo-list-header .sidebar-projects-container .project {
+  margin-left: 1em;
+  display: flex;
   gap: 1em;
 }
 
 body {
   height: 100vh;
+  font-family: "Ubuntu", sans-serif;
 }
 
-*, html, body {
+*,
+html,
+body {
   margin: 0px;
   padding: 0px;
 }
@@ -239,7 +236,12 @@ body {
   display: none;
 }
 
+input[type=checkbox], [type=radio] {
+  display: none;
+}
+
 section.Management {
+  justify-content: space-between;
   display: flex;
   width: 100vw;
   height: 100vh;
@@ -249,11 +251,12 @@ section.Management .sidebar {
   display: flex;
   flex-direction: column;
   font-size: 14px;
-  background-color: rgb(31, 31, 31);
+  background-color: #0F0F0F;
   width: 40px;
+  flex-shrink: 0;
   height: 100%;
   position: relative;
-  color: rgb(100, 100, 100);
+  color: rgb(130, 130, 130);
 }
 section.Management .sidebar .sidebar-title {
   display: flex;
@@ -273,29 +276,28 @@ section.Management .sidebar .sidebar-title .inner-sidebar-title span {
   font-size: 1.2em;
 }
 section.Management .sidebar .sidebar-title .inner-sidebar-title:hover {
-  background-color: #444444;
+  background-color: #3D3D3D;
 }
 section.Management .sidebar .sidebar-items {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  justify-content: flex-start;
-  align-items: center;
-  flex-grow: 1;
 }
 section.Management .sidebar .sidebar-items ul {
   height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: flex-start;
+  align-items: center;
   list-style: none;
+  gap: 0.5em 0.2em;
 }
 section.Management .sidebar .sidebar-items ul li {
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin: 0.15em 0 0.15em 0.15em;
+  align-items: center;
+  gap: 0em 1em;
   width: 2em;
   height: 2em;
   border-radius: 20px;
@@ -304,47 +306,270 @@ section.Management .sidebar .sidebar-items ul li {
 section.Management .sidebar .sidebar-items ul li h4 {
   display: none;
 }
+section.Management .sidebar .sidebar-items ul li ::before {
+  display: block;
+  width: 1.035em;
+}
 section.Management .sidebar .sidebar-items ul li:not(.todo-list-header) {
   margin-bottom: 0em;
 }
 section.Management .sidebar .sidebar-items ul li:not(.todo-list-header):hover {
-  background-color: #444444;
+  color: rgb(162, 93, 241);
+  background-color: #3D3D3D;
 }
 section.Management .sidebar .sidebar-items ul li.todo-list-header {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  flex-grow: 1;
+  width: 100%;
 }
 section.Management .sidebar .sidebar-items ul li.todo-list-header div.todo-header {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0.2em 0.5em 0.2em 0.5em;
   width: 2em;
   height: 2em;
   border-radius: 20px;
   flex-shrink: 0;
 }
+section.Management .sidebar .sidebar-items ul li.todo-list-header div.todo-header span {
+  margin-left: 0.3em;
+}
 section.Management .sidebar .sidebar-items ul li.todo-list-header div.todo-header:hover {
-  background-color: #444444;
+  color: rgb(162, 93, 241);
+  background-color: #3D3D3D;
 }
-section.Management .sidebar .sidebar-items ul li.todo-list-header .projects-container {
+section.Management .sidebar .sidebar-items ul li.todo-list-header .sidebar-projects-container {
+  display: none;
+  flex-direction: column;
+  align-items: normal;
   overflow: scroll;
+  width: 100%;
 }
-section.Management .sidebar .sidebar-items ul li.todo-list-header .projects-container .project {
+section.Management .sidebar .sidebar-items ul li.todo-list-header .sidebar-projects-container .project {
   display: none;
   align-items: center;
-  justify-content: center;
-  margin: 0.5em 0.2em;
-  min-width: 2em;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 93%;
   height: 2em;
   border-radius: 20px;
+  margin: 0.5em 0 0.5em 0;
+  overflow: scroll;
 }
-section.Management .sidebar .sidebar-items ul li.todo-list-header .projects-container .project h4 {
+section.Management .sidebar .sidebar-items ul li.todo-list-header .sidebar-projects-container .project span {
+  border-radius: 50%;
+  padding: 0.1em;
+  margin-right: 0.5em;
+  justify-self: flex-end;
+}
+section.Management .sidebar .sidebar-items ul li.todo-list-header .sidebar-projects-container .project span.minor {
+  border: solid #25A85D;
+}
+section.Management .sidebar .sidebar-items ul li.todo-list-header .sidebar-projects-container .project span.normal {
+  border: solid #FFD952;
+}
+section.Management .sidebar .sidebar-items ul li.todo-list-header .sidebar-projects-container .project span.critical {
+  border: solid #E85656;
+}
+section.Management .sidebar .sidebar-items ul li.todo-list-header .sidebar-projects-container .project h4 {
+  display: none;
+  width: 10.7em;
+}
+section.Management .sidebar .sidebar-items ul li.todo-list-header .sidebar-projects-container .project:hover {
+  color: rgb(162, 93, 241);
+  background-color: #3D3D3D;
+}
+section.Management main.projects {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-self: center;
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 60em;
+  height: 95%;
+  background-color: #0F0F0F;
+  margin: 2em;
+  border-radius: 20px;
+  color: rgb(130, 130, 130);
+}
+section.Management main.projects header.form-header {
+  display: flex;
+  background-color: rgb(111, 0, 255);
+  border-radius: 15px;
+  flex-direction: column;
+  flex-grow: 0;
+}
+section.Management main.projects header.form-header form#new-todo-form {
+  padding: 1em;
+  gap: 1em;
+  display: flex;
+  flex-direction: column;
+}
+section.Management main.projects header.form-header form#new-todo-form .header-header {
+  display: flex;
+  height: 1.5em;
+  width: 100%;
+  gap: 0.5em;
+}
+section.Management main.projects header.form-header form#new-todo-form .header-header > input {
+  display: flex;
+  border-radius: 5px;
+  height: 2em;
+  width: 100%;
+  padding: 0.2em 0.5em;
+  border-radius: 0.3rem;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+}
+section.Management main.projects header.form-header form#new-todo-form .header-header > label {
+  display: flex;
+  font-size: 1rem;
+  padding: 0.3rem 0.5em;
+  width: 1em;
+  background-color: rgb(14, 0, 40);
+  border-radius: 0.5em;
+  color: #fff;
+  box-shadow: rgb(48, 46, 184);
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+section.Management main.projects header.form-header form#new-todo-form .header-header > label:hover {
+  opacity: 0.8;
+}
+section.Management main.projects header.form-header form#new-todo-form .header-header > label input {
   display: none;
 }
-section.Management .sidebar .sidebar-items ul li.todo-list-header .projects-container .project:hover {
-  background-color: #444444;
+section.Management main.projects header.form-header form#new-todo-form .header-header > label input.checkbox:checked {
+  background-color: #25A85D;
+}
+section.Management main.projects header.form-header form#new-todo-form .form_options {
+  display: flex;
+  justify-content: space-between;
+}
+section.Management main.projects header.form-header form#new-todo-form .form_options.close {
+  display: none;
+}
+section.Management main.projects header.form-header form#new-todo-form .form_options .stacks {
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+  width: 9em;
+  height: 5em;
+}
+section.Management main.projects header.form-header form#new-todo-form .form_options .stacks label {
+  display: flex;
+  width: 1em;
+  height: 1em;
+}
+section.Management main.projects header.form-header form#new-todo-form .form_options .stacks label input[type=checkbox]:checked ~ .icon {
+  filter: grayscale(0%);
+}
+section.Management main.projects header.form-header form#new-todo-form .form_options .stacks label > .icon {
+  filter: grayscale(100%);
+}
+section.Management main.projects header.form-header form#new-todo-form .form_options .project-priority-form label {
+  width: 5em;
+  display: flex;
+  align-items: center;
+}
+section.Management main.projects header.form-header form#new-todo-form .form_options .project-priority-form label input[type=radio]:checked ~ span.normal + p {
+  color: #FFD952;
+}
+section.Management main.projects header.form-header form#new-todo-form .form_options .project-priority-form label input[type=radio]:checked ~ span.minor + p {
+  color: #25A85D;
+}
+section.Management main.projects header.form-header form#new-todo-form .form_options .project-priority-form label input[type=radio]:checked ~ span.critical + p {
+  color: #E85656;
+}
+section.Management main.projects header.form-header form#new-todo-form .form_options .project-priority-form label span {
+  border-radius: 50%;
+  padding: 0.1em;
+  margin-right: 0.5em;
+}
+section.Management main.projects header.form-header form#new-todo-form .form_options .project-priority-form label span.minor {
+  border: solid #25A85D;
+}
+section.Management main.projects header.form-header form#new-todo-form .form_options .project-priority-form label span.normal {
+  border: solid #FFD952;
+}
+section.Management main.projects header.form-header form#new-todo-form .form_options .project-priority-form label span.critical {
+  border: solid #E85656;
+}
+section.Management main.projects div.projects-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow: scroll;
+  width: 100%;
+}
+section.Management main.projects div.projects-container:nth-child(1) {
+  margin-top: 2em;
+}
+section.Management main.projects div.projects-container .project {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
+  width: 97%;
+  gap: 1em;
+  height: 2.5em;
+  margin: 0.5em 0 0.5em 0;
+  font-size: 0.636em;
+  flex-shrink: 0;
+}
+section.Management main.projects div.projects-container .project .project-tittle {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 1em;
+  width: 17em;
+}
+section.Management main.projects div.projects-container .project .project-priority {
+  width: 5em;
+  display: flex;
+  align-items: center;
+}
+section.Management main.projects div.projects-container .project .project-priority span {
+  border-radius: 50%;
+  padding: 0.1em;
+  margin-right: 0.5em;
+}
+section.Management main.projects div.projects-container .project .project-priority span.minor {
+  border: solid #25A85D;
+}
+section.Management main.projects div.projects-container .project .project-priority span.normal {
+  border: solid #FFD952;
+}
+section.Management main.projects div.projects-container .project .project-priority span.critical {
+  border: solid #E85656;
+}
+section.Management main.projects div.projects-container .project .project-stacks {
+  display: flex;
+  align-items: center;
+  width: 14em;
+  margin-right: 0.5em;
+  gap: 0.3em;
+}
+section.Management main.projects div.projects-container .project span {
+  margin-left: 0.5em;
+}
+section.Management main.projects div.projects-container .project:hover {
+  color: rgb(162, 93, 241);
+  background-color: #3D3D3D;
+}
+section.Management main.projects div.projects-container .project:hover div.project-priority.minor {
+  color: #25A85D;
+}
+section.Management main.projects div.projects-container .project:hover div.project-priority.normal {
+  color: #FFD952;
+}
+section.Management main.projects div.projects-container .project:hover div.project-priority.critical {
+  color: #E85656;
 }
 
 * {
@@ -382,7 +607,6 @@ body .timer {
   height: 100vh;
   width: 100vw;
   background-image: linear-gradient(to left bottom, #0e0028, #140f4d, #211474, #33179d, #4a16c7, #4d17ce, #4f18d4, #5219db, #401ec0, #301fa4, #231d89, #1a1a6e);
-  width: 100vw;
   font-size: 18px;
   color: rgb(233, 233, 233);
   transition: 0.3s linear;
@@ -391,7 +615,7 @@ body .timer .jk {
   background-color: rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 0.27em rgb(14, 0, 65), 0 0 1.38em rgb(14, 0, 65);
   position: absolute;
-  border-radius: 40px;
+  border-radius: 5em;
   z-index: 6;
   display: flex;
   flex-direction: column;
