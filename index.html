@@ -58,17 +58,12 @@
             </div>
 
             <div class="sidebar-projects-container" id="projects">
-
-
-
-
+<!--
               <div class="project">
                 <span class="fa-solid fa-folder"></span>
                 <h4>landing page</h4>
                 <span class="minor"></span>
-              </div>
-
-
+              </div> -->
 
 
             </div>
@@ -77,14 +72,16 @@
       </div>
     </aside>
 
-    <main class="projects">
+    <main id="main-projects" class="projects">
+
+      <div class="main-inner-projects">
 
       <header class="form-header">
 
         <form id="new-todo-form">
 
           <header class="header-header">
-            
+
             <input type="text" id="content" name="content" placeholder="add a project"/>
             <!-- todo:add labels and fix the labels -->
 
@@ -96,11 +93,7 @@
               <span class="fa-solid fa-plus"></span>
               <input class="submit" type="submit" value="Add todo">
             </label>
-
-
-            
-          </header>
-
+          </header>          
 
           <div class="form_options close">
               <div class="stacks">
@@ -114,7 +107,7 @@
                   <input type="checkbox"  name="stack">
                   <img class="icon" src="./icons/typescript.svg">
                   </label>
-  
+
                   <label>
                     <input type="checkbox"  name="stack">
                     <img class="icon" src="./icons/react.svg">
@@ -129,7 +122,7 @@
                         <input type="checkbox"  name="stack">
                         <img class="icon" src="./icons/vue-js.svg">
                         </label>
-                        
+
                         <label>
                           <input type="checkbox"  name="stack">
                           <img class="icon" src="./icons/tailwindcss.svg">
@@ -139,12 +132,12 @@
                             <input type="checkbox"  name="stack">
                             <img class="icon" src="./icons/springboot.svg">
                             </label>
-            
+
                               <label>
                                 <input type="checkbox"  name="stack">
                                 <img class="icon" src="./icons/nodejs.svg">
                                 </label>
-                                
+
                                 <label>
                                   <input type="checkbox"  name="stack">
                                   <img class="icon" src="./icons/mongodb.svg">
@@ -166,8 +159,8 @@
                                         </label>
             </div>
 
-            <div class="project-priority-form">          
-              
+            <div class="project-priority-form">
+
               <label>
                 <input type="radio" name="priority" value="normal">
                 <span class="normal"></span>
@@ -187,22 +180,28 @@
               </label>
             </div>
 
-            
+
           </div>
 
-          
+
         </form>
 
 
 
 
-      
+
       </header>
+
+      <div class="project-header">
+        <span>task</span>
+        <span>prioridade</span>
+        <span>task stacks</span>
+      </div>
 
       <div class="projects-container" id="projects-container">
 
-        <!-- <div class="project">
-          
+         <!-- <div class="project">
+
           <div class="project-tittle">
             <span class="fa-solid fa-folder"></span>
             <h4>landing page</h4>
@@ -220,36 +219,114 @@
                   <i src="./icons/nodejs.svg">
                     <i src="./icons/mongodb.svg">
           </div>
-        </div>-->
+        </div> -->
 
       </div>
-      </div> 
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+  <div class="project-display-container hide">
+
+    <h2 class="project-display-tittle">hello world</h2>
+    <header class="project-display-header">
+
+      <div class="div-span">
+        <span class="project-display hours-concluidas">36<span>
+        </span>h</span>
+        <span class="text">horas percorridas</span>
+      </div>
+
+      <div class="div-span">
+        <span class="project-display tasks-concluidas">7</span>
+        <span class="text">tasks concluídas</span>
+      </div>
+
+      <div class="div-span">
+        <span class="project-display hours-stimadas">100<span>
+        </span>h</span>
+        <span class="text">horas estimado</span>
+      </div>
+
+      <div class="div-span">
+        <span class="project-display tasks-pendentes">15</span>
+        <span class="text">tasks pendentes</span>
+      </div>
+    </header>
+
+
+
+
+
+    <form id="project-display-add-task">
+
+      <header class="project-display-header">
+
+        <input type="text" id="new_task" name="content" placeholder="add a task"/>
+        <!-- todo:add labels and fix the labels -->
+
+        <label id="project-tasks-tag">
+          <span class="fa-solid fa-tag"></span>
+        </label>
+
+        <label name="submit" class="submit_task">
+          <span class="fa-solid fa-plus"></span>
+          <input class="submit" type="submit" value="Add task">
+        </label>
+      </header>
+
+      <div class="form_tasks_options close">
+
+          <div class="task-stacks">
+
+             <!-- <label>
+              <input type="checkbox"  name="stack">
+              <img class="icon" src="./icons/javascript.svg">
+            </label> -->
+
+        </div>
+      </div>
+
+    </form>
+    <div class="task-header">
+      <span>task</span>
+      <span>horas percorridas</span>
+      <span>task stacks</span>
+    </div>
+
+    <div class="project-display-tasks-container">
+      <!-- isso e uma lista lembra de lembra de trocar as tasgs -->
+
+
+      <!-- <div class="task">
+
+        <div class="task-tittle">
+          <span class="fa-solid fa-folder"></span>
+          <h4>landing page</h4>
+        </div>
+
+        <div class="task-spent-hours-div">
+          <span class="task-spent-hours">80</span>
+        </div>
+
+        <div class="project-display-task-stacks">
+          <img src="./icons/javascript.svg"></img>
+            <img src="./icons/react.svg"></img>
+              <img src="./icons/tailwindcss.svg"></img>
+                <img src="./icons/nodejs.svg"></img>
+                  <img src="./icons/mongodb.svg"></img>
+        </div>
+      </div> -->
+
+
+    </div>
     </main>
   </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   <div class="timer" id="littleTimer">
@@ -295,8 +372,6 @@
   </div>
 
 
-
-
   <div>
 
 
@@ -308,9 +383,10 @@
 
 
 
-
-
-
+  <div class="alert hide" >
+    <span class="fas fa-exclamation-circle"></span>
+    <span class="alert-msg"></span>
+    </div>
 </body>
 
 </html>
