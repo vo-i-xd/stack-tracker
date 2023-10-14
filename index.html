@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="a stack time tracker, used to tracker the amount of time you spend on each stack of programming">
   <title>CHALLENGE_stopwatch-program⏱️</title>
   <script src="timer.js" defer></script>
   <script src="./management.js" defer></script>
@@ -76,86 +77,153 @@
 
       <div class="main-inner-projects">
 
-      <header class="form-header">
+
+        <header class="header-info">
+
+          <div class="project-header-tempo-task">
+            <span class="project-header-tempo selected">tempo</span>
+            <span class="project-header-tasks">tasks</span>
+          </div>
+
+          <div class="project-header-tempo-container">
+
+          <div class="div-span">
+            <div class="span-container">
+              <span class="project hours-concluidas">36</span>
+              <span>h&nbsp</span>
+
+              <span class="tempo-total-min aki-vai-o-hide">2</span>
+              <span>min</span>
+            </div>
+          <span class="text">tempo total</span>
+          </div>
+
+
+          <div class="div-span">
+            <div class="span-container">
+              <span class="project hours-concluidas-semana">36</span>
+              <span>h&nbsp</span>
+
+              <span class="tempo-total-semana-min   aki-vai-o-hide">2</span>
+              <span class="aki-vai-o-hide" >min</span>
+            </div>
+          <span class="text">semana</span>
+          </div>
+
+
+          <div class="div-span">
+            <div class="span-container">
+              <span class="project hours-concluidas-hoje">36</span>
+              <span>h&nbsp</span>
+
+              <span class="tempo-total-hoje-min   aki-vai-o-hide">2</span>
+              <span class="aki-vai-o-hide">min</span>
+            </div>
+          <span class="text">hoje</span>
+          </div> 
+        </div>
+
+        <div class="project-header-tasks-container hide">
+            <div class="div-span">
+              <span class="project tasks-pendentes">15</span>
+              <span class="text">tasks concluidas</span>
+            </div>
+
+            <div class="div-span">
+              <span class="project-display-hours-stimadas">100</span>
+              <span class="text">concluidas na semana</span>
+            </div>
+      
+            <div class="div-span">
+              <span class="project-display-tasks-pendentes">15</span>
+              <span class="text">concluidas hoje</span>
+            </div>
+</div>    
+</header>
+
+     <header class="form-header">
 
         <form id="new-todo-form">
 
           <header class="header-header">
 
-            <input type="text" id="content" name="content" placeholder="add a project"/>
+            <input type="text" autoComplete="off" id="content" name="content" placeholder="add a project"/>
             <!-- todo:add labels and fix the labels -->
 
             <label id="tag">
-              <span class="fa-solid fa-tag"></span>
+              <span class="project-tag fa-solid fa-tag"></span>
+              <button class="tag-button" type="button"></button>
             </label>
 
             <label name="submit" class="submit">
               <span class="fa-solid fa-plus"></span>
               <input class="submit" type="submit" value="Add todo">
             </label>
-          </header>          
+          </header>
 
-          <div class="form_options close">
+
+
+          <div class="form-options close">
               <div class="stacks">
 
                 <label>
                   <input type="checkbox"  name="stack">
-                <img class="icon" src="./icons/javascript.svg">
+                <img class="icon" src="./icons/javascript.svg" alt="./icons/javascript.svg">
                 </label>
 
                 <label>
                   <input type="checkbox"  name="stack">
-                  <img class="icon" src="./icons/typescript.svg">
+                  <img class="icon" src="./icons/typescript.svg" alt="./icons/typescript.svg">
                   </label>
 
                   <label>
                     <input type="checkbox"  name="stack">
-                    <img class="icon" src="./icons/react.svg">
+                    <img class="icon" src="./icons/react.svg" alt="./icons/react.svg">
                     </label>
 
                     <label>
                       <input type="checkbox"  name="stack">
-                      <img class="icon" src="./icons/angular.svg">
+                      <img class="icon" src="./icons/angular.svg" alt="./icons/angular.svg">
                       </label>
 
                       <label>
                         <input type="checkbox"  name="stack">
-                        <img class="icon" src="./icons/vue-js.svg">
+                        <img class="icon" src="./icons/vue-js.svg" alt="./icons/vue-js.svg">
                         </label>
 
                         <label>
                           <input type="checkbox"  name="stack">
-                          <img class="icon" src="./icons/tailwindcss.svg">
+                          <img class="icon" src="./icons/tailwindcss.svg" alt="./icons/tailwindcss.svg">
                           </label>
 
                           <label>
                             <input type="checkbox"  name="stack">
-                            <img class="icon" src="./icons/springboot.svg">
+                            <img class="icon" src="./icons/springboot.svg" alt="./icons/springboot.svg">
                             </label>
 
                               <label>
                                 <input type="checkbox"  name="stack">
-                                <img class="icon" src="./icons/nodejs.svg">
+                                <img class="icon" src="./icons/nodejs.svg" alt="./icons/nodejs.svg">
                                 </label>
 
                                 <label>
                                   <input type="checkbox"  name="stack">
-                                  <img class="icon" src="./icons/mongodb.svg">
+                                  <img class="icon" src="./icons/mongodb.svg" alt="./icons/mongodb.svg">
                                   </label>
 
                                   <label>
                                     <input type="checkbox"  name="stack">
-                                    <img class="icon" src="./icons/python.svg">
+                                    <img class="icon" src="./icons/python.svg" alt="./icons/python.svg">
                                     </label>
 
                                     <label>
                                       <input type="checkbox"  name="stack">
-                                      <img class="icon" src="./icons/c.svg">
+                                      <img class="icon" src="./icons/c.svg" alt="./icons/c.svg">
                                       </label>
 
                                       <label>
                                         <input type="checkbox"  name="stack">
-                                        <img class="icon" src="./icons/c++.svg">
+                                        <img class="icon" src="./icons/c++.svg" alt="./icons/c++.svg">
                                         </label>
             </div>
 
@@ -227,37 +295,68 @@
     </div>
   </div>
 
-
-
-
-
   <div class="project-display-container hide">
 
-    <h2 class="project-display-tittle">hello world</h2>
-    <header class="project-display-header">
-
-      <div class="div-span">
-        <span class="project-display hours-concluidas">36<span>
-        </span>h</span>
-        <span class="text">horas percorridas</span>
-      </div>
-
-      <div class="div-span">
-        <span class="project-display tasks-concluidas">7</span>
-        <span class="text">tasks concluídas</span>
-      </div>
-
-      <div class="div-span">
-        <span class="project-display hours-stimadas">100<span>
-        </span>h</span>
-        <span class="text">horas estimado</span>
-      </div>
-
-      <div class="div-span">
-        <span class="project-display tasks-pendentes">15</span>
-        <span class="text">tasks pendentes</span>
-      </div>
+    <header class="project-display-header-header" >
+      
+      <h2 class="project-display-tittle">project name</h2>
+      <button class="project-close fa-solid fa-xmark" ></button>
     </header>
+    
+    <header class="project-display-info-header">
+
+        <div class="project-display-header-tempo-task">
+          <span class="project-display-header-tempo selected">tempo</span>
+          <span class="project-display-header-tasks">tasks</span>
+        </div>
+
+        <div class="project-display-header-tempo-container">
+
+        <div class="div-span">
+          <div class="span-container">
+            <span class="project-display project-display-hours-concluidas">36</span>
+            <span>h&nbsp</span>
+
+            <span class="tempo-total-task-min aki-vai-o-hide">2</span>
+            <span>min</span>
+          </div>
+        <span class="text">tempo total</span>
+        </div>
+
+
+        <div class="div-span">
+          <div class="span-container">
+            <span class="project project-display-tasks-concluidas">3</span>
+          </div>
+        <span class="text">semana</span>
+        </div>
+
+
+        <div class="div-span">
+          <div class="span-container">
+            <span class="project project-display-hours-stimadas">36</span>
+          </div>
+        <span class="text">horas estimadas</span>
+        </div> 
+      </div>
+
+      <div class="project-display-header-tasks-container hide">
+          <div class="div-span">
+            <span class="project tasks-pendentes">15</span>
+            <span class="text">tasks concluidas</span>
+          </div>
+
+          <div class="div-span">
+            <span class="project-display-hours-stimadas">100</span>
+            <span class="text">concluidas na semana</span>
+          </div>
+    
+          <div class="div-span">
+            <span class="project-display-tasks-pendentes">15</span>
+            <span class="text">concluidas hoje</span>
+          </div>
+  </div>
+</header>
 
 
 
@@ -267,22 +366,23 @@
 
       <header class="project-display-header">
 
-        <input type="text" id="new_task" name="content" placeholder="add a task"/>
-        <!-- todo:add labels and fix the labels -->
+        <input type="text" autoComplete="off" id="new_task" name="content" placeholder="add a task"/>
 
-        <label id="project-tasks-tag">
-          <span class="fa-solid fa-tag"></span>
+
+        <label for="input-button-tag-options">
+          <button id="input-button-tag-options" class="project-tasks-tag-button"  type="button"></button>
+          <span class="tag-button-task-span fa-solid fa-tag"></span>
         </label>
 
-        <label name="submit" class="submit_task">
+        <label class="submit_task" name="submit">
           <span class="fa-solid fa-plus"></span>
           <input class="submit" type="submit" value="Add task">
         </label>
       </header>
 
-      <div class="form_tasks_options close">
+      <div class="form-tasks-options close">
 
-          <div class="task-stacks">
+          <div class="form-task-stacks">
 
              <!-- <label>
               <input type="checkbox"  name="stack">
@@ -299,6 +399,7 @@
       <span>task stacks</span>
     </div>
 
+    
     <div class="project-display-tasks-container">
       <!-- isso e uma lista lembra de lembra de trocar as tasgs -->
 
@@ -373,10 +474,6 @@
 
 
   <div>
-
-
-
-
   </div>
 
 

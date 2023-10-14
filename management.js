@@ -2,7 +2,8 @@ const sidebar_title = document.querySelector(".inner-sidebar-title");
 const sidebar = document.querySelector("#sidebar");
 
 const form_header = document.querySelector(".form-header");
-const tag = document.querySelector("#tag");
+const tag_button = document.querySelector(".tag-button");
+const tag_span = document.querySelector(".project-tag");
 
 //main projects
 const main_inner_projects = document.querySelector(".main-inner-projects");
@@ -11,36 +12,57 @@ const main_inner_projects = document.querySelector(".main-inner-projects");
 //form
 const form = document.querySelector("#new-todo-form");
 const content = document.querySelector("#content");
-const form_options = document.querySelector(".form_options"); 
+const form_options = document.querySelector(".form-options");
+
+
+//toglle main
+const project_header_tempo_total_container = document.querySelector(".project-header-tempo-container");
+const project_header_tasks_container = document.querySelector(".project-header-tasks-container");
+const project_header_tempo_total_toggle = document.querySelector(".project-header-tempo");
+const project_header_tasks_toggle = document.querySelector(".project-header-tasks");
+
+
+
 
 //display projects
 const main_projects_container = document.querySelector("#projects-container");
 const sidebar_projects_container = document.querySelector(".sidebar-projects-container");
 
+
 //display tasks
 const project_display_title = document.querySelector(".project-display-tittle");
-const project_display_hours = document.querySelector(".hours-concluidas");
-const project_display_tasks_concluidas = document.querySelector(".tasks-concluidas");
-const project_display_hours_estimadas = document.querySelector(".hours-stimadas");
-const project_options_task_stacks = document.querySelector(".task-stacks");
 
+const project_display_hours = document.querySelector(".project-display-hours-concluidas");
+const project_display_tasks_concluidas = document.querySelector(".project-display-tasks-concluidas");
+const project_display_hours_estimadas = document.querySelector(".project-display-hours-stimadas");
+const project_display_tasks_estimadas = document.querySelector(".project-display-tasks-pendentes");
+
+const project_options_task_stacks = document.querySelector(".form-task-stacks");
 const project_display_tasks_container = document.querySelector(".project-display-tasks-container");
-
-
 
 const project_tasks_div = document.querySelector(".project-display-container")
 const form_tasks = document.querySelector("#project-display-add-task");
-const tag_tasks = document.querySelector("#project-tasks-tag");
-const options_tasks = document.querySelector(".form_tasks_options");
+const form_tasks_options = document.querySelector(".form-tasks-options");
 
+//display tasks toglle 
+const tag_span_tasks = document.querySelector(".tag-button-task-span");
+//const tag_span_tasks = document.querySelector(".tag-task-span");
+
+const project_display_header_tempo_total_container = document.querySelector(".project-display-header-tempo-container")
+const project_display_header_tasks_container = document.querySelector(".project-display-header-tasks-container");
+const project_display_header_tempo_total_toggle = document.querySelector(".project-display-header-tempo");
+const project_display_header_tasks_toggle = document.querySelector(".project-display-header-tasks");
+
+const project_display_close_button = document.querySelector(".project-close");
 
 //alert
 const alert = document.querySelector(".alert");
 const alert_msg = document.querySelector(".alert-msg");
 
-
 let arrayStacks = [];
 
+
+//toglle/project-display
 
 const icons = {
     0: "./icons/javascript.svg",
@@ -62,47 +84,115 @@ const icons = {
 sidebar_title.addEventListener("click", ()=>{
 sidebar.classList.toggle("open");
 });
-tag.addEventListener("click", ()=>{
+
+tag_button.addEventListener("click", (e)=>{
+    e.stopPropagation();
     form_options.classList.toggle("close");
 })
 
-tag_tasks.addEventListener("click", ()=>{
-    options_tasks.classList.toggle("close");
+tag_span_tasks.addEventListener("click", ()=>{
+    form_tasks_options.classList.toggle("close");
 })
+
+project_display_close_button.addEventListener("click", ()=>{
+    project_options_task_stacks.innerHTML = "";
+    project_display_tasks_container.innerHTML = "";
+    main_inner_projects.classList.remove("hide");
+    project_tasks_div.classList.add("hide");
+});
+
+
+ onClickOutside(form_options, tag_span, ()=>{
+     form_options.classList.add("close");
+ })
+
+ onClickOutside(form_tasks_options, tag_span_tasks,  ()=>{
+     form_tasks_options.classList.add("close");
+});
+
+
+
+
+
+ project_header_tempo_total_toggle.addEventListener("click", ()=>{
+    project_header_tempo_total_container.classList.remove("hide");
+    project_header_tasks_container.classList.add("hide");
+    project_header_tempo_total_toggle.classList.add("selected");
+    project_header_tasks_toggle.classList.remove("selected");
+ });
+  project_header_tasks_toggle.addEventListener("click", ()=>{
+    project_header_tempo_total_container.classList.add("hide");
+    project_header_tasks_container.classList.remove("hide");
+    project_header_tempo_total_toggle.classList.remove("selected");
+    project_header_tasks_toggle.classList.add("selected");
+});
+
+project_display_header_tempo_total_toggle.addEventListener("click", ()=>{
+
+    project_display_header_tempo_total_container.classList.remove("hide");
+    project_display_header_tasks_container.classList.add("hide");
+    project_display_header_tempo_total_toggle.classList.add("selected");
+    project_display_header_tasks_toggle.classList.remove("selected");
+ });
+
+project_display_header_tasks_toggle.addEventListener("click", ()=>{
+    project_display_header_tempo_total_container.classList.add("hide");
+    project_display_header_tasks_container.classList.remove("hide");
+    project_display_header_tempo_total_toggle.classList.remove("selected");
+    project_display_header_tasks_toggle.classList.add("selected");
+});
+
+
+
+
+
+
+
+
 
 
 window.addEventListener("load", ()=>{
-
     projects = JSON.parse(localStorage.getItem("projects")) || [];
     displayProject();
 })
 
+const displaySidebarProject = () => {
+    sidebar_projects_container.innerHTML = "";
+
+    projects.forEach(project => {
+
+    const container = document.createElement("div");
+    container.classList.add("project-sidebar");
+
+    const sidebar_project_container = document.createElement("div");
+    const sidebar_project_span = document.createElement("span");
+    const sidebar_project_h4 = document.createElement("h4");
+    const sidebar_project_priority_span = document.createElement("span");
+
+    if(project.priority != ""){
+        sidebar_project_priority_span.classList.add(project.priority);
+    }
+    sidebar_project_container.classList.add("project");
+    sidebar_project_span.classList.add("fa-solid", "fa-folder");
+    sidebar_project_h4.innerHTML = project.name;
+
+    sidebar_project_container.appendChild(sidebar_project_span);
+    sidebar_project_container.appendChild(sidebar_project_h4);
+    sidebar_project_container.appendChild(sidebar_project_priority_span);
+
+   //givin actions to the projects
+    project_action(sidebar_project_container, project);
+
+sidebar_projects_container.appendChild(sidebar_project_container);
+});
+}
 
 
-form.addEventListener("submit",  e =>{
-    e.preventDefault();
-    console.log(e.target.elements.stack[1].checked);
 
-    if(form_validation(e, "project")){
 
-    arrayStacks = []; 
-     for(let i=0; i<e.target.elements.stack.length; i++){
-         arrayStacks.push(e.target.elements.stack[i].checked);
-   }
-    const project = {
-         name: e.target.elements.content.value,
-         stacks: arrayStacks,
-         priority: e.target.elements.priority.value,
-         tasks: [],
-         createAt: new Date().getTime()
-    };
-    projects.push(project);
-    localStorage.setItem("projects", JSON.stringify(projects));
 
-    //console.log(project);
-    e.target.reset();
-    displayProject(); 
-}});
+
+
 
 
 
@@ -129,14 +219,12 @@ const displayProject = () => {
     const project_stacks_div = document.createElement("div");
     const project_stacks_img = document.createElement("img");
 
-    const sidebar_project_container = document.createElement("div");
-    const sidebar_project_span = document.createElement("span");
-    const sidebar_project_h4 = document.createElement("h4");
-    const sidebar_project_priority_span = document.createElement("span");
+
 
 
 
     project_title_div.classList.add("project-tittle")
+    
     project_title_span.classList.add("fa-solid", "fa-folder");
     project_title_h4.innerHTML = project.name;
 
@@ -146,14 +234,10 @@ const displayProject = () => {
         project_priority_Div.classList.add(project.priority);
         project_priority_span.classList.add(project.priority);
         project_priority_p.innerHTML = project.priority;
-        sidebar_project_priority_span.classList.add(project.priority);
     }
 
     project_stacks_div.classList.add("project-stacks");
 
-    sidebar_project_container.classList.add("project");
-    sidebar_project_span.classList.add("fa-solid", "fa-folder");
-    sidebar_project_h4.innerHTML = project.name;
 
     project_title_div.appendChild(project_title_span);
     project_title_div.appendChild(project_title_h4);
@@ -163,10 +247,6 @@ const displayProject = () => {
     project_priority_Div.appendChild(project_priority_p);
     container.appendChild(project_priority_Div);
 
-    sidebar_project_container.appendChild(sidebar_project_span);
-    sidebar_project_container.appendChild(sidebar_project_h4);
-    sidebar_project_container.appendChild(sidebar_project_priority_span);
-
 
     for(let i=0; i<project.stacks.length; i++){
 
@@ -175,16 +255,18 @@ const displayProject = () => {
             project_stacks_div.appendChild(project_stacks_img_clone);
             //Note that if you need to append the same element multiple times, you need to clone it using cloneNode(true), as the appendChild() and append() methods move the actual node rather than making a copy
             project_stacks_img_clone.setAttribute('src', icons[i]);
+            project_stacks_img_clone.setAttribute('alt', icons[i]);
         }
    }
 
-   [container, sidebar_project_container].forEach(e =>{//givin actions to the projects
-    project_action(e, project);
-});
+                   //givin actions to the projects
+    project_action(container, project);
 
+
+displaySidebarProject();
 container.appendChild(project_stacks_div);
 main_projects_container.appendChild(container);
-sidebar_projects_container.appendChild(sidebar_project_container);
+
 });
 }
 
@@ -199,9 +281,9 @@ const project_action = (e, project) =>{
     
             project_display_title.innerHTML = project.name;
             project_display_hours.innerHTML = "777";//n tenho ainda kkk;
-            project_display_tasks_concluidas.innerHTML = "666";
+            project_display_tasks_concluidas.innerHTML = "996";
             project_display_hours_estimadas.innerHTML = "1000";
-            project_display_tasks_concluidas.innerHTML = "1";
+            project_display_tasks_estimadas.innerHTML = "1";
 
             display_tasks_stacks_options(project);
 
@@ -227,8 +309,6 @@ const project_action = (e, project) =>{
 
 
 
-
-
 const display_tasks_stacks_options = (project)=>{
 
     const project_stacks_img = document.createElement("img");
@@ -251,20 +331,25 @@ const display_tasks_stacks_options = (project)=>{
             project_tasks_stacks_label_clone.appendChild(project_stacks_img_clone);
 
             project_stacks_img_clone.setAttribute('src', icons[i]);
+            project_stacks_img_clone.setAttribute('alt', icons[i]);
             project_options_task_stacks.appendChild(project_tasks_stacks_label_clone);
         }
    }
 }
 
 
-
 const display_tasks = (task, project) =>{
-
      const task_container = document.createElement("div");
      task_container.classList.add("task");
 
+
+
+     const project_task_checkbox_div = document.createElement("div");
+     const project_task_checkbox = document.createElement("input");
+     const project_task_checkbox_label = document.createElement("label");
+
+
      const project_task_title_div = document.createElement("div");
-     const project_task_title_span = document.createElement("span");
      const project_task_title_h4 = document.createElement("h4");
 
      const project_task_spent_hours_Div = document.createElement("div");
@@ -274,8 +359,18 @@ const display_tasks = (task, project) =>{
      const project_task_stacks_img = document.createElement("img");
 
 
+     project_task_checkbox_div.classList.add("task-checkbox-container")
+     project_task_checkbox.classList.add("task-checkbox");
+     
+     project_task_checkbox.id = `task-checkbox-${task.name}`;
+     project_task_checkbox.setAttribute("name", "task-checkbox");
+     project_task_checkbox.setAttribute("type", "checkbox");
+     project_task_checkbox_label.setAttribute("for", `task-checkbox-${task.name}`);
+
+     
+
+
      project_task_title_div.classList.add("task-tittle");
-     project_task_title_span.classList.add("fa-solid", "fa-folder");
      project_task_title_h4.innerHTML = task.name;
 
      project_task_spent_hours_Div.classList.add("task-spent-hours-div");
@@ -284,7 +379,12 @@ const display_tasks = (task, project) =>{
 
      project_task_stacks_div.classList.add("project-display-task-stacks");
 
-     project_task_title_div.appendChild(project_task_title_span);
+     
+
+     project_task_checkbox_div.appendChild(project_task_checkbox);
+     project_task_checkbox_div.appendChild(project_task_checkbox_label);
+
+
      project_task_title_div.appendChild(project_task_title_h4);
 
      project_task_spent_hours_Div.appendChild(project_task_spent_hours_span);
@@ -293,8 +393,11 @@ const display_tasks = (task, project) =>{
              project_task_stacks_img_clone = project_task_stacks_img.cloneNode(true);
              project_task_stacks_div.appendChild(project_task_stacks_img_clone);
              project_task_stacks_img_clone.setAttribute('src', icons[i]);
+             project_task_stacks_img_clone.setAttribute('alt', icons[i]);
          }
    }
+
+task_container.appendChild(project_task_checkbox_div);
 task_container.appendChild(project_task_title_div);
 task_container.appendChild(project_task_spent_hours_Div);
 task_container.appendChild(project_task_stacks_div);
@@ -304,21 +407,55 @@ project_display_tasks_container.appendChild(task_container);
 
 
 
+form.addEventListener("submit",  e =>{
+    e.preventDefault();
+
+    arrayStacks = []; 
+    for(let i=0; i<e.target.elements.stack.length; i++){
+        arrayStacks.push(e.target.elements.stack[i].checked);
+  }
+    if(form_validation(e, projects,  arrayStacks, "project")){
+
+    arrayStacks = []; 
+     for(let i=0; i<e.target.elements.stack.length; i++){
+         arrayStacks.push(e.target.elements.stack[i].checked);
+   }
+    const project = {
+         name: e.target.elements.content.value,
+         stacks: arrayStacks,
+         priority: e.target.elements.priority.value,
+         tasks: [],
+         createAt: new Date().getTime()
+    };
+    projects.push(project);
+    localStorage.setItem("projects", JSON.stringify(projects));
+
+    e.target.reset();
+    displayProject(); 
+}});
 
 
 const task_form_submit = (e, project) =>{
- if(form_validation(e, "task")){
+
+
+    let array_task_true_false = [];
+
+    if(e.target.elements.stack != undefined){
+        for(let i=0; i<e.target.elements.stack.length; i++){
+            array_task_true_false.push(e.target.elements.stack[i].checked);
+        };
+    }
+
+
+ if(form_validation(e, project, array_task_true_false, "task")){
 
     let array_task_stacks = [...project.stacks];
-    let array_task_true_false = [];
     let task_stacks_index = [];
     // why changing the value of array_task_stacks also changes the value of project.stacks in JavaScript. This is because in JavaScript,
     // when you assign an array to another variable, it doesn't create a new copy of the array, but rather it creates a reference to the 
     // original array. 
 
-    for(let i=0; i<e.target.elements.stack.length; i++){
-        array_task_true_false.push(e.target.elements.stack[i].checked);
-   };
+  
 
     for(let i =0; i <project.stacks.length; i++){
     if(project.stacks[i]){
@@ -342,32 +479,67 @@ const task_form_submit = (e, project) =>{
 }};
 
 
-const form_validation = (e, itemType)=>{
+const max_length_name = 18;
+const max_staks = 5;
+
+const form_validation = (event, parentObject, tasks_array, itemType) => {
 
     alert_msg.innerHTML = "";
-    let error_messaage = [];
-    
-    if(e.target.elements.content.value === "" || e.target.elements.content.value == null){
-        error_messaage.push(`${itemType} name required`);  
-    }
-    else if(e.target.elements.content.value.length > 20){
-        error_messaage.push(`the name of the ${itemType} must have less than 20 characters`);
-    }
-    else if(itemType == "project"){
-        if(e.target.elements.priority.value == ""){
-            error_messaage.push(`${itemType} priority required`);
-        }
-    }
-    if(error_messaage.length > 0) {
-    alert_msg.innerHTML = error_messaage[0];
-    alert_msg_funtion();
-    return  false;
-    }
-    return true
+    let error_message = [];
+    const name = event.target.elements.content.value;
+    let tasks_array_true_length = tasks_array.filter( Boolean => Boolean == true);
+
+    console.log(tasks_array_true_length)
+
+    const callAlert = ()=>{
+        alert_msg.innerHTML = error_message[0];
+        alert_msg_function();
     }
 
+    if(!name){
+        error_message.push(`${itemType} name required`);
 
-    const alert_msg_funtion = ()=>{
+        callAlert();
+        return false;
+    }
+
+    if(name.length > max_length_name){
+        error_message.push(`The name of the ${itemType} must have less than ${max_length_name} characters`);
+
+        callAlert();
+        return false;
+    }
+
+    if(helper_form_task_project(itemType, name, parentObject)){
+        error_message.push(`${itemType} "${name}" already exists`);
+
+        callAlert();
+        return false;
+    }
+
+    if(tasks_array_true_length.length > max_staks){
+        error_message.push(`${max_staks} is maximum number of stacks`);
+
+        callAlert();
+        return false;
+     }
+
+    if(itemType === "project" && !event.target.elements.priority.value){
+        error_message.push(`${itemType} priority required`);
+
+        callAlert();
+        return false;
+    }
+
+    return true;
+};
+
+const helper_form_task_project = (itemType, name, parentObject) => {
+    const items = itemType === 'task' ? parentObject.tasks : parentObject;
+    return items.find(obj => obj.name === name);
+}
+
+const alert_msg_function = ()=>{
 
         alert.classList.add("show");
         alert.classList.remove("hide");
@@ -377,4 +549,20 @@ const form_validation = (e, itemType)=>{
           alert.classList.remove("show");
           alert.classList.add("hide");
         },5000);
-        }
+    };
+
+
+
+function onClickOutside(ele, prevent, cb) {
+    document.addEventListener('click', e => {
+        console.log(e.target);
+
+
+        console.log("e.target:", (prevent.contains(e.target)));
+
+        if (prevent.contains(e.target)) return;
+
+        if (!ele.contains(e.target)) cb();
+    });
+};
+
