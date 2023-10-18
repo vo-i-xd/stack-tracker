@@ -70,6 +70,7 @@ $circle-container: rgb(127, 255, 110);
 #close{ 
     display: none;
 }
+
 .tagOpen{
     height: 8.5em;
 }
@@ -155,7 +156,7 @@ font-size: 1.3em;
 
 #sidebar.open{
    width: 17em;
-    .sidebar-items{
+    .sidebar-menu{
         ul{
             align-items: start;
             li{

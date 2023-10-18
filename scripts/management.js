@@ -2,7 +2,8 @@ const sidebar_title = document.querySelector(".inner-sidebar-title");
 const sidebar = document.querySelector("#sidebar");
 
 const form_header = document.querySelector(".form-header");
-const tag_button = document.querySelector(".tag-button");
+const options_button = document.querySelector("#options-button");
+const options_button_label = document.querySelector(".options-button-label")
 const tag_span = document.querySelector(".project-tag");
 
 //main projects
@@ -45,9 +46,9 @@ const form_tasks = document.querySelector("#project-display-add-task");
 const form_tasks_options = document.querySelector(".form-tasks-options");
 
 //display tasks toglle 
-const tag_span_tasks = document.querySelector(".tag-button-task-span");
-//const tag_span_tasks = document.querySelector(".tag-task-span");
 
+const project_display_button_tasks_options = document.querySelector(".input-button-tasks-tag-options");
+const project_display_button_tasks_options_label = document.querySelector(".input-button-tasks-tag-options-label");
 const project_display_header_tempo_total_container = document.querySelector(".project-display-header-tempo-container")
 const project_display_header_tasks_container = document.querySelector(".project-display-header-tasks-container");
 const project_display_header_tempo_total_toggle = document.querySelector(".project-display-header-tempo");
@@ -85,42 +86,43 @@ sidebar_title.addEventListener("click", ()=>{
 sidebar.classList.toggle("open");
 });
 
-tag_button.addEventListener("click", (e)=>{
-    e.stopPropagation();
+options_button.addEventListener("click", ()=>{
     form_options.classList.toggle("close");
-})
 
-tag_span_tasks.addEventListener("click", ()=>{
+    onClickOutside(form_options, options_button_label, ()=>{
+    form_options.classList.add("close");
+    })
+});
+
+project_display_button_tasks_options.addEventListener("click", (e)=>{
     form_tasks_options.classList.toggle("close");
-})
+
+    onClickOutside(form_tasks_options, project_display_button_tasks_options_label,  ()=>{
+    form_tasks_options.classList.add("close");
+});
+
+});
 
 project_display_close_button.addEventListener("click", ()=>{
+
     project_options_task_stacks.innerHTML = "";
     project_display_tasks_container.innerHTML = "";
-    main_inner_projects.classList.remove("hide");
-    project_tasks_div.classList.add("hide");
-});
-
-
- onClickOutside(form_options, tag_span, ()=>{
-     form_options.classList.add("close");
- })
-
- onClickOutside(form_tasks_options, tag_span_tasks,  ()=>{
-     form_tasks_options.classList.add("close");
+    main_inner_projects.classList.add("active");
+    project_tasks_div.classList.remove("active");
+    tab_cleanner();
 });
 
 
 
 
 
- project_header_tempo_total_toggle.addEventListener("click", ()=>{
+project_header_tempo_total_toggle.addEventListener("click", ()=>{
     project_header_tempo_total_container.classList.remove("hide");
     project_header_tasks_container.classList.add("hide");
     project_header_tempo_total_toggle.classList.add("selected");
     project_header_tasks_toggle.classList.remove("selected");
  });
-  project_header_tasks_toggle.addEventListener("click", ()=>{
+project_header_tasks_toggle.addEventListener("click", ()=>{
     project_header_tempo_total_container.classList.add("hide");
     project_header_tasks_container.classList.remove("hide");
     project_header_tempo_total_toggle.classList.remove("selected");
@@ -134,7 +136,6 @@ project_display_header_tempo_total_toggle.addEventListener("click", ()=>{
     project_display_header_tempo_total_toggle.classList.add("selected");
     project_display_header_tasks_toggle.classList.remove("selected");
  });
-
 project_display_header_tasks_toggle.addEventListener("click", ()=>{
     project_display_header_tempo_total_container.classList.add("hide");
     project_display_header_tasks_container.classList.remove("hide");
@@ -150,19 +151,19 @@ project_display_header_tasks_toggle.addEventListener("click", ()=>{
 
 
 
+window.addEventListener("load", () => {
+  projects = JSON.parse(localStorage.getItem("projects")) || [];
+  displayProject();
+});
 
-window.addEventListener("load", ()=>{
-    projects = JSON.parse(localStorage.getItem("projects")) || [];
-    displayProject();
-})
 
 const displaySidebarProject = () => {
     sidebar_projects_container.innerHTML = "";
 
     projects.forEach(project => {
 
-    const container = document.createElement("div");
-    container.classList.add("project-sidebar");
+    // const container = document.createElement("div");
+    // container.classList.add("project-sidebar");
 
     const sidebar_project_container = document.createElement("div");
     const sidebar_project_span = document.createElement("span");
@@ -173,6 +174,9 @@ const displaySidebarProject = () => {
         sidebar_project_priority_span.classList.add(project.priority);
     }
     sidebar_project_container.classList.add("project");
+    sidebar_project_container.setAttribute("data-switcher", "");
+    sidebar_project_container.setAttribute("data-tab", "project-display-container");
+    
     sidebar_project_span.classList.add("fa-solid", "fa-folder");
     sidebar_project_h4.innerHTML = project.name;
 
@@ -185,8 +189,8 @@ const displaySidebarProject = () => {
 
 sidebar_projects_container.appendChild(sidebar_project_container);
 });
+tab_switchers();
 }
-
 
 
 
@@ -291,7 +295,8 @@ const project_action = (e, project) =>{
             project.tasks.forEach(task =>{
             display_tasks(task, project);
         });
-    
+
+        
             form_tasks.addEventListener("submit", (e) =>{
             e.preventDefault();
             task_form_submit(e, project);
@@ -301,9 +306,10 @@ const project_action = (e, project) =>{
             display_tasks(task, project);
             });
            });
-        
-        main_inner_projects.classList.add("hide");
-        project_tasks_div.classList.remove("hide");
+
+
+         main_inner_projects.classList.remove("active");
+         project_tasks_div.classList.add("active");
         });
 }
 
@@ -434,13 +440,12 @@ form.addEventListener("submit",  e =>{
     displayProject(); 
 }});
 
-
 const task_form_submit = (e, project) =>{
 
 
     let array_task_true_false = [];
 
-    if(e.target.elements.stack != undefined){
+    if(e.target.elements.stack){
         for(let i=0; i<e.target.elements.stack.length; i++){
             array_task_true_false.push(e.target.elements.stack[i].checked);
         };
@@ -460,7 +465,7 @@ const task_form_submit = (e, project) =>{
     for(let i =0; i <project.stacks.length; i++){
     if(project.stacks[i]){
         task_stacks_index.push(i);/// pega o index da array
-    }}
+    }};
 
     for(let i =0; i<array_task_true_false.length; i++){
      array_task_stacks[task_stacks_index[i]] = array_task_true_false[i];    
@@ -536,8 +541,11 @@ const form_validation = (event, parentObject, tasks_array, itemType) => {
 
 const helper_form_task_project = (itemType, name, parentObject) => {
     const items = itemType === 'task' ? parentObject.tasks : parentObject;
+    console.log("items ",items);
+
     return items.find(obj => obj.name === name);
 }
+
 
 const alert_msg_function = ()=>{
 
@@ -553,16 +561,99 @@ const alert_msg_function = ()=>{
 
 
 
-function onClickOutside(ele, prevent, cb) {
-    document.addEventListener('click', e => {
-        console.log(e.target);
 
 
-        console.log("e.target:", (prevent.contains(e.target)));
+const onClickOutside = (ele, prevent, cb) => {
+        const listener = (e) => clickListener(e, ele, prevent, cb);
+        document.addEventListener('click', listener);
 
-        if (prevent.contains(e.target)) return;
 
-        if (!ele.contains(e.target)) cb();
+const clickListener = (e, ele, prevent, cb) => {
+    let targetElement = e.target;
+
+    console.log(e.target);
+
+    if (prevent.contains(targetElement)) return;
+    
+    if (!ele.contains(targetElement)){
+        cb();
+        document.removeEventListener("click", listener);
+        return;
+    };
+};
+};
+
+
+
+
+window.addEventListener("click", e => console.log(e.target))
+
+
+
+
+
+const tab_switchers = ()=>{
+    const data_switchers = document.querySelectorAll("[data-switcher]");
+
+    data_switchers.forEach((switcher) => {
+        switcher.addEventListener("click", (e) => {
+            tab_cleanner();
+
+            let targetElement = e.target; // clicked element
+
+
+            console.log("targetElement: ",targetElement);
+
+
+                if (!targetElement.matches("[data-switcher]")) {
+                    targetElement = targetElement.parentElement;
+                };
+                
+                let dataset_info = targetElement.dataset.tab;
+                targetElement.classList.add("active-tab");
+
+                SwitchPage(dataset_info);
+//When you click on the li element, the click event is first triggered on the innermost element 
+// that you clicked on. This could be the span, the h4, or the li itself if you clicked on an area 
+// of the li that doesn't contain any other elements.
+
+//  This is due to a concept in JavaScript called event bubbling. When an event happens on
+//  an element, it first fires on that element, then bubbles up to its parent element, then its 
+//  grandparent, and so on, until it reaches the top of the document. This means that if you click 
+//  on the span, the click event will first fire on the span, then on the li, then on any other
+//  parent elements.
+
+// In your original code, you added an event listener to the li elements. However, when you 
+// clicked on the span or h4, the event.target inside the event listener referred to the span or 
+// h4, not the li. This is why the active-tab class was not being added to the li.
+// The updated code I provided uses a while loop to handle this. When the click event fires, 
+// it starts at the event.target (the element that was actually clicked) and checks if it has 
+// the data-switcher attribute. If it doesn't, it moves up to the parent element and checks again.
+// It continues this until it finds an element with the data-switcher attribute or it reaches the
+// top of the document. Once it finds an element with the data-switcher attribute, it adds the
+// active-tab class to that element.
+            
+        });
     });
 };
 
+function SwitchPage (dataset) {
+
+    console.log("easy", dataset);
+
+    if(document.querySelector('.page.active')){
+        const current_page = document.querySelector('.page.active');
+        current_page.classList.remove("active");
+    }
+
+    if(document.querySelector(`.page.${dataset}`)){
+        const next_page = document.querySelector(`.page.${dataset}`);
+        next_page.classList.add("active");
+    }
+};
+
+const tab_cleanner = ()=>{
+            const active_tab = document.querySelector(".active-tab");
+            if (active_tab) {
+                active_tab.classList.remove("active-tab");
+}};

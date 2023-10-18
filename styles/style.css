@@ -78,32 +78,32 @@
 #sidebar.open {
   width: 17em;
 }
-#sidebar.open .sidebar-items ul {
+#sidebar.open .sidebar-menu ul {
   align-items: start;
 }
-#sidebar.open .sidebar-items ul li {
+#sidebar.open .sidebar-menu ul li {
   justify-content: flex-start;
   width: 90.5%;
   margin-left: 0.41em;
 }
-#sidebar.open .sidebar-items ul li span {
+#sidebar.open .sidebar-menu ul li span {
   margin-left: 0.5em;
 }
-#sidebar.open .sidebar-items ul li h4 {
+#sidebar.open .sidebar-menu ul li h4 {
   display: block;
 }
-#sidebar.open .sidebar-items ul li.todo-list-header .todo-header {
+#sidebar.open .sidebar-menu ul li.todo-list-header .todo-header {
   justify-content: flex-start;
   gap: 1em;
   width: 100%;
 }
-#sidebar.open .sidebar-items ul li.todo-list-header .todo-header span {
+#sidebar.open .sidebar-menu ul li.todo-list-header .todo-header span {
   margin-left: 0.65em;
 }
-#sidebar.open .sidebar-items ul li.todo-list-header .sidebar-projects-container {
+#sidebar.open .sidebar-menu ul li.todo-list-header .sidebar-projects-container {
   display: flex;
 }
-#sidebar.open .sidebar-items ul li.todo-list-header .sidebar-projects-container .project {
+#sidebar.open .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project {
   margin-left: 1em;
   display: flex;
   gap: 1em;
@@ -257,32 +257,32 @@
 #sidebar.open {
   width: 17em;
 }
-#sidebar.open .sidebar-items ul {
+#sidebar.open .sidebar-menu ul {
   align-items: start;
 }
-#sidebar.open .sidebar-items ul li {
+#sidebar.open .sidebar-menu ul li {
   justify-content: flex-start;
   width: 90.5%;
   margin-left: 0.41em;
 }
-#sidebar.open .sidebar-items ul li span {
+#sidebar.open .sidebar-menu ul li span {
   margin-left: 0.5em;
 }
-#sidebar.open .sidebar-items ul li h4 {
+#sidebar.open .sidebar-menu ul li h4 {
   display: block;
 }
-#sidebar.open .sidebar-items ul li.todo-list-header .todo-header {
+#sidebar.open .sidebar-menu ul li.todo-list-header .todo-header {
   justify-content: flex-start;
   gap: 1em;
   width: 100%;
 }
-#sidebar.open .sidebar-items ul li.todo-list-header .todo-header span {
+#sidebar.open .sidebar-menu ul li.todo-list-header .todo-header span {
   margin-left: 0.65em;
 }
-#sidebar.open .sidebar-items ul li.todo-list-header .sidebar-projects-container {
+#sidebar.open .sidebar-menu ul li.todo-list-header .sidebar-projects-container {
   display: flex;
 }
-#sidebar.open .sidebar-items ul li.todo-list-header .sidebar-projects-container .project {
+#sidebar.open .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project {
   margin-left: 1em;
   display: flex;
   gap: 1em;
@@ -417,12 +417,12 @@ section.Management .sidebar .sidebar-title .inner-sidebar-title span {
 section.Management .sidebar .sidebar-title .inner-sidebar-title:hover {
   background-color: #333041;
 }
-section.Management .sidebar .sidebar-items {
+section.Management .sidebar .sidebar-menu {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
-section.Management .sidebar .sidebar-items ul {
+section.Management .sidebar .sidebar-menu ul {
   height: 100%;
   width: 100%;
   display: flex;
@@ -432,7 +432,7 @@ section.Management .sidebar .sidebar-items ul {
   list-style: none;
   gap: 0.5em 0.2em;
 }
-section.Management .sidebar .sidebar-items ul li {
+section.Management .sidebar .sidebar-menu ul li {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -442,28 +442,32 @@ section.Management .sidebar .sidebar-items ul li {
   border-radius: 20px;
   flex-shrink: 0;
 }
-section.Management .sidebar .sidebar-items ul li h4 {
+section.Management .sidebar .sidebar-menu ul li h4 {
   display: none;
 }
-section.Management .sidebar .sidebar-items ul li ::before {
+section.Management .sidebar .sidebar-menu ul li ::before {
   display: block;
   width: 1.035em;
 }
-section.Management .sidebar .sidebar-items ul li:not(.todo-list-header) {
+section.Management .sidebar .sidebar-menu ul li:not(.todo-list-header) {
   margin-bottom: 0em;
 }
-section.Management .sidebar .sidebar-items ul li:not(.todo-list-header):hover {
+section.Management .sidebar .sidebar-menu ul li:not(.todo-list-header):hover, section.Management .sidebar .sidebar-menu ul li:not(.todo-list-header) .active {
   color: #7c3aed;
   background-color: #333041;
 }
-section.Management .sidebar .sidebar-items ul li.todo-list-header {
+section.Management .sidebar .sidebar-menu ul li:not(.todo-list-header).active-tab {
+  color: #7c3aed;
+  background-color: #333041;
+}
+section.Management .sidebar .sidebar-menu ul li.todo-list-header {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   flex-grow: 1;
   width: 100%;
 }
-section.Management .sidebar .sidebar-items ul li.todo-list-header div.todo-header {
+section.Management .sidebar .sidebar-menu ul li.todo-list-header div.todo-header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -473,24 +477,28 @@ section.Management .sidebar .sidebar-items ul li.todo-list-header div.todo-heade
   flex-shrink: 0;
   gap: 0rem;
 }
-section.Management .sidebar .sidebar-items ul li.todo-list-header div.todo-header span {
+section.Management .sidebar .sidebar-menu ul li.todo-list-header div.todo-header span {
   margin-left: 0.3em;
 }
-section.Management .sidebar .sidebar-items ul li.todo-list-header div.todo-header:hover {
+section.Management .sidebar .sidebar-menu ul li.todo-list-header div.todo-header:hover {
   color: #7c3aed;
   background-color: #333041;
 }
-section.Management .sidebar .sidebar-items ul li.todo-list-header .sidebar-projects-container {
+section.Management .sidebar .sidebar-menu ul li.todo-list-header div.todo-header.active-tab {
+  color: #7c3aed;
+  background-color: #333041;
+}
+section.Management .sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container {
   display: none;
   flex-direction: column;
   align-items: normal;
   overflow: scroll;
   width: 100%;
 }
-section.Management .sidebar .sidebar-items ul li.todo-list-header .sidebar-projects-container:focus {
+section.Management .sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container:focus {
   outline: none;
 }
-section.Management .sidebar .sidebar-items ul li.todo-list-header .sidebar-projects-container .project {
+section.Management .sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project {
   display: none;
   align-items: center;
   justify-content: flex-start;
@@ -501,34 +509,37 @@ section.Management .sidebar .sidebar-items ul li.todo-list-header .sidebar-proje
   margin: 0.5em 0 0.5em 0;
   margin-left: 0;
 }
-section.Management .sidebar .sidebar-items ul li.todo-list-header .sidebar-projects-container .project span {
+section.Management .sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project span {
   border-radius: 50%;
   padding: 0.1em;
   margin-right: 0.4em;
   justify-self: flex-end;
 }
-section.Management .sidebar .sidebar-items ul li.todo-list-header .sidebar-projects-container .project span.fa-folder {
+section.Management .sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project span.fa-folder {
   margin: 0px;
 }
-section.Management .sidebar .sidebar-items ul li.todo-list-header .sidebar-projects-container .project span.minor {
+section.Management .sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project span.minor {
   border: solid #25A85D;
 }
-section.Management .sidebar .sidebar-items ul li.todo-list-header .sidebar-projects-container .project span.normal {
+section.Management .sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project span.normal {
   border: solid #FFD952;
 }
-section.Management .sidebar .sidebar-items ul li.todo-list-header .sidebar-projects-container .project span.critical {
+section.Management .sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project span.critical {
   border: solid #E85656;
 }
-section.Management .sidebar .sidebar-items ul li.todo-list-header .sidebar-projects-container .project h4 {
+section.Management .sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project h4 {
   display: none;
   width: 100%;
 }
-section.Management .sidebar .sidebar-items ul li.todo-list-header .sidebar-projects-container .project:hover {
+section.Management .sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project:hover {
+  color: #7c3aed;
+  background-color: #333041;
+}
+section.Management .sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project.active-tab {
   color: #7c3aed;
   background-color: #333041;
 }
 section.Management main.projects {
-  display: flex;
   flex-direction: column;
   justify-self: center;
   align-self: center;
@@ -542,12 +553,12 @@ section.Management main.projects {
   z-index: 0;
 }
 section.Management main.projects .main-inner-projects {
-  display: flex;
+  display: none;
   flex-direction: column;
   height: 100%;
 }
-section.Management main.projects .main-inner-projects.hide {
-  display: none;
+section.Management main.projects .main-inner-projects.active {
+  display: flex;
 }
 section.Management main.projects .header-info {
   display: flex;
@@ -846,7 +857,7 @@ section.Management main.projects div.projects-container .project:hover div.proje
   color: #E85656;
 }
 section.Management main.projects .project-display-container {
-  display: flex;
+  display: none;
   align-items: center;
   flex-direction: column;
   overflow: scroll;
@@ -859,8 +870,8 @@ section.Management main.projects .project-display-container:nth-child(1) {
 section.Management main.projects .project-display-container:focus {
   outline: none;
 }
-section.Management main.projects .project-display-container.hide {
-  display: none;
+section.Management main.projects .project-display-container.active {
+  display: flex;
 }
 section.Management main.projects .project-display-container .project-display-header-header {
   display: flex;

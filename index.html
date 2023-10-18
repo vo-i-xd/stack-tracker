@@ -6,8 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="a stack time tracker, used to tracker the amount of time you spend on each stack of programming">
   <title>CHALLENGE_stopwatch-program⏱️</title>
-  <script src="timer.js" defer></script>
-  <script src="./management.js" defer></script>
+
+  <script src="./scripts/timer.js" defer></script>
+
+  <script src="./scripts/management.js" defer></script>
+   <script src="./scripts/display.js" type="module" defer> </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
@@ -36,31 +40,30 @@
       </div>
 
 
-      <div class="sidebar-items">
+      <div class="sidebar-menu">
 
         <ul>
 
-          <li class="dashboard">
+          <li class="dashboard" data-switcher data-tab="dashboard-tab">
 
             <span class="fa-solid fa-chart-simple"></span>
             <h4>dashboard</h4>
           </li>
 
-          <li class="settings">
+          <li class="settings" data-switcher data-tab="settings-tab">
             <span class="fa-solid fa-gear"></span>
             <h4>settings</h4>
           </li>
-
           <li class="todo-list-header">
 
-            <div class="todo-header">
+            <div class="todo-header" data-switcher data-tab="projects-tab">
               <span class="fa-solid fa-clipboard-list"></span>
               <h4>projects</h4>
             </div>
 
             <div class="sidebar-projects-container" id="projects">
 <!--
-              <div class="project">
+              <div class="project-sidebar">
                 <span class="fa-solid fa-folder"></span>
                 <h4>landing page</h4>
                 <span class="minor"></span>
@@ -73,9 +76,9 @@
       </div>
     </aside>
 
-    <main id="main-projects" class="projects">
+    <main id="main-projects" class="projects active">
 
-      <div class="main-inner-projects">
+      <div class="main-inner-projects page projects-tab active">
 
 
         <header class="header-info">
@@ -138,7 +141,7 @@
               <span class="project-display-tasks-pendentes">15</span>
               <span class="text">concluidas hoje</span>
             </div>
-</div>    
+</div>
 </header>
 
      <header class="form-header">
@@ -150,9 +153,9 @@
             <input type="text" autoComplete="off" id="content" name="content" placeholder="add a project"/>
             <!-- todo:add labels and fix the labels -->
 
-            <label id="tag">
+            <label for="options-button" class="options-button-label">
               <span class="project-tag fa-solid fa-tag"></span>
-              <button class="tag-button" type="button"></button>
+              <button id="options-button" class="tag-button" type="button"></button>
             </label>
 
             <label name="submit" class="submit">
@@ -253,11 +256,6 @@
 
 
         </form>
-
-
-
-
-
       </header>
 
       <div class="project-header">
@@ -295,7 +293,8 @@
     </div>
   </div>
 
-  <div class="project-display-container hide">
+
+  <div class="project-display-container page">
 
     <header class="project-display-header-header" >
       
@@ -355,28 +354,28 @@
             <span class="project-display-tasks-pendentes">15</span>
             <span class="text">concluidas hoje</span>
           </div>
-  </div>
-</header>
+      </div>
+      </header>
 
 
 
 
 
-    <form id="project-display-add-task">
+      <form id="project-display-add-task">
 
       <header class="project-display-header">
 
         <input type="text" autoComplete="off" id="new_task" name="content" placeholder="add a task"/>
 
 
-        <label for="input-button-tag-options">
-          <button id="input-button-tag-options" class="project-tasks-tag-button"  type="button"></button>
+        <label for="input-button-tasks-tag-options" class="input-button-tasks-tag-options-label">
+          <button id="input-button-tasks-tag-options" class="input-button-tasks-tag-options"  type="button"></button>
           <span class="tag-button-task-span fa-solid fa-tag"></span>
         </label>
 
-        <label class="submit_task" name="submit">
+        <label for="submit-project" class="submit_task" name="submit">
           <span class="fa-solid fa-plus"></span>
-          <input class="submit" type="submit" value="Add task">
+          <input id="submit-project" class="submit" type="submit" value="Add task">
         </label>
       </header>
 

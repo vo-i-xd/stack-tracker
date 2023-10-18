@@ -68,7 +68,7 @@ section.Management {
             }
         }
 
-        .sidebar-items {
+        .sidebar-menu {
             display: flex;
             flex-direction: column;
             flex-grow: 1;
@@ -92,23 +92,25 @@ section.Management {
                     height: 2em;
                     border-radius: 20px;
                     flex-shrink: 0;
-
                     h4 {
                         display: none;
                     }
-
                     ::before {
                         display: block;
                         width: 1.035em;
                     }
-
                     &:not(.todo-list-header) {
                         margin-bottom: 0em;
 
-                        &:hover {
+                        &:hover, .active {
                             color: $projecColortHover;
                             background-color: $hover;
                         }
+                        &.active-tab {
+                            color: $projecColortHover;
+                            background-color: $hover;
+                        }
+
                     }
 
                     &.todo-list-header {
@@ -136,6 +138,10 @@ section.Management {
                                 color: $projecColortHover;
                                 background-color: $hover;
                             }
+                            &.active-tab {
+                                color: $projecColortHover;
+                                background-color: $hover;
+                            }
                         }
 
 
@@ -158,8 +164,8 @@ section.Management {
                                 height: 2em;
                                 border-radius: 20px;
                                 margin: .5em 0 .5em 0;
-                                //overflow: scroll;
                                 margin-left: 0;
+                                
 
                                 span {
                                     border-radius: 50%;
@@ -192,6 +198,10 @@ section.Management {
                                     color: $projecColortHover;
                                     background-color: $hover;
                                 }
+                                &.active-tab {
+                                    color: $projecColortHover;
+                                    background-color: $hover;
+                                }                           
                             }
                         }
                     }
@@ -201,7 +211,6 @@ section.Management {
     }
 
     main.projects {
-        display: flex;
         flex-direction: column;
         justify-self: center;
         align-self: center;
@@ -214,12 +223,12 @@ section.Management {
         color: $text;
         z-index: 0;
         .main-inner-projects{
-            display: flex;
+            display: none;
             flex-direction: column;
             height: 100%;
 
-            &.hide{
-                display: none;
+            &.active{
+                display: flex;
             }
         }
 
@@ -566,9 +575,8 @@ section.Management {
             }
         }
 
-
         .project-display-container{
-            display: flex;
+            display: none;
             align-items: center;
             flex-direction: column;
             overflow: scroll;
@@ -580,8 +588,9 @@ section.Management {
             &:focus {
                 outline: none;
             }
-            &.hide{
-                display: none;
+
+            &.active{
+                display: flex;
             }
 
             .project-display-header-header{
