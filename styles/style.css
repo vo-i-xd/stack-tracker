@@ -356,188 +356,12 @@
     box-shadow: 0 -21px 0 0px #4f29f0, 13px -19.5px 0 0px #4f29f0, 19px -13px 0 0px #4f29f0, 19px 13px 0 0px #4f29f0, 20px 0px 0 0px #4f29f0, 0 20px 0 0px #4f29f0, 12.5px 17.5px 0 0px #4f29f0, -19px 13px 0 0px #4f29f0, -13px 17.5px 0 0px #4f29f0, -20px 0px 0 0px #4f29f0, -19px -13px 0 0px #4f29f0, -13px -18.5px 0 0px #4f29f0;
   }
 }
-body {
-  height: 100vh;
-  font-family: "Ubuntu", sans-serif;
-}
-
-*,
-html,
-body {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-}
-
-*::-webkit-scrollbar {
-  display: none;
-}
-
-input[type=checkbox], [type=radio] {
-  display: none;
-  cursor: pointer;
-}
-
 section.Management {
   justify-content: space-between;
   display: flex;
   width: 100vw;
   height: 100vh;
   margin: 0px;
-}
-section.Management .sidebar {
-  display: flex;
-  flex-direction: column;
-  font-size: 14px;
-  background-color: #171520;
-  width: 40px;
-  flex-shrink: 0;
-  height: 100%;
-  position: relative;
-  color: #788690;
-  z-index: 0;
-}
-section.Management .sidebar .sidebar-title {
-  display: flex;
-  align-items: center;
-  margin: 0.5em 0 0 0.5em;
-}
-section.Management .sidebar .sidebar-title .inner-sidebar-title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0.5em 0 0.5em 0;
-  width: 2em;
-  height: 2em;
-  border-radius: 20px;
-}
-section.Management .sidebar .sidebar-title .inner-sidebar-title span {
-  font-size: 1.2em;
-}
-section.Management .sidebar .sidebar-title .inner-sidebar-title:hover {
-  background-color: #333041;
-}
-section.Management .sidebar .sidebar-menu {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-section.Management .sidebar .sidebar-menu ul {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  list-style: none;
-  gap: 0.5em 0.2em;
-}
-section.Management .sidebar .sidebar-menu ul li {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5em;
-  width: 2em;
-  height: 2em;
-  border-radius: 20px;
-  flex-shrink: 0;
-}
-section.Management .sidebar .sidebar-menu ul li h4 {
-  display: none;
-}
-section.Management .sidebar .sidebar-menu ul li ::before {
-  display: block;
-  width: 1.035em;
-}
-section.Management .sidebar .sidebar-menu ul li:not(.todo-list-header) {
-  margin-bottom: 0em;
-}
-section.Management .sidebar .sidebar-menu ul li:not(.todo-list-header):hover, section.Management .sidebar .sidebar-menu ul li:not(.todo-list-header) .active {
-  color: #7c3aed;
-  background-color: #333041;
-}
-section.Management .sidebar .sidebar-menu ul li:not(.todo-list-header).active-tab {
-  color: #7c3aed;
-  background-color: #333041;
-}
-section.Management .sidebar .sidebar-menu ul li.todo-list-header {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  flex-grow: 1;
-  width: 100%;
-}
-section.Management .sidebar .sidebar-menu ul li.todo-list-header div.todo-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 2em;
-  height: 2em;
-  border-radius: 20px;
-  flex-shrink: 0;
-  gap: 0rem;
-}
-section.Management .sidebar .sidebar-menu ul li.todo-list-header div.todo-header span {
-  margin-left: 0.3em;
-}
-section.Management .sidebar .sidebar-menu ul li.todo-list-header div.todo-header:hover {
-  color: #7c3aed;
-  background-color: #333041;
-}
-section.Management .sidebar .sidebar-menu ul li.todo-list-header div.todo-header.active-tab {
-  color: #7c3aed;
-  background-color: #333041;
-}
-section.Management .sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container {
-  display: none;
-  flex-direction: column;
-  align-items: normal;
-  overflow: scroll;
-  width: 100%;
-}
-section.Management .sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container:focus {
-  outline: none;
-}
-section.Management .sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project {
-  display: none;
-  align-items: center;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  width: 93%;
-  height: 2em;
-  border-radius: 20px;
-  margin: 0.5em 0 0.5em 0;
-  margin-left: 0;
-}
-section.Management .sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project span {
-  border-radius: 50%;
-  padding: 0.1em;
-  margin-right: 0.4em;
-  justify-self: flex-end;
-}
-section.Management .sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project span.fa-folder {
-  margin: 0px;
-}
-section.Management .sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project span.minor {
-  border: solid #25A85D;
-}
-section.Management .sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project span.normal {
-  border: solid #FFD952;
-}
-section.Management .sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project span.critical {
-  border: solid #E85656;
-}
-section.Management .sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project h4 {
-  display: none;
-  width: 100%;
-}
-section.Management .sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project:hover {
-  color: #7c3aed;
-  background-color: #333041;
-}
-section.Management .sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project.active-tab {
-  color: #7c3aed;
-  background-color: #333041;
 }
 section.Management main.projects {
   flex-direction: column;
@@ -803,7 +627,7 @@ section.Management main.projects div.projects-container .project {
   font-size: 0.636em;
   flex-shrink: 0;
 }
-section.Management main.projects div.projects-container .project .project-tittle {
+section.Management main.projects div.projects-container .project .project-title {
   display: flex;
   align-items: center;
   height: 100%;
@@ -855,358 +679,6 @@ section.Management main.projects div.projects-container .project:hover div.proje
 }
 section.Management main.projects div.projects-container .project:hover div.project-priority.critical {
   color: #E85656;
-}
-section.Management main.projects .project-display-container {
-  display: none;
-  align-items: center;
-  flex-direction: column;
-  overflow: scroll;
-  width: 100%;
-  height: 100%;
-}
-section.Management main.projects .project-display-container:nth-child(1) {
-  margin-top: 2em;
-}
-section.Management main.projects .project-display-container:focus {
-  outline: none;
-}
-section.Management main.projects .project-display-container.active {
-  display: flex;
-}
-section.Management main.projects .project-display-container .project-display-header-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  background: #171520;
-  opacity: 0.97;
-}
-section.Management main.projects .project-display-container .project-display-header-header h2 {
-  margin: 0.2em 1em 0.2em 1em;
-}
-section.Management main.projects .project-display-container .project-display-header-header button {
-  padding: 0;
-  background: none;
-  margin: 0.3em 0.3em 0em 0em;
-  width: 1.1em;
-  height: 1.1em;
-  font-size: 1em;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  outline: inherit;
-  cursor: pointer;
-  border: none;
-  color: #88858D;
-  transition: ease-in-out 0.15s;
-}
-section.Management main.projects .project-display-container .project-display-header-header button:hover {
-  color: #E85656;
-}
-section.Management main.projects .project-display-container .project-display-info-header {
-  display: flex;
-  background-color: #241B2F;
-  width: 100%;
-  height: 5em;
-  min-width: 465px;
-  padding: 0.5em;
-  z-index: 1;
-}
-section.Management main.projects .project-display-container .project-display-info-header .project-display-header-tempo-task {
-  margin: auto 0 auto 0;
-  height: 2.5em;
-  width: 2em;
-}
-section.Management main.projects .project-display-container .project-display-info-header .project-display-header-tempo-task > span {
-  color: #816A94;
-  cursor: pointer;
-  font-size: 0.6em;
-}
-section.Management main.projects .project-display-container .project-display-info-header .project-display-header-tempo-task > span.selected {
-  color: #AA2335;
-}
-section.Management main.projects .project-display-container .project-display-info-header .project-display-header-tempo-container, section.Management main.projects .project-display-container .project-display-info-header .project-display-header-tasks-container {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-}
-section.Management main.projects .project-display-container .project-display-info-header .project-display-header-tempo-container.hide, section.Management main.projects .project-display-container .project-display-info-header .project-display-header-tasks-container.hide {
-  display: none;
-}
-section.Management main.projects .project-display-container .project-display-info-header .project-display-header-tempo-container .div-span, section.Management main.projects .project-display-container .project-display-info-header .project-display-header-tasks-container .div-span {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: larger;
-  color: #AA2335;
-  box-shadow: 0px 0px 5px 0px #5b21b6;
-  width: 5em;
-  height: 3em;
-  min-width: 4em;
-  border-radius: 20px;
-}
-section.Management main.projects .project-display-container .project-display-info-header .project-display-header-tempo-container .div-span .text, section.Management main.projects .project-display-container .project-display-info-header .project-display-header-tasks-container .div-span .text {
-  font-size: 0.5em;
-  color: #816A94;
-}
-section.Management main.projects .project-display-container .project-display-info-header .project-display-header-tempo-container .div-span .span-container, section.Management main.projects .project-display-container .project-display-info-header .project-display-header-tasks-container .div-span .span-container {
-  display: flex;
-}
-section.Management main.projects .project-display-container form#project-display-add-task {
-  padding: 1em;
-  gap: 1em;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  background-color: #241B2F;
-  margin: 0 auto 0.5em auto;
-  position: relative;
-}
-section.Management main.projects .project-display-container form#project-display-add-task header.project-display-header {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  min-width: 100px;
-  gap: 0.5em;
-}
-section.Management main.projects .project-display-container form#project-display-add-task header.project-display-header > input {
-  display: flex;
-  border-radius: 5px;
-  height: 2em;
-  width: 100%;
-  padding: 0.2em 0.5em;
-  border-radius: 0.3rem;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  border: solid 2px #463F4F;
-  background-color: #2F273A;
-  color: #878278;
-}
-section.Management main.projects .project-display-container form#project-display-add-task header.project-display-header > input:focus {
-  outline: none;
-}
-section.Management main.projects .project-display-container form#project-display-add-task header.project-display-header > input:hover {
-  background-color: #352C3F;
-}
-section.Management main.projects .project-display-container form#project-display-add-task header.project-display-header > label {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
-  width: 1.4em;
-  height: 1.4em;
-  border-radius: 0.5em;
-  color: #fff;
-  box-shadow: rgb(48, 46, 184);
-  cursor: pointer;
-  transition: 0.2s ease-in-out;
-  color: #88858D;
-}
-section.Management main.projects .project-display-container form#project-display-add-task header.project-display-header > label span {
-  width: 1.4em;
-  height: 1.4em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-section.Management main.projects .project-display-container form#project-display-add-task header.project-display-header > label:hover {
-  background-color: #352C3F;
-}
-section.Management main.projects .project-display-container form#project-display-add-task header.project-display-header > label input {
-  display: none;
-}
-section.Management main.projects .project-display-container form#project-display-add-task header.project-display-header > label button {
-  display: none;
-}
-section.Management main.projects .project-display-container form#project-display-add-task .form-tasks-options {
-  display: flex;
-  justify-content: space-between;
-  width: 93%;
-  height: 6em;
-  padding: 0.5em;
-  position: absolute;
-  top: 3.5em;
-  border-radius: 10px;
-  background-color: #171520;
-  z-index: 1;
-  opacity: 0.93;
-}
-section.Management main.projects .project-display-container form#project-display-add-task .form-tasks-options.close {
-  display: none;
-}
-section.Management main.projects .project-display-container form#project-display-add-task .form-tasks-options .form-task-stacks {
-  display: flex;
-  gap: 1em;
-  flex-wrap: wrap;
-  width: 9em;
-  height: 5em;
-}
-section.Management main.projects .project-display-container form#project-display-add-task .form-tasks-options .form-task-stacks label {
-  display: flex;
-  width: 1em;
-  height: 1em;
-  cursor: pointer;
-}
-section.Management main.projects .project-display-container form#project-display-add-task .form-tasks-options .form-task-stacks label > img {
-  width: 1em;
-  height: 1em;
-}
-section.Management main.projects .project-display-container form#project-display-add-task .form-tasks-options .form-task-stacks label input[type=checkbox]:checked ~ .icon {
-  filter: grayscale(0%);
-}
-section.Management main.projects .project-display-container form#project-display-add-task .form-tasks-options .form-task-stacks label > .icon {
-  filter: grayscale(100%);
-}
-section.Management main.projects .project-display-container .task-header {
-  display: flex;
-  justify-content: space-between;
-  width: 97%;
-  gap: 1em;
-  flex-shrink: 1;
-  font-size: 0.6em;
-  margin: auto;
-}
-section.Management main.projects .project-display-container .task-header :nth-child(1) {
-  display: flex;
-  width: 17em;
-}
-section.Management main.projects .project-display-container .task-header :nth-child(2) {
-  display: flex;
-}
-section.Management main.projects .project-display-container .task-header :nth-child(3) {
-  display: flex;
-  width: 10em;
-  margin-right: 0.5em;
-}
-section.Management main.projects .project-display-container div.project-display-tasks-container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  overflow: scroll;
-  width: 100%;
-  height: 100%;
-}
-section.Management main.projects .project-display-container div.project-display-tasks-container:nth-child(1) {
-  margin-top: 2em;
-}
-section.Management main.projects .project-display-container div.project-display-tasks-container .task {
-  display: flex;
-  align-items: center;
-  border-radius: 20px;
-  width: 97%;
-  gap: 1em;
-  height: 2.5em;
-  margin: 0.5em 0 0.5em 0;
-  font-size: 0.636em;
-  flex-shrink: 0;
-  transition: ease-in-out 0.03s;
-}
-section.Management main.projects .project-display-container div.project-display-tasks-container .task .task-checkbox-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-section.Management main.projects .project-display-container div.project-display-tasks-container .task .task-checkbox-container label {
-  position: relative;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  transition: color 0.3s ease;
-  margin-right: 20px;
-}
-section.Management main.projects .project-display-container div.project-display-tasks-container .task .task-checkbox-container label::before, section.Management main.projects .project-display-container div.project-display-tasks-container .task .task-checkbox-container label::after {
-  content: "";
-  position: absolute;
-}
-section.Management main.projects .project-display-container div.project-display-tasks-container .task .task-checkbox-container label::before {
-  height: 2px;
-  width: 8px;
-  top: 0em;
-  left: -18px;
-  background: red;
-  border-radius: 2px;
-  transition: background 0.3s ease;
-}
-section.Management main.projects .project-display-container div.project-display-tasks-container .task .task-checkbox-container label::after {
-  height: 4px;
-  width: 4px;
-  top: 0px;
-  left: -18px;
-  border-radius: 50%;
-}
-section.Management main.projects .project-display-container div.project-display-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox] {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  position: relative;
-  height: 2em;
-  width: 2em;
-  outline: none;
-  border: 0;
-  margin: 0 0px 0 10px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-section.Management main.projects .project-display-container div.project-display-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox]::before, section.Management main.projects .project-display-container div.project-display-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox]::after {
-  content: "";
-  position: absolute;
-  height: 2px;
-  border-radius: 2px;
-  background-color: rgb(43, 255, 0);
-}
-section.Management main.projects .project-display-container div.project-display-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox]::before {
-  right: 60%;
-  transform-origin: right bottom;
-}
-section.Management main.projects .project-display-container div.project-display-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox]::after {
-  width: 0px;
-  left: 40%;
-  transform-origin: left bottom;
-}
-section.Management main.projects .project-display-container div.project-display-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox]:checked::before {
-  animation: check-01 0.4s ease forwards;
-}
-section.Management main.projects .project-display-container div.project-display-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox]:checked::after {
-  animation: check-02 0.4s ease forwards;
-}
-section.Management main.projects .project-display-container div.project-display-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox]:checked + label::before {
-  background: green;
-  animation: slice 0.4s ease forwards;
-}
-section.Management main.projects .project-display-container div.project-display-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox]:checked + label::after {
-  animation: firework 0.5s ease forwards 0.1s;
-}
-section.Management main.projects .project-display-container div.project-display-tasks-container .task .task-tittle {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  gap: 1em;
-  width: 59em;
-  min-width: 10em;
-  margin-right: 6em;
-  flex-shrink: 1;
-}
-section.Management main.projects .project-display-container div.project-display-tasks-container .task .task-spent-hours-div {
-  width: 55em;
-  flex-shrink: 1;
-}
-section.Management main.projects .project-display-container div.project-display-tasks-container .task .project-display-task-stacks {
-  display: flex;
-  width: 10em;
-  margin-right: 0.5em;
-  gap: 0.3em;
-  flex-shrink: 0;
-}
-section.Management main.projects .project-display-container div.project-display-tasks-container .task span {
-  margin-left: 0.5em;
-}
-section.Management main.projects .project-display-container div.project-display-tasks-container .task:hover {
-  color: #7c3aed;
-  background-color: #333041;
 }
 
 .alert {
@@ -1276,32 +748,737 @@ section.Management main.projects .project-display-container div.project-display-
   color: #ce8500;
 }
 
-* {
-  margin: 0px;
-  padding: 0px;
+#close {
+  display: none;
 }
 
-html {
-  font-size: 22px;
+.tagOpen {
+  height: 8.5em;
 }
 
-body {
+.open {
+  display: flex;
+}
+
+#littleTimer {
+  min-width: 180px;
+  min-height: 50px;
+  position: absolute;
+  border-radius: 20px;
+  align-items: space-between;
+  font-size: 2.5px;
+  width: 180px;
+  height: 50px;
+  margin-bottom: 80px;
+  box-shadow: 0 0 0.27em rgb(37, 255, 37), 0 0 2.38em rgb(46, 184, 46);
+}
+#littleTimer .jk {
+  width: 180px;
+  height: 50px;
+  margin: right 0em;
+}
+#littleTimer .jk .holder {
+  left: 1.1em;
+  position: absolute;
+  font-size: 5em;
+}
+#littleTimer .jk .holder #hour {
+  display: none;
+}
+#littleTimer .jk .holder #second {
+  display: none;
+}
+#littleTimer .jk .holder .colon {
+  display: none;
+}
+#littleTimer div.button {
+  position: relative;
+  justify-content: space-around;
+  width: 43em;
+  left: 12em;
+}
+#littleTimer div.button .button {
+  border-radius: 7px;
+  border: none;
+  color: white;
+  height: 2em;
+  opacity: 0.9;
+  cursor: pointer;
+}
+#littleTimer div.button .button:hover {
+  opacity: 1;
+}
+#littleTimer div.button #start {
+  width: 6em;
+  background-color: rgb(14, 0, 40);
+}
+#littleTimer div.button #reset {
+  width: 2em;
+  background-color: rgb(14, 0, 40);
+}
+#littleTimer div.button #pause {
+  width: 2em;
+  background-color: rgb(14, 0, 40);
+}
+#littleTimer .progressIndicator {
+  left: -17em;
+  font-size: 1.3em;
+}
+
+#sidebar.open {
+  width: 17em;
+}
+#sidebar.open .sidebar-menu ul {
+  align-items: start;
+}
+#sidebar.open .sidebar-menu ul li {
+  justify-content: flex-start;
+  width: 90.5%;
+  margin-left: 0.41em;
+}
+#sidebar.open .sidebar-menu ul li span {
+  margin-left: 0.5em;
+}
+#sidebar.open .sidebar-menu ul li h4 {
+  display: block;
+}
+#sidebar.open .sidebar-menu ul li.todo-list-header .todo-header {
+  justify-content: flex-start;
+  gap: 1em;
+  width: 100%;
+}
+#sidebar.open .sidebar-menu ul li.todo-list-header .todo-header span {
+  margin-left: 0.65em;
+}
+#sidebar.open .sidebar-menu ul li.todo-list-header .sidebar-projects-container {
+  display: flex;
+}
+#sidebar.open .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project {
+  margin-left: 1em;
+  display: flex;
+  gap: 1em;
+}
+
+@keyframes slice {
+  60% {
+    width: 100%;
+    left: 0px;
+  }
+  100% {
+    width: 100%;
+    left: -10px;
+    padding-left: 0;
+  }
+}
+@keyframes check-01 {
+  0% {
+    width: 4px;
+    top: auto;
+    transform: rotate(0);
+  }
+  50% {
+    width: 0px;
+    top: auto;
+    transform: rotate(0);
+  }
+  51% {
+    width: 0px;
+    top: 15px;
+    transform: rotate(45deg);
+  }
+  100% {
+    width: 5px;
+    top: 15px;
+    transform: rotate(45deg);
+  }
+}
+@keyframes check-02 {
+  0% {
+    width: 4px;
+    top: auto;
+    transform: rotate(0);
+  }
+  50% {
+    width: 0px;
+    top: auto;
+    transform: rotate(0);
+  }
+  51% {
+    width: 0px;
+    top: 16px;
+    transform: rotate(-45deg);
+  }
+  100% {
+    width: 10px;
+    top: 15px;
+    transform: rotate(-45deg);
+  }
+}
+@keyframes firework {
+  0% {
+    opacity: 1;
+    box-shadow: 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    box-shadow: 0 -21px 0 0px #4f29f0, 13px -19.5px 0 0px #4f29f0, 19px -13px 0 0px #4f29f0, 19px 13px 0 0px #4f29f0, 20px 0px 0 0px #4f29f0, 0 20px 0 0px #4f29f0, 12.5px 17.5px 0 0px #4f29f0, -19px 13px 0 0px #4f29f0, -13px 17.5px 0 0px #4f29f0, -20px 0px 0 0px #4f29f0, -19px -13px 0 0px #4f29f0, -13px -18.5px 0 0px #4f29f0;
+  }
+}
+.project-page-container {
+  display: none;
+  align-items: center;
+  flex-direction: column;
+  overflow: scroll;
+  width: 100%;
+  height: 100%;
+}
+.project-page-container:nth-child(1) {
+  margin-top: 2em;
+}
+.project-page-container:focus {
+  outline: none;
+}
+.project-page-container.active {
+  display: flex;
+}
+.project-page-container .project-page-header-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: #171520;
+  opacity: 0.97;
+}
+.project-page-container .project-page-header-header h2 {
+  margin: 0.2em 1em 0.2em 1em;
+}
+.project-page-container .project-page-header-header button {
+  padding: 0;
+  background: none;
+  margin: 0.3em 0.3em 0em 0em;
+  width: 1.1em;
+  height: 1.1em;
+  font-size: 1em;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: inherit;
+  cursor: pointer;
+  border: none;
+  color: #88858D;
+  transition: ease-in-out 0.15s;
+}
+.project-page-container .project-page-header-header button:hover {
+  color: #E85656;
+}
+.project-page-container .project-page-info-header {
+  display: flex;
+  background-color: #241B2F;
+  width: 100%;
+  height: 5em;
+  min-width: 465px;
+  padding: 0.5em;
+  z-index: 1;
+}
+.project-page-container .project-page-info-header .project-page-header-tempo-task {
+  margin: auto 0 auto 0;
+  height: 2.5em;
+  width: 2em;
+}
+.project-page-container .project-page-info-header .project-page-header-tempo-task > span {
+  color: #816A94;
+  cursor: pointer;
+  font-size: 0.6em;
+}
+.project-page-container .project-page-info-header .project-page-header-tempo-task > span.selected {
+  color: #AA2335;
+}
+.project-page-container .project-page-info-header .project-page-header-tempo-container, .project-page-container .project-page-info-header .project-page-header-tasks-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.project-page-container .project-page-info-header .project-page-header-tempo-container.hide, .project-page-container .project-page-info-header .project-page-header-tasks-container.hide {
+  display: none;
+}
+.project-page-container .project-page-info-header .project-page-header-tempo-container .div-span, .project-page-container .project-page-info-header .project-page-header-tasks-container .div-span {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
+  color: #AA2335;
+  box-shadow: 0px 0px 5px 0px #5b21b6;
+  width: 5em;
+  height: 3em;
+  min-width: 4em;
+  border-radius: 20px;
+}
+.project-page-container .project-page-info-header .project-page-header-tempo-container .div-span .text, .project-page-container .project-page-info-header .project-page-header-tasks-container .div-span .text {
+  font-size: 0.5em;
+  color: #816A94;
+}
+.project-page-container .project-page-info-header .project-page-header-tempo-container .div-span .span-container, .project-page-container .project-page-info-header .project-page-header-tasks-container .div-span .span-container {
+  display: flex;
+}
+.project-page-container form#project-page-add-task {
+  padding: 1em;
+  gap: 1em;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #241B2F;
+  margin: 0 auto 0.5em auto;
+  position: relative;
+}
+.project-page-container form#project-page-add-task header.project-page-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  min-width: 100px;
+  gap: 0.5em;
+}
+.project-page-container form#project-page-add-task header.project-page-header > input {
+  display: flex;
+  border-radius: 5px;
+  height: 2em;
+  width: 100%;
+  padding: 0.2em 0.5em;
+  border-radius: 0.3rem;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: solid 2px #463F4F;
+  background-color: #2F273A;
+  color: #878278;
+}
+.project-page-container form#project-page-add-task header.project-page-header > input:focus {
+  outline: none;
+}
+.project-page-container form#project-page-add-task header.project-page-header > input:hover {
+  background-color: #352C3F;
+}
+.project-page-container form#project-page-add-task header.project-page-header > label {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0px;
-  background-image: linear-gradient(to left bottom, #0e0028, #140f4d, #211474, #33179d, #4a16c7, #4d17ce, #4f18d4, #5219db, #401ec0, #301fa4, #231d89, #1a1a6e);
-  width: 100vw;
+  font-size: 1rem;
+  width: 1.4em;
+  height: 1.4em;
+  border-radius: 0.5em;
+  color: #fff;
+  box-shadow: rgb(48, 46, 184);
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  color: #88858D;
 }
-body::before {
+.project-page-container form#project-page-add-task header.project-page-header > label span {
+  width: 1.4em;
+  height: 1.4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.project-page-container form#project-page-add-task header.project-page-header > label:hover {
+  background-color: #352C3F;
+}
+.project-page-container form#project-page-add-task header.project-page-header > label input {
+  display: none;
+}
+.project-page-container form#project-page-add-task header.project-page-header > label button {
+  display: none;
+}
+.project-page-container form#project-page-add-task .form-tasks-options {
+  display: flex;
+  justify-content: space-between;
+  width: 93%;
+  height: 6em;
+  padding: 0.5em;
   position: absolute;
-  content: "";
-  bottom: 0px;
-  z-index: -1;
-  transition: 1s;
+  top: 3.5em;
+  border-radius: 10px;
+  background-color: #171520;
+  z-index: 1;
+  opacity: 0.93;
 }
-body .timer {
+.project-page-container form#project-page-add-task .form-tasks-options.close {
+  display: none;
+}
+.project-page-container form#project-page-add-task .form-tasks-options .form-task-stacks {
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+  width: 9em;
+  height: 5em;
+}
+.project-page-container form#project-page-add-task .form-tasks-options .form-task-stacks label {
+  display: flex;
+  width: 1em;
+  height: 1em;
+  cursor: pointer;
+}
+.project-page-container form#project-page-add-task .form-tasks-options .form-task-stacks label > img {
+  width: 1em;
+  height: 1em;
+}
+.project-page-container form#project-page-add-task .form-tasks-options .form-task-stacks label input[type=checkbox]:checked ~ .icon {
+  filter: grayscale(0%);
+}
+.project-page-container form#project-page-add-task .form-tasks-options .form-task-stacks label > .icon {
+  filter: grayscale(100%);
+}
+.project-page-container .task-header {
+  display: flex;
+  justify-content: space-between;
+  width: 97%;
+  gap: 1em;
+  flex-shrink: 1;
+  font-size: 0.6em;
+  margin: auto;
+}
+.project-page-container .task-header :nth-child(1) {
+  display: flex;
+  width: 17em;
+}
+.project-page-container .task-header :nth-child(2) {
+  display: flex;
+}
+.project-page-container .task-header :nth-child(3) {
+  display: flex;
+  width: 10em;
+  margin-right: 0.5em;
+}
+.project-page-container div.project-page-tasks-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow: scroll;
+  width: 100%;
+  height: 100%;
+}
+.project-page-container div.project-page-tasks-container:nth-child(1) {
+  margin-top: 2em;
+}
+.project-page-container div.project-page-tasks-container .task {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  width: 97%;
+  gap: 1em;
+  height: 2.5em;
+  margin: 0.5em 0 0.5em 0;
+  font-size: 0.636em;
+  flex-shrink: 0;
+  transition: ease-in-out 0.03s;
+}
+.project-page-container div.project-page-tasks-container .task .task-checkbox-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.project-page-container div.project-page-tasks-container .task .task-checkbox-container label {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+  margin-right: 20px;
+}
+.project-page-container div.project-page-tasks-container .task .task-checkbox-container label::before, .project-page-container div.project-page-tasks-container .task .task-checkbox-container label::after {
+  content: "";
+  position: absolute;
+}
+.project-page-container div.project-page-tasks-container .task .task-checkbox-container label::before {
+  height: 2px;
+  width: 8px;
+  top: 0em;
+  left: -18px;
+  background: red;
+  border-radius: 2px;
+  transition: background 0.3s ease;
+}
+.project-page-container div.project-page-tasks-container .task .task-checkbox-container label::after {
+  height: 4px;
+  width: 4px;
+  top: 0px;
+  left: -18px;
+  border-radius: 50%;
+}
+.project-page-container div.project-page-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  position: relative;
+  height: 2em;
+  width: 2em;
+  outline: none;
+  border: 0;
+  margin: 0 0px 0 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.project-page-container div.project-page-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox]::before, .project-page-container div.project-page-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox]::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  border-radius: 2px;
+  background-color: rgb(43, 255, 0);
+}
+.project-page-container div.project-page-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox]::before {
+  right: 60%;
+  transform-origin: right bottom;
+}
+.project-page-container div.project-page-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox]::after {
+  width: 0px;
+  left: 40%;
+  transform-origin: left bottom;
+}
+.project-page-container div.project-page-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox]:checked::before {
+  animation: check-01 0.4s ease forwards;
+}
+.project-page-container div.project-page-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox]:checked::after {
+  animation: check-02 0.4s ease forwards;
+}
+.project-page-container div.project-page-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox]:checked + label::before {
+  background: green;
+  animation: slice 0.4s ease forwards;
+}
+.project-page-container div.project-page-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox]:checked + label::after {
+  animation: firework 0.5s ease forwards 0.1s;
+}
+.project-page-container div.project-page-tasks-container .task:hover {
+  color: #7c3aed;
+  background-color: #333041;
+}
+.project-page-container div.project-page-tasks-container .task .task-title {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 1em;
+  width: 59em;
+  min-width: 10em;
+  margin-right: 6em;
+  flex-shrink: 1;
+}
+.project-page-container div.project-page-tasks-container .task .task-spent-hours-div {
+  width: 55em;
+  flex-shrink: 1;
+}
+.project-page-container div.project-page-tasks-container .task .project-page-task-stacks {
+  display: flex;
+  width: 10em;
+  margin-right: 0.5em;
+  gap: 0.3em;
+  flex-shrink: 0;
+}
+.project-page-container div.project-page-tasks-container .task label {
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+.project-page-container div.project-page-tasks-container .task label span {
+  width: 1.4em;
+  height: 1.4em;
+  display: flex;
+  align-items: center;
+}
+.project-page-container div.project-page-tasks-container .task label button {
+  display: none;
+}
+.project-page-container div.project-page-tasks-container .task .task-pop-up {
+  position: absolute;
+  z-index: 1;
+  border-radius: 7px;
+  height: 3.5em;
+  width: 4.5em;
+  right: 1.3em;
+  bottom: -3.2em;
+  background-color: #463465;
+}
+.project-page-container div.project-page-tasks-container .task .task-pop-up.close {
+  display: none;
+}
+.project-page-container div.project-page-tasks-container .task .task-pop-up ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  list-style: none;
+}
+.project-page-container div.project-page-tasks-container .task .task-pop-up ul li {
+  margin-left: 0.7em;
+  width: 80%;
+  margin: auto 0px auto 0px;
+  cursor: pointer;
+}
+.project-page-container div.project-page-tasks-container .task .task-pop-up ul li label span {
+  color: #A59CAF;
+  font-size: 0.7em;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  background-color: #171520;
+  width: 40px;
+  flex-shrink: 0;
+  height: 100%;
+  position: relative;
+  color: #788690;
+  z-index: 0;
+}
+.sidebar .sidebar-title {
+  display: flex;
+  align-items: center;
+  margin: 0.5em 0 0 0.5em;
+}
+.sidebar .sidebar-title .inner-sidebar-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5em 0 0.5em 0;
+  width: 2em;
+  height: 2em;
+  border-radius: 20px;
+}
+.sidebar .sidebar-title .inner-sidebar-title span {
+  font-size: 1.2em;
+}
+.sidebar .sidebar-title .inner-sidebar-title:hover {
+  background-color: #333041;
+}
+.sidebar .sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.sidebar .sidebar-menu ul {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  list-style: none;
+  gap: 0.5em 0.2em;
+}
+.sidebar .sidebar-menu ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  width: 2em;
+  height: 2em;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+.sidebar .sidebar-menu ul li h4 {
+  display: none;
+}
+.sidebar .sidebar-menu ul li ::before {
+  display: block;
+  width: 1.035em;
+}
+.sidebar .sidebar-menu ul li:not(.todo-list-header) {
+  margin-bottom: 0em;
+}
+.sidebar .sidebar-menu ul li:not(.todo-list-header):hover, .sidebar .sidebar-menu ul li:not(.todo-list-header) .active {
+  color: #7c3aed;
+  background-color: #333041;
+}
+.sidebar .sidebar-menu ul li:not(.todo-list-header).active-tab {
+  color: #7c3aed;
+  background-color: #333041;
+}
+.sidebar .sidebar-menu ul li.todo-list-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-grow: 1;
+  width: 100%;
+}
+.sidebar .sidebar-menu ul li.todo-list-header div.todo-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2em;
+  height: 2em;
+  border-radius: 20px;
+  flex-shrink: 0;
+  gap: 0rem;
+}
+.sidebar .sidebar-menu ul li.todo-list-header div.todo-header span {
+  margin-left: 0.3em;
+}
+.sidebar .sidebar-menu ul li.todo-list-header div.todo-header:hover {
+  color: #7c3aed;
+  background-color: #333041;
+}
+.sidebar .sidebar-menu ul li.todo-list-header div.todo-header.active-tab {
+  color: #7c3aed;
+  background-color: #333041;
+}
+.sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container {
+  display: none;
+  flex-direction: column;
+  align-items: normal;
+  overflow: scroll;
+  width: 100%;
+}
+.sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container:focus {
+  outline: none;
+}
+.sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project {
+  display: none;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 93%;
+  height: 2em;
+  border-radius: 20px;
+  margin: 0.5em 0 0.5em 0;
+  margin-left: 0;
+}
+.sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project span {
+  border-radius: 50%;
+  padding: 0.1em;
+  margin-right: 0.4em;
+  justify-self: flex-end;
+}
+.sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project span.fa-folder {
+  margin: 0px;
+}
+.sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project span.minor {
+  border: solid #25A85D;
+}
+.sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project span.normal {
+  border: solid #FFD952;
+}
+.sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project span.critical {
+  border: solid #E85656;
+}
+.sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project h4 {
+  display: none;
+  width: 100%;
+}
+.sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project:hover {
+  color: #7c3aed;
+  background-color: #333041;
+}
+.sidebar .sidebar-menu ul li.todo-list-header .sidebar-projects-container .project.active-tab {
+  color: #7c3aed;
+  background-color: #333041;
+}
+
+.timer {
   position: fixed;
   display: flex;
   justify-content: center;
@@ -1315,7 +1492,7 @@ body .timer {
   color: rgb(233, 233, 233);
   transition: 0.3s linear;
 }
-body .timer .jk {
+.timer .jk {
   background-color: rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 0.27em rgb(14, 0, 65), 0 0 1.38em rgb(14, 0, 65);
   position: absolute;
@@ -1327,35 +1504,35 @@ body .timer .jk {
   justify-content: space-around;
   height: 12em;
 }
-body .timer .jk div.holder {
+.timer .jk div.holder {
   display: flex;
 }
-body .timer .jk div.holder .colon {
+.timer .jk div.holder .colon {
   font-size: 2.5em;
 }
-body .timer .jk div.holder input, body .timer .jk div.holder select, body .timer .jk div.holder textarea {
+.timer .jk div.holder input, .timer .jk div.holder select, .timer .jk div.holder textarea {
   color: white;
   text-shadow: 0 0 9px rgb(68, 0, 255);
   font-size: 2.7em;
 }
-body .timer .jk div.holder input {
+.timer .jk div.holder input {
   background-color: transparent;
   border: none;
   width: 1.1em;
   outline: none;
 }
-body .timer .jk div.holder input::-moz-placeholder {
+.timer .jk div.holder input::-moz-placeholder {
   color: rgb(255, 255, 255);
 }
-body .timer .jk div.holder input::placeholder {
+.timer .jk div.holder input::placeholder {
   color: rgb(255, 255, 255);
 }
-body .timer .jk div.button {
+.timer .jk div.button {
   display: flex;
   justify-content: space-around;
   width: 15em;
 }
-body .timer .jk div.button .button {
+.timer .jk div.button .button {
   border-radius: 7px;
   border: none;
   color: white;
@@ -1363,10 +1540,10 @@ body .timer .jk div.button .button {
   opacity: 0.9;
   cursor: pointer;
 }
-body .timer .jk div.button .button:hover {
+.timer .jk div.button .button:hover {
   opacity: 1;
 }
-body .timer .jk div.button #start {
+.timer .jk div.button #start {
   background-color: rgb(26, 110, 26);
   box-shadow: 0 0 0.27em rgb(37, 255, 37), 0 0 1.38em rgb(46, 184, 46);
   width: 12em;
@@ -1374,7 +1551,7 @@ body .timer .jk div.button #start {
   justify-content: center;
   align-items: center;
 }
-body .timer .jk div.button #reset {
+.timer .jk div.button #reset {
   background-color: rgb(110, 26, 26);
   box-shadow: 0 0 0.27em rgb(255, 37, 37), 0 0 1.38em rgb(184, 46, 46);
   width: 8em;
@@ -1382,7 +1559,7 @@ body .timer .jk div.button #reset {
   justify-content: center;
   align-items: center;
 }
-body .timer .jk div.button #pause {
+.timer .jk div.button #pause {
   background-color: rgb(26, 26, 110);
   box-shadow: 0 0 0.27em rgb(37, 37, 255), 0 0 1.38em rgb(48, 46, 184);
   width: 8em;
@@ -1390,7 +1567,7 @@ body .timer .jk div.button #pause {
   justify-content: center;
   align-items: center;
 }
-body .timer .progressIndicator {
+.timer .progressIndicator {
   font-size: 1.5em;
   position: relative;
   display: flex;
@@ -1399,7 +1576,7 @@ body .timer .progressIndicator {
   width: 10em;
   height: 10em;
 }
-body .timer .progressIndicator .circle-container {
+.timer .progressIndicator .circle-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1411,7 +1588,7 @@ body .timer .progressIndicator .circle-container {
   position: absolute;
   overflow: hidden;
 }
-body .timer .progressIndicator .circle-container .semicircle {
+.timer .progressIndicator .circle-container .semicircle {
   z-index: 8;
   width: 50%;
   height: 100%;
@@ -1421,22 +1598,52 @@ body .timer .progressIndicator .circle-container .semicircle {
   transition: 1s linear;
   transform-origin: right center;
 }
-body .timer .progressIndicator .circle-container .semicircle:nth-child(1) {
+.timer .progressIndicator .circle-container .semicircle:nth-child(1) {
   background-color: rgb(26, 110, 26);
   z-index: 2;
 }
-body .timer .progressIndicator .circle-container .semicircle:nth-child(2) {
+.timer .progressIndicator .circle-container .semicircle:nth-child(2) {
   z-index: 3;
   background-color: rgb(26, 110, 26);
 }
-body .timer .progressIndicator .circle-container .semicircle:nth-child(3) {
+.timer .progressIndicator .circle-container .semicircle:nth-child(3) {
   z-index: 4;
   background-color: rgb(255, 255, 255);
 }
-body .timer .progressIndicator .circle-container .outermost-circle {
+.timer .progressIndicator .circle-container .outermost-circle {
   width: 14em;
   height: 14em;
   background-color: rgb(14, 0, 40);
   border-radius: 50%;
   z-index: 5;
+}
+
+*,
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 22px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  height: 100vh;
+  font-family: "Ubuntu", sans-serif;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+input[type=checkbox], [type=radio] {
+  display: none;
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */

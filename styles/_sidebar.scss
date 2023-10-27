@@ -1,0 +1,178 @@
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    background-color: $sidebarBg;
+    width: 40px;
+    flex-shrink: 0;
+    height: 100%;
+    position: relative;
+    color: $text;
+    z-index: 0;
+
+    .sidebar-title {
+        display: flex;
+        align-items: center;
+        margin: .5em 0 0 .5em;
+
+        .inner-sidebar-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: .5em 0 .5em 0;
+            width: 2em;
+            height: 2em;
+            border-radius: 20px;
+
+            span {
+                font-size: 1.2em;
+            }
+
+            &:hover {
+                background-color: $hover;
+            }
+        }
+    }
+
+    .sidebar-menu {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+
+        ul {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            list-style: none;
+            gap: .5em .2em;
+
+            li {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: .5em;
+                width: 2em;
+                height: 2em;
+                border-radius: 20px;
+                flex-shrink: 0;
+                h4 {
+                    display: none;
+                }
+                ::before {
+                    display: block;
+                    width: 1.035em;
+                }
+                &:not(.todo-list-header) {
+                    margin-bottom: 0em;
+
+                    &:hover, .active {
+                        color: $projecColortHover;
+                        background-color: $hover;
+                    }
+                    &.active-tab {
+                        color: $projecColortHover;
+                        background-color: $hover;
+                    }
+
+                }
+
+                &.todo-list-header {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    flex-grow: 1;
+                    width: 100%;
+
+                    div.todo-header {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 2em;
+                        height: 2em;
+                        border-radius: 20px;
+                        flex-shrink: 0;
+                        gap: 0rem;
+
+                        span {
+                           margin-left: .3em;
+                        }
+
+                        &:hover {
+                            color: $projecColortHover;
+                            background-color: $hover;
+                        }
+                        &.active-tab {
+                            color: $projecColortHover;
+                            background-color: $hover;
+                        }
+                    }
+
+
+                    .sidebar-projects-container {
+                        display: none;
+                        flex-direction: column;
+                        align-items: normal;
+                        overflow: scroll;
+                        width: 100%;
+                        &:focus {
+                            outline: none;
+                        }
+
+                        .project{
+                            display: none;
+                            align-items: center;
+                            justify-content: flex-start;
+                            flex-shrink: 0;
+                            width: 93%;
+                            height: 2em;
+                            border-radius: 20px;
+                            margin: .5em 0 .5em 0;
+                            margin-left: 0;
+                            
+
+                            span {
+                                border-radius: 50%;
+                                padding: .1em;
+                                margin-right: .4em;
+                                justify-self: flex-end;
+                                &.fa-folder{
+                                    margin: 0px;
+                                }
+        
+                                &.minor {
+                                    border: solid #25A85D;
+                                }
+        
+                                &.normal {
+                                    border: solid #FFD952;
+        
+                                }
+        
+                                &.critical {
+                                    border: solid #E85656;
+                                }
+                            }
+                            h4 {
+                                display: none;
+                                width: 100%;
+                            }
+
+                            &:hover {
+                                color: $projecColortHover;
+                                background-color: $hover;
+                            }
+                            &.active-tab {
+                                color: $projecColortHover;
+                                background-color: $hover;
+                            }                           
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

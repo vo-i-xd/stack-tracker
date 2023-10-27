@@ -1,27 +1,26 @@
-import { task_form_submit } from "./form.js";
+import { taskFormSubmit } from "./form.js";
 
 
-
-const main_projects_container = document.querySelector("#projects-container");
-const main_inner_projects = document.querySelector(".main-inner-projects");
+const mainProjectsContainer = document.querySelector("#projects-container");
+const mainInnerProjects = document.querySelector(".main-inner-projects");
 
 //sidebar
-const sidebar_projects_container = document.querySelector(".sidebar-projects-container");
+const sidebarProjectsContainer = document.querySelector(".sidebar-projects-container");
 
 //project display
-const project_tasks_div = document.querySelector(".project-display-container");
+const projectTasksDiv = document.querySelector(".project-page-container");
 
 //header
-const project_display_title = document.querySelector(".project-display-tittle");
-const project_display_hours = document.querySelector(".project-display-hours-concluidas");
-const project_display_tasks_concluidas = document.querySelector(".project-display-tasks-concluidas");
-const project_display_hours_estimadas = document.querySelector(".project-display-hours-stimadas");
-const project_display_tasks_estimadas = document.querySelector(".project-display-tasks-pendentes");
+const projectPageTitle = document.querySelector(".project-page-title");
+const projectPageHours = document.querySelector(".project-page-hours-concluidas");
+const projectPageTasksConcluidas = document.querySelector(".project-page-tasks-concluidas");
+const projectPageHoursEstimadas = document.querySelector(".project-page-hours-stimadas");
+const projectPageTasksEstimadas = document.querySelector(".project-page-tasks-pendentes");
 //form
-const form_tasks = document.querySelector("#project-display-add-task");
-const project_options_task_stacks = document.querySelector(".form-task-stacks");
+const formTasks = document.querySelector("#project-page-add-task");
+const formTaskStacks = document.querySelector(".form-task-stacks");
 
-const project_display_tasks_container = document.querySelector(".project-display-tasks-container");
+const tasksContainer = document.querySelector(".project-page-tasks-container");
 
 const icons = {
     0: "./icons/javascript.svg",
@@ -39,237 +38,455 @@ const icons = {
 };
 
 
-export const displayProject = (projects) => {
-
-    main_projects_container.innerHTML ="";
-    sidebar_projects_container.innerHTML = "";
-    
-    projects.forEach(project => {
-        
-    const container = document.createElement("div");
-    container.classList.add("project");
-
-    const project_title_div = document.createElement("div");
-    const project_title_span = document.createElement("span");
-    const project_title_h4 = document.createElement("h4");
-
-    const project_priority_Div = document.createElement("div");
-    const project_priority_span = document.createElement("span");
-    const project_priority_p = document.createElement("p");
-
-    const project_stacks_div = document.createElement("div");
-    const project_stacks_img = document.createElement("img");
-
-
-    project_title_div.classList.add("project-tittle");
-    project_title_span.classList.add("fa-solid", "fa-folder");
-    project_title_h4.innerHTML = project.name;
-
-    project_priority_Div.classList.add("project-priority");
-    if(project.priority != ""){
-        project_priority_Div.classList.add(project.priority);
-        project_priority_span.classList.add(project.priority);
-        project_priority_p.innerHTML = project.priority;
-    }
-
-    project_stacks_div.classList.add("project-stacks");
-
-    project_title_div.appendChild(project_title_span);
-    project_title_div.appendChild(project_title_h4);
-    container.appendChild(project_title_div);
-
-    project_priority_Div.appendChild(project_priority_span);
-    project_priority_Div.appendChild(project_priority_p);
-    container.appendChild(project_priority_Div);
-
-    for(let i=0; i<project.stacks.length; i++){
-
-        if(project.stacks[i] == true){
-          let project_stacks_img_clone = project_stacks_img.cloneNode(true);
-            project_stacks_div.appendChild(project_stacks_img_clone);
-            //Note that if you need to append the same element multiple times, you need to clone it using cloneNode(true), as the appendChild() and append() methods move the actual node rather than making a copy
-            project_stacks_img_clone.setAttribute('src', icons[i]);
-            project_stacks_img_clone.setAttribute('alt', icons[i]);
-        }
-   }
-                   //givin actions to the projects
-    project_action(container, project);
-
-displaySidebarProject(projects);
-container.appendChild(project_stacks_div);
-main_projects_container.appendChild(container);
-
-});
-};
-
 const displaySidebarProject = (projects) => {
-    sidebar_projects_container.innerHTML = "";
+    sidebarProjectsContainer.innerHTML = "";
 
-    projects.forEach(project => {
+        projects.forEach(project => {
 
-    const sidebar_project_container = document.createElement("div");
-    const sidebar_project_span = document.createElement("span");
-    const sidebar_project_h4 = document.createElement("h4");
-    const sidebar_project_priority_span = document.createElement("span");
+            const sidebarProjectContainer = document.createElement("div");
+            const sidebarProjectSpan = document.createElement("span");
+            const sidebarProjectH4 = document.createElement("h4");
+            const sidebarProjectPrioritySpan = document.createElement("span");
 
-    if(project.priority != ""){
-        sidebar_project_priority_span.classList.add(project.priority);
-    }
-    sidebar_project_container.classList.add("project");
-    sidebar_project_container.setAttribute("data-switcher", "");
-    sidebar_project_container.setAttribute("data-tab", "project-display-container");
-    
-    sidebar_project_span.classList.add("fa-solid", "fa-folder");
-    sidebar_project_h4.innerHTML = project.name;
+            if(project.priority != ""){
+                sidebarProjectPrioritySpan.classList.add(project.priority);
+            }
+            sidebarProjectContainer.classList.add("project");
+            sidebarProjectContainer.setAttribute("data-switcher", "");
+            sidebarProjectContainer.setAttribute("data-tab", "project-page-container");
+            
+            sidebarProjectSpan.classList.add("fa-solid", "fa-folder");
+            sidebarProjectH4.innerHTML = project.name;
 
-    sidebar_project_container.appendChild(sidebar_project_span);
-    sidebar_project_container.appendChild(sidebar_project_h4);
-    sidebar_project_container.appendChild(sidebar_project_priority_span);
+            sidebarProjectContainer.appendChild(sidebarProjectSpan);
+            sidebarProjectContainer.appendChild(sidebarProjectH4);
+            sidebarProjectContainer.appendChild(sidebarProjectPrioritySpan);
+            
+            projectAction(sidebarProjectContainer, project);//#just make a label the points to the project;
 
-   //givin actions to the projects
-    project_action(sidebar_project_container, project);
-
-sidebar_projects_container.appendChild(sidebar_project_container);
-});
-tab_switchers();
+            sidebarProjectsContainer.appendChild(sidebarProjectContainer);
+        });
+        tabSwitchers();
 }
 
-const display_tasks = (task, project) =>{
-    const task_container = document.createElement("div");
-    task_container.classList.add("task");
+export const projectCreator = {
 
+    container: function() {
+        const container = document.createElement("div");
+        container.classList.add("project");
+        return container;
+    },
 
-    const project_task_checkbox_div = document.createElement("div");
-    const project_task_checkbox = document.createElement("input");
-    const project_task_checkbox_label = document.createElement("label");
+    title: function(project) {
+        const projectTitleDiv = document.createElement("div");
+        const projectTitleSpan = document.createElement("span");
+        const projectTitleH4 = document.createElement("h4");
 
+        projectTitleDiv.classList.add("project-title");
+        projectTitleSpan.classList.add("fa-solid", "fa-folder");
+        projectTitleH4.innerHTML = project.name;
 
-    const project_task_title_div = document.createElement("div");
-    const project_task_title_h4 = document.createElement("h4");
+        projectTitleDiv.appendChild(projectTitleSpan);
+        projectTitleDiv.appendChild(projectTitleH4);
 
-    const project_task_spent_hours_Div = document.createElement("div");
-    const project_task_spent_hours_span = document.createElement("span");
-   
-    const project_task_stacks_div = document.createElement("div");
-    const project_task_stacks_img = document.createElement("img");
+        return projectTitleDiv;
+    },
 
+    priority: function(project) {
+        const projectPriorityDiv = document.createElement("div");
+        const projectPrioritySpan = document.createElement("span");
+        const projectPriorityP = document.createElement("p");
 
-    project_task_checkbox_div.classList.add("task-checkbox-container")
-    project_task_checkbox.classList.add("task-checkbox");
-    
-    project_task_checkbox.id = `task-checkbox-${task.name}`;
-    project_task_checkbox.setAttribute("name", "task-checkbox");
-    project_task_checkbox.setAttribute("type", "checkbox");
-    project_task_checkbox_label.setAttribute("for", `task-checkbox-${task.name}`);
-
-    
-
-
-    project_task_title_div.classList.add("task-tittle");
-    project_task_title_h4.innerHTML = task.name;
-
-    project_task_spent_hours_Div.classList.add("task-spent-hours-div");
-    project_task_spent_hours_span.classList.add("task-spent-hours");
-    project_task_spent_hours_span.innerHTML = "99";
-
-    project_task_stacks_div.classList.add("project-display-task-stacks");
-
-    
-
-    project_task_checkbox_div.appendChild(project_task_checkbox);
-    project_task_checkbox_div.appendChild(project_task_checkbox_label);
-
-
-    project_task_title_div.appendChild(project_task_title_h4);
-
-    project_task_spent_hours_Div.appendChild(project_task_spent_hours_span);
-    for(let i=0; i<project.stacks.length; i++){
-        if(task.stacks[i] == true){
-           let project_task_stacks_img_clone = project_task_stacks_img.cloneNode(true);
-            project_task_stacks_div.appendChild(project_task_stacks_img_clone);
-            project_task_stacks_img_clone.setAttribute('src', icons[i]);
-            project_task_stacks_img_clone.setAttribute('alt', icons[i]);
+        projectPriorityDiv.classList.add("project-priority");
+        if(project.priority != ""){
+            projectPriorityDiv.classList.add(project.priority);
+            projectPrioritySpan.classList.add(project.priority);
+            projectPriorityP.innerHTML = project.priority;
         }
-  }
 
-task_container.appendChild(project_task_checkbox_div);
-task_container.appendChild(project_task_title_div);
-task_container.appendChild(project_task_spent_hours_Div);
-task_container.appendChild(project_task_stacks_div);
-project_display_tasks_container.appendChild(task_container);
+        projectPriorityDiv.appendChild(projectPrioritySpan);
+        projectPriorityDiv.appendChild(projectPriorityP);
+
+        return projectPriorityDiv;
+    },
+
+    stacks: function(project) {
+        const projectStacksDiv = document.createElement("div");
+        const projectStacksImg = document.createElement("img");
+
+        projectStacksDiv.classList.add("project-stacks");
+
+        for(let i=0; i<project.stacks.length; i++){
+            if(project.stacks[i] == true){
+                let projectStacksImgClone = projectStacksImg.cloneNode(true);
+                projectStacksDiv.appendChild(projectStacksImgClone);
+                projectStacksImgClone.setAttribute('src', icons[i]);
+                projectStacksImgClone.setAttribute('alt', icons[i]);
+            }
+        }
+        return projectStacksDiv;
+    },
+
+    display: function(projects) {
+        mainProjectsContainer.innerHTML ="";
+        sidebarProjectsContainer.innerHTML = "";
+
+        projects.forEach(project => {
+            const container = this.container();
+            container.appendChild(this.title(project));
+            container.appendChild(this.priority(project));
+            container.appendChild(this.stacks(project));
+
+            projectAction(container, project);
+
+            displaySidebarProject(projects);
+            mainProjectsContainer.appendChild(container);
+        });
+    }
 };
 
-const display_tasks_stacks_options = (project)=>{
 
-    const project_stacks_img = document.createElement("img");
-    const project_tasks_stacks_label = document.createElement("label");
-    const project_tasks_stacks_input = document.createElement("input");
 
-    project_tasks_stacks_input.setAttribute( "type","checkbox");
-    project_tasks_stacks_input.setAttribute( "name","stack");
-    project_stacks_img.classList.add("icon");
 
-    for(let i=0; i<project.stacks.length; i++){
-        if(project.stacks[i] == true){
-           let project_tasks_stacks_label_clone = project_tasks_stacks_label.cloneNode(true);
-           let project_tasks_stacks_input_clone = project_tasks_stacks_input.cloneNode(true);              
-           let project_stacks_img_clone = project_stacks_img.cloneNode(true);
 
-           //when you use appendChild() or append() to add an element to the DOM, it doesn't create a new copy of the element. Instead, it moves the actual node. So, if you're trying to add 
-           //the same element multiple times inside a loop, you'll end up moving the same node over and over, effectively overwriting the previous position of the node.
-            project_tasks_stacks_label_clone.appendChild(project_tasks_stacks_input_clone);
-            project_tasks_stacks_label_clone.appendChild(project_stacks_img_clone);
 
-            project_stacks_img_clone.setAttribute('src', icons[i]);
-            project_stacks_img_clone.setAttribute('alt', icons[i]);
-            project_options_task_stacks.appendChild(project_tasks_stacks_label_clone);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  const taskCreator = {
+
+    checkbox: function(task) {
+        const taskCheckboxDiv = document.createElement("div");
+        const taskCheckbox = document.createElement("input");
+        const taskCheckboxLabel = document.createElement("label");
+    
+        taskCheckboxDiv.classList.add("task-checkbox-container")
+        taskCheckbox.classList.add("task-checkbox");
+        taskCheckbox.checked = true;///       mecher aki
+
+        taskCheckbox.id = `task-checkbox-${task.name}`;
+        taskCheckbox.setAttribute("name", "task-checkbox");
+        taskCheckbox.setAttribute("type", "checkbox");
+        taskCheckboxLabel.setAttribute("for", `task-checkbox-${task.name}`);
+    
+        taskCheckboxDiv.appendChild(taskCheckbox);
+        taskCheckboxDiv.appendChild(taskCheckboxLabel);
+    
+        return taskCheckboxDiv;
+    },
+  
+    title: function(task) {
+        const taskTitleDiv = document.createElement("div");
+        const taskTitleH4 = document.createElement("h4");
+    
+        taskTitleDiv.classList.add("task-title");
+        taskTitleH4.innerHTML = task.name;
+    
+        taskTitleDiv.appendChild(taskTitleH4);
+    
+        return taskTitleDiv;
+    },
+  
+    spentHours: function() {
+        const taskSpentHoursDiv = document.createElement("div");
+        const taskSpentHoursSpan = document.createElement("span");
+    
+        taskSpentHoursDiv.classList.add("task-spent-hours-div");
+        taskSpentHoursSpan.classList.add("task-spent-hours");
+        taskSpentHoursSpan.innerHTML = "99";
+    
+        taskSpentHoursDiv.appendChild(taskSpentHoursSpan);
+    
+        return taskSpentHoursDiv;
+    },
+
+    stacks: function(task) {
+        const taskStacksDiv = document.createElement("div");
+        const taskStacksImg = document.createElement("img");
+    
+        taskStacksDiv.classList.add("project-page-task-stacks");
+
+        for(let i=0; i<task.stacks.length; i++){
+            if(task.stacks[i] == true){
+               let taskStacksImgClone = taskStacksImg.cloneNode(true);
+                taskStacksDiv.appendChild(taskStacksImgClone);
+    
+                taskStacksImgClone.setAttribute('src', icons[i]);
+                taskStacksImgClone.setAttribute('alt', icons[i]);
+            }
+        }    
+        return taskStacksDiv; 
+    },
+
+    editButton: function() {
+        const editLabel = document.createElement("label");
+        editLabel.setAttribute("for", "task-edit-button");
+        editLabel.classList.add("task-edit-label");
+
+        const editSpan = document.createElement("span");
+        editSpan.classList.add("fa-solid", "fa-ellipsis");
+
+        const editButton = document.createElement("button");
+        editButton.setAttribute("id", "task-edit-button");
+        editButton.setAttribute("type", "button");
+        editButton.setAttribute("name", "task-edit-button");
+        editButton.classList.add("task-edit-button");
+
+        editLabel.appendChild(editSpan);
+        editLabel.appendChild(editButton);
+
+        return editLabel;
+    },
+
+    popUp: function(task) {
+        const popUpDiv = document.createElement("div");
+        popUpDiv.classList.add("task-pop-up", "close");
+
+        const ul = document.createElement("ul");
+
+        const deleteLi = document.createElement("li");
+        const deleteLabel = document.createElement("label");
+        deleteLabel.setAttribute("for", `${task.name}-task-pop-up-delete-button`);
+        deleteLabel.classList.add("task-pop-up-delete-button-label");
+
+        const deleteButton = document.createElement("button");
+        deleteButton.setAttribute("id", `${task.name}-task-pop-up-delete-button`);
+        deleteButton.setAttribute("type", "button");
+        deleteButton.setAttribute("name", `${task.name}-task-pop-up-delete-button`);
+        deleteButton.classList.add(`${task.name}-task-pop-up-delete-button`);
+
+        const deleteSpan = document.createElement("span");
+        deleteSpan.textContent = "delete";
+
+        deleteLabel.appendChild(deleteButton);
+        deleteLabel.appendChild(deleteSpan);
+        deleteLi.appendChild(deleteLabel);
+
+        const editLi = document.createElement("li");
+        const editLabelPopUp = document.createElement("label");
+        editLabelPopUp.setAttribute("for", "task-pop-up-edit-button");
+        editLabelPopUp.classList.add("task-pop-up-edit-button-label");
+
+        const editButtonPopUp = document.createElement("button");
+        editButtonPopUp.setAttribute("id", "task-pop-up-edit-button");
+        editButtonPopUp.setAttribute("type", "button");
+        editButtonPopUp.setAttribute("name", "task-pop-up-edit-button");
+        editButtonPopUp.classList.add("task-pop-up-edit-button");
+
+        const editSpanPopUp = document.createElement("span");
+        editSpanPopUp.textContent = "edit";
+
+        editLabelPopUp.appendChild(editButtonPopUp);
+        editLabelPopUp.appendChild(editSpanPopUp);
+        editLi.appendChild(editLabelPopUp);
+
+        ul.appendChild(deleteLi);
+        ul.appendChild(editLi);
+
+        popUpDiv.appendChild(ul);
+
+        return popUpDiv;
+    },
+
+    createTask: function(task, project) {
+        const taskContainer = document.createElement("div");
+        taskContainer.classList.add("task");
+
+        taskContainer.appendChild(this.checkbox(task));
+        taskContainer.appendChild(this.title(task));
+        taskContainer.appendChild(this.spentHours());
+        taskContainer.appendChild(this.stacks(task));
+        taskContainer.appendChild(this.editButton(task));
+        taskContainer.appendChild(this.popUp(task));
+        
+
+       // taskAction(taskContainer, task, project);
+
+        tasksContainer.appendChild(taskContainer);
+    },
+
+    updateTask: function(taskContainer, task, project) {
+        // Remove old task elements
+        while (taskContainer.firstChild) {
+            taskContainer.removeChild(taskContainer.firstChild);
         }
-   }
+
+        // Add updated task elements
+        taskContainer.appendChild(this.checkbox(task));
+        taskContainer.appendChild(this.title(task));
+        taskContainer.appendChild(this.spentHours());
+        taskContainer.appendChild(this.stacks(task));
+        taskContainer.appendChild(this.editButton());
+        taskContainer.appendChild(this.popUp());
+
+        //taskAction(taskContainer, task, project);
+    },
+
+    deleteTask: function(taskContainer) {
+        tasksContainer.removeChild(taskContainer);
+    },
+
+    displayTasks: function(project) {
+        tasksContainer.innerHTML = "";
+        const tasks = project.tasks;
+
+        tasks.forEach(task => {
+            this.createTask(task);
+        });
+    }
+};
+
+
+
+// const taskAction = (taskContainer, task, project) => {
+
+//     const taskCheckbox = taskContainer.querySelector(".task-checkbox");
+
+//     const taskEditLabel = taskContainer.querySelector(".task-edit-label")
+
+//     const taskPopUp = taskContainer.querySelector(".task-pop-up")
+
+    
+
+//         taskCheckbox.addEventListener("click", ()=> {
+//             if(taskCheckbox.checked === true){
+//                 task.name += "+";//
+
+//                 taskCreator.updateTask(taskContainer, task, project);
+//             }
+//         })
+
+
+//         taskEditLabel.addEventListener("click", ()=>{
+//             taskPopUp.classList.toggle("close");
+            
+//             onClickOutside(taskPopUp, taskEditLabel, ()=>{
+//             taskPopUp.classList.add("close");
+//             })
+//          })
+
+// }
+
+
+
+
+
+
+
+
+
+
+const projectAction = (container, project) => {
+    container.addEventListener("click", () => {
+        formTaskStacks.innerHTML = "";
+        tasksContainer.innerHTML = "";
+
+        projectPageTitle.innerHTML = project.name;
+        projectPageHours.innerHTML = "777";
+        projectPageTasksConcluidas.innerHTML = "996";
+        projectPageHoursEstimadas.innerHTML = "1000";
+        projectPageTasksEstimadas.innerHTML = "1";
+
+        displayTasksStacksOptions(project);
+
+        // project.tasks.forEach(task => {
+        //     taskCreator.displayTasks(task, project);
+        // })
+
+
+        taskCreator.displayTasks(project);
+
+
+
+
+
+
+
+
+
+
+
+        formTasks.addEventListener("submit", e => {
+            e.preventDefault();
+
+            taskFormSubmit(e, project);
+
+            tasksContainer.innerHTML = "";
+
+            taskCreator.displayTasks(project);
+
+
+
+
+        });
+
+        mainInnerProjects.classList.remove("active");
+        projectTasksDiv.classList.add("active");
+    });
+
+    // Add other functions here
+};
+
+
+
+
+
+
+
+
+
+
+
+
+const displayTasksStacksOptions = (project) => {
+    const stacksImg = document.createElement("img");
+    const tasksStacksLabel = document.createElement("label");
+    const tasksStacksInput = document.createElement("input");
+
+    tasksStacksInput.setAttribute("type", "checkbox");
+    tasksStacksInput.setAttribute("name", "stack");
+    stacksImg.classList.add("icon");
+
+    for (let i = 0; i < project.stacks.length; i++) {
+        if (project.stacks[i] == true) {
+            const tasksStacksLabelClone = tasksStacksLabel.cloneNode(true);
+            const tasksStacksInputClone = tasksStacksInput.cloneNode(true);
+            const stacksImgClone = stacksImg.cloneNode(true);
+
+            tasksStacksLabelClone.appendChild(tasksStacksInputClone);
+            tasksStacksLabelClone.appendChild(stacksImgClone);
+
+            stacksImgClone.setAttribute("src", icons[i]);
+            stacksImgClone.setAttribute("alt", icons[i]);
+            formTaskStacks.appendChild(tasksStacksLabelClone);
+        }
+    }
 }
 
 
-const project_action = (e, project) =>{ 
-
-    e.addEventListener("click", ()=>{
-        project_options_task_stacks.innerHTML = "";
-        project_display_tasks_container.innerHTML = "";
-
-        project_display_title.innerHTML = project.name;
-        project_display_hours.innerHTML = "777";//n tenho ainda kkk;
-        project_display_tasks_concluidas.innerHTML = "996";
-        project_display_hours_estimadas.innerHTML = "1000";
-        project_display_tasks_estimadas.innerHTML = "1";
-
-        display_tasks_stacks_options(project);
-
-        project.tasks.forEach(task =>{
-        display_tasks(task, project);
-    });
-
-        form_tasks.addEventListener("submit", e =>{
-        e.preventDefault();
-        task_form_submit(e, project);
-        
-        project_display_tasks_container.innerHTML = "";
-        
-         project.tasks.forEach(task =>{
-         display_tasks(task, project);
-         });
-       });
-
-     main_inner_projects.classList.remove("active");
-     project_tasks_div.classList.add("active");
-    });
-}
 
 
 
-const tab_switchers = ()=>{
-    const data_switchers = document.querySelectorAll("[data-switcher]");
+const tabSwitchers = ()=>{
+    const dataSwitchers = document.querySelectorAll("[data-switcher]");
 
-    data_switchers.forEach((switcher) => {
+    dataSwitchers.forEach((switcher) => {
         switcher.addEventListener("click", (e) => {
-            tab_cleanner();
+            tabCleanner();
 
             let targetElement = e.target; // clicked element
 
@@ -281,10 +498,10 @@ const tab_switchers = ()=>{
                     targetElement = targetElement.parentElement;
                 };
                 
-                let dataset_info = targetElement.dataset.tab;
+                let datasetInfo = targetElement.dataset.tab;
                 targetElement.classList.add("active-tab");
 
-                SwitchPage(dataset_info);
+                SwitchPage(datasetInfo);
 //When you click on the li element, the click event is first triggered on the innermost element 
 // that you clicked on. This could be the span, the h4, or the li itself if you clicked on an area 
 // of the li that doesn't contain any other elements.
@@ -314,18 +531,19 @@ function SwitchPage (dataset) {
     console.log("easy", dataset);
 
     if(document.querySelector('.page.active')){
-        const current_page = document.querySelector('.page.active');
-        current_page.classList.remove("active");
+        const currentPage = document.querySelector('.page.active');
+        currentPage.classList.remove("active");
     }
 
     if(document.querySelector(`.page.${dataset}`)){
-        const next_page = document.querySelector(`.page.${dataset}`);
-        next_page.classList.add("active");
+        const nextPage = document.querySelector(`.page.${dataset}`);
+        nextPage.classList.add("active");
     }
 };
 
-const tab_cleanner = ()=>{
-            const active_tab = document.querySelector(".active-tab");
-            if (active_tab) {
-                active_tab.classList.remove("active-tab");
+
+export const tabCleanner = ()=>{
+            const activeTab = document.querySelector(".active-tab");
+            if (activeTab) {
+                activeTab.classList.remove("active-tab");
 }};

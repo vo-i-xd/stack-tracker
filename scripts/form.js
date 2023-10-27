@@ -1,31 +1,38 @@
-import { displayProject } from "./display.js";
+import { fetchData, createProject, synchronization } from "./apiRequests.js";
+import { projectCreator } from "./display.js";
 import { projects } from "./management.js";
 
 
 const alert = document.querySelector(".alert");
-const alert_msg = document.querySelector(".alert-msg");
-let error_message = [];
+const alertMsg = document.querySelector(".alert-msg");
+let errorMessage = [];
 let arrayStacks = [];
 
 
 export const form_submit = (e) =>{
     
-    console.log( " projects: ", projects);
+    //fetchData();
+    //console.log( " projects before: ", projects);
 
-    arrayStacks = []; 
+
+    const projectName = e.target.elements.content.value;
+    const projectPriority = e.target.elements.priority.value;
+
+    arrayStacks = [];
     for(let i=0; i<e.target.elements.stack.length; i++){
         arrayStacks.push(e.target.elements.stack[i].checked);
   }
-    if(form_validation(e, projects,  arrayStacks, "project")){
+    if(formValidation(e, projects,  arrayStacks, "project")){
 
-    arrayStacks = []; 
+    arrayStacks = [];
      for(let i=0; i<e.target.elements.stack.length; i++){
          arrayStacks.push(e.target.elements.stack[i].checked);
    }
+
     const project = {
-         name: e.target.elements.content.value,
+         name: projectName,
          stacks: arrayStacks,
-         priority: e.target.elements.priority.value,
+         priority: projectPriority,
          tasks: [],
          createAt: new Date().getTime()
     };
@@ -33,11 +40,20 @@ export const form_submit = (e) =>{
     projects.push(project);
     localStorage.setItem("projects", JSON.stringify(projects));
 
+    createProject(
+        projectName,
+        arrayStacks,
+        projectPriority,
+        );
+
     e.target.reset();
-    displayProject(projects);
+    projectCreator.display(projects);
 }};
 
-export const task_form_submit = (e, project) =>{
+
+
+
+export const taskFormSubmit = (e, project) =>{
 
 
     let array_task_true_false = [];
@@ -48,12 +64,10 @@ export const task_form_submit = (e, project) =>{
         };
     };
 
- if(form_validation(e, project, array_task_true_false, "task")){
+ if(formValidation(e, project, array_task_true_false, "task")){
 
     let array_task_stacks = [...project.stacks];
     let task_stacks_index = [];
-
-
 
     for(let i =0; i <project.stacks.length; i++){
     if(project.stacks[i]){
@@ -61,7 +75,7 @@ export const task_form_submit = (e, project) =>{
     }};
 
     for(let i =0; i<array_task_true_false.length; i++){
-     array_task_stacks[task_stacks_index[i]] = array_task_true_false[i];    
+     array_task_stacks[task_stacks_index[i]] = array_task_true_false[i];
     };
 
      const task = {
@@ -69,55 +83,57 @@ export const task_form_submit = (e, project) =>{
          stacks: array_task_stacks,
          createAt: new Date().getTime()
     };
+
+
     project.tasks.push(task);
     localStorage.setItem("projects", JSON.stringify(projects));
 
     e.target.reset();
 }};
 
-const max_length_name = 18;
-const max_staks = 5;
 
-const form_validation = (event, parentObject, tasks_array, itemType) => {
+const maxLengthName = 18;
+const maxStacks = 5;
 
-    alert_msg.innerHTML = "";
-    error_message = [];
+const formValidation = (event, parentObject, tasksArray, itemType) => {
+
+    alertMsg.innerHTML = "";
+    errorMessage = [];
 
     const name = event.target.elements.content.value;
-    let tasks_array_true_length = tasks_array.filter( Boolean => Boolean == true);
+
+    let tasksArrayTrueLength = tasksArray.filter(Boolean => Boolean == true);
 
     if(!name){
-        error_message.push(`${itemType} name required`);
+        errorMessage.push(`${itemType} name required`);
 
         callAlert();
         return false;
     }
 
-    if(name.length > max_length_name){
-        error_message.push(`The name of the ${itemType} must have less than ${max_length_name} characters`);
+    if(name.length > maxLengthName){
+        errorMessage.push(`The name of the ${itemType} must have less than ${maxLengthName} characters`);
 
         callAlert();
         return false;
     }
 
-    if(helper_form_validation_task_project(itemType, name, parentObject)){
-        error_message.push(`${itemType} "${name}" already exists`);
+    if(helperFormValidationTaskProject(itemType, name, parentObject)){
+        errorMessage.push(`${itemType} "${name}" already exists`);
 
         callAlert();
         return false;
     }
 
-    if(tasks_array_true_length.length > max_staks){
-        error_message.push(`${max_staks} is maximum number of stacks`);
+    if(tasksArrayTrueLength.length > maxStacks){
+        errorMessage.push(`${maxStacks} is maximum number of stacks`);
 
         callAlert();
         return false;
      }
-    
-    
 
     if(itemType === "project" && !event.target.elements.priority.value){
-        error_message.push(`${itemType} priority required`);
+        errorMessage.push(`${itemType} priority required`);
 
         callAlert();
         return false;
@@ -125,19 +141,30 @@ const form_validation = (event, parentObject, tasks_array, itemType) => {
     return true;
 };
 
+
+
+
+
+
+
+
+
+
+
+
 const callAlert = ()=>{
-    alert_msg.innerHTML = error_message[0];
-    alert_msg_function();
+    alertMsg.innerHTML = errorMessage[0];
+    alertMsgFunction();
 };
 
 
-const helper_form_validation_task_project = (itemType, name, parentObject) => {
+const helperFormValidationTaskProject = (itemType, name, parentObject) => {
     const items = itemType === 'task' ? parentObject.tasks : parentObject;
 
     return items.find(obj => obj.name === name);
 }
 
-const alert_msg_function = ()=>{
+const alertMsgFunction = ()=>{
 
         alert.classList.add("show");
         alert.classList.remove("hide");

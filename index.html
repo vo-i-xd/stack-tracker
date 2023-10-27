@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="a stack time tracker, used to tracker the amount of time you spend on each stack of programming">
+  <meta name="theme-color" content="#317EFB"/>
+
   <title>CHALLENGE_stopwatch-program⏱️</title>
 
   <script src="./scripts/timer.js" defer></script>
@@ -12,6 +14,7 @@
   <script src="./scripts/management.js" type="module" defer></script>
   <script src="./scripts/display.js" type="module" defer></script>
   <script src="./scripts/form.js" type="module" defer></script>
+  <script src="./scripts/apiRequests.js" type="module" defer></script>
 
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -80,7 +83,8 @@
 
     <main id="main-projects" class="projects active">
 
-      <div class="main-inner-projects page projects-tab active">
+      <div class="main-inner-projects page projects-tab ">
+        <!-- active -->
 
 
         <header class="header-info">
@@ -135,12 +139,12 @@
             </div>
 
             <div class="div-span">
-              <span class="project-display-hours-stimadas">100</span>
+              <span class="project-page-hours-stimadas">100</span>
               <span class="text">concluidas na semana</span>
             </div>
       
             <div class="div-span">
-              <span class="project-display-tasks-pendentes">15</span>
+              <span class="project-page-tasks-pendentes">15</span>
               <span class="text">concluidas hoje</span>
             </div>
 </div>
@@ -270,7 +274,7 @@
 
          <!-- <div class="project">
 
-          <div class="project-tittle">
+          <div class="project-title">
             <span class="fa-solid fa-folder"></span>
             <h4>landing page</h4>
           </div>
@@ -296,26 +300,26 @@
   </div>
 
 
-  <div class="project-display-container page">
+  <div class="project-page-container page active ">
 
-    <header class="project-display-header-header" >
+    <header class="project-page-header-header" >
       
-      <h2 class="project-display-tittle">project name</h2>
+      <h2 class="project-page-title">project name</h2>
       <button class="project-close fa-solid fa-xmark" ></button>
     </header>
     
-    <header class="project-display-info-header">
+    <header class="project-page-info-header">
 
-        <div class="project-display-header-tempo-task">
-          <span class="project-display-header-tempo selected">tempo</span>
-          <span class="project-display-header-tasks">tasks</span>
+        <div class="project-page-header-tempo-task">
+          <span class="project-page-header-tempo selected">tempo</span>
+          <span class="project-page-header-tasks">tasks</span>
         </div>
 
-        <div class="project-display-header-tempo-container">
+        <div class="project-page-header-tempo-container">
 
         <div class="div-span">
           <div class="span-container">
-            <span class="project-display project-display-hours-concluidas">36</span>
+            <span class="project-page project-page-hours-concluidas">36</span>
             <span>h&nbsp</span>
 
             <span class="tempo-total-task-min aki-vai-o-hide">2</span>
@@ -327,7 +331,7 @@
 
         <div class="div-span">
           <div class="span-container">
-            <span class="project project-display-tasks-concluidas">3</span>
+            <span class="project project-page-tasks-concluidas">3</span>
           </div>
         <span class="text">semana</span>
         </div>
@@ -335,25 +339,25 @@
 
         <div class="div-span">
           <div class="span-container">
-            <span class="project project-display-hours-stimadas">36</span>
+            <span class="project project-page-hours-stimadas">36</span>
           </div>
         <span class="text">horas estimadas</span>
         </div> 
       </div>
 
-      <div class="project-display-header-tasks-container hide">
+      <div class="project-page-header-tasks-container hide">
           <div class="div-span">
             <span class="project tasks-pendentes">15</span>
             <span class="text">tasks concluidas</span>
           </div>
 
           <div class="div-span">
-            <span class="project-display-hours-stimadas">100</span>
+            <span class="project-page-hours-stimadas">100</span>
             <span class="text">concluidas na semana</span>
           </div>
     
           <div class="div-span">
-            <span class="project-display-tasks-pendentes">15</span>
+            <span class="project-page-tasks-pendentes">15</span>
             <span class="text">concluidas hoje</span>
           </div>
       </div>
@@ -363,9 +367,9 @@
 
 
 
-      <form id="project-display-add-task">
+      <form id="project-page-add-task">
 
-      <header class="project-display-header">
+      <header class="project-page-header">
 
         <input type="text" autoComplete="off" id="new_task" name="content" placeholder="add a task"/>
 
@@ -381,8 +385,8 @@
         </label>
       </header>
 
-      <div class="form-tasks-options close">
 
+      <div class="form-tasks-options close">
           <div class="form-task-stacks">
 
              <!-- <label>
@@ -401,31 +405,116 @@
     </div>
 
     
-    <div class="project-display-tasks-container">
+    <div class="project-page-tasks-container">
       <!-- isso e uma lista lembra de lembra de trocar as tasgs -->
-
 
       <!-- <div class="task">
 
-        <div class="task-tittle">
+        <div class="task-checkbox-container">
+          <input class="task-checkbox" id="task-checkbox-only"  type="checkbox"><input/>
+          <label for="task-checkbox-only"></label>
+        </div>
+
+        <div class="task-title">
           <span class="fa-solid fa-folder"></span>
           <h4>landing page</h4>
         </div>
+
+
 
         <div class="task-spent-hours-div">
           <span class="task-spent-hours">80</span>
         </div>
 
-        <div class="project-display-task-stacks">
+        <div class="project-page-task-stacks">
           <img src="./icons/javascript.svg"></img>
             <img src="./icons/react.svg"></img>
               <img src="./icons/tailwindcss.svg"></img>
                 <img src="./icons/nodejs.svg"></img>
                   <img src="./icons/mongodb.svg"></img>
         </div>
-      </div> -->
 
 
+          <label for="project-page-task-edit-button" class="project-page-task-edit-label">
+            <button id="project-page-task-edit-button" class="project-page-task-edit-button" type="button"></button>
+            <span class="fa-solid fa-ellipsis"></span>
+          </label>
+
+
+          <div class="project-page-task-pop-up">
+
+            <ul>
+
+              <li> delete </li>
+
+              <li> edit </li>
+
+            </ul>     
+          
+          
+          </div>
+        </div> -->
+
+
+
+
+        <div class="task">
+
+          <div class="task-checkbox-container">
+            <input class="task-checkbox" id="task-checkbox-only"  type="checkbox">
+            <label for="task-checkbox-only"></label>
+          </div>
+  
+          <div class="task-title">
+            <span class="fa-solid fa-folder"></span>
+            <h4>landing page</h4>
+          </div>
+  
+  
+  
+          <div class="task-spent-hours-div">
+            <span class="task-spent-hours">80</span>
+          </div>
+  
+          <div class="project-page-task-stacks">
+            <img src="./icons/javascript.svg"></img>
+              <img src="./icons/react.svg"></img>
+                <img src="./icons/tailwindcss.svg"></img>
+                  <img src="./icons/nodejs.svg"></img>
+                    <img src="./icons/mongodb.svg"></img>
+          </div>
+  
+
+
+          
+            <label for="task-edit-button" class="task-edit-label">
+              <span class="fa-solid fa-ellipsis"></span>
+              <button id="task-edit-button" class="task-edit-button" type="button" name="task-edit-button"></button>
+            </label>
+  
+  
+            <div class="task-pop-up close">
+              <ul>
+                <li>
+                  <label for="task-pop-up-delete-button" class="task-pop-up-delete-button-label">
+                    <button id="task-pop-up-delete-button" class="task-pop-up-delete-button" type="button" name="task-pop-up-delete-button" ></button>
+                    <span>delete</span>
+                  </label>
+                </li>
+
+                <li>
+                  <label for="task-pop-up-edit-button" class="task-pop-up-edit-button-label">
+                    <button id="task-pop-up-edit-button" class="task-pop-up-edit-button" type="button" name="task-pop-up-edit-button"></button>
+                    <span>edit</span>
+                  </label>
+                </li>
+              </ul>
+            </div>
+
+            
+          </div>
+
+      </div>
     </div>
     </main>
   </section>
