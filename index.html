@@ -7,7 +7,8 @@
   <meta name="description" content="a stack time tracker, used to tracker the amount of time you spend on each stack of programming">
   <meta name="theme-color" content="#317EFB"/>
 
-  <title>CHALLENGE_stopwatch-program⏱️</title>
+  <title class="web-page-title">stack time tracker</title>
+  <!-- <div id="ClockDisplay" class="clock" onload="showTime()"></div> -->
 
   <script src="./scripts/timer.js" defer></script>
 
@@ -17,6 +18,7 @@
   <script src="./scripts/apiRequests.js" type="module" defer></script>
 
 
+  <link rel="icon" href="./icons/tab-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
@@ -33,15 +35,48 @@
   <main>
 
   </main>
-  <section class="Management">
+  <div class="Management">
 
     <aside id="sidebar" class="sidebar">
 
       <div class="sidebar-title">
+
         <div class="inner-sidebar-title">
           <span class="fa-sharp fa-solid fa-bars"></span>
-          <!-- <h3>tasks</h3> -->
         </div>
+
+        <div class="sidebar--clock">
+
+          
+          <div id="ClockDisplay" class="clock clock--display" onload="showTime()">00:00:00</div>
+
+
+
+
+          <label for="startButton" class="startButtonLabel" >
+
+            
+
+            <div class="button button--play">
+              <div class="button__shape button__shape--one"></div>
+              <div class="button__shape button__shape--two"></div>
+            </div>
+
+            <button id="startButton" class="start start--active"></button>
+
+          </label>
+
+        
+        
+          
+          <label for="resetButton" class="resetButtonLabel" >
+            <button id="resetButton" class="reset reset--hidden"></button>
+          </label>
+
+
+        </div>
+        
+
       </div>
 
 
@@ -83,7 +118,7 @@
 
     <main id="main-projects" class="projects active">
 
-      <div class="main-inner-projects page projects-tab ">
+  <section class="main-inner-projects page projects-tab active">
         <!-- active -->
 
 
@@ -177,62 +212,62 @@
 
                 <label>
                   <input type="checkbox"  name="stack">
-                <img class="icon" src="./icons/javascript.svg" alt="./icons/javascript.svg">
+                <img class="icon" src="./icons/stacks/javascript.svg" alt="./icons/stacks/javascript.svg">
                 </label>
 
                 <label>
                   <input type="checkbox"  name="stack">
-                  <img class="icon" src="./icons/typescript.svg" alt="./icons/typescript.svg">
+                  <img class="icon" src="./icons/stacks/typescript.svg" alt="./icons/stacks/typescript.svg">
                   </label>
 
                   <label>
                     <input type="checkbox"  name="stack">
-                    <img class="icon" src="./icons/react.svg" alt="./icons/react.svg">
+                    <img class="icon" src="./icons/stacks/react.svg" alt="./icons/stacks/react.svg">
                     </label>
 
                     <label>
                       <input type="checkbox"  name="stack">
-                      <img class="icon" src="./icons/angular.svg" alt="./icons/angular.svg">
+                      <img class="icon" src="./icons/stacks/angular.svg" alt="./icons/stacks/angular.svg">
                       </label>
 
                       <label>
                         <input type="checkbox"  name="stack">
-                        <img class="icon" src="./icons/vue-js.svg" alt="./icons/vue-js.svg">
+                        <img class="icon" src="./icons/stacks/vue-js.svg" alt="./icons/stacks/vue-js.svg">
                         </label>
 
                         <label>
                           <input type="checkbox"  name="stack">
-                          <img class="icon" src="./icons/tailwindcss.svg" alt="./icons/tailwindcss.svg">
+                          <img class="icon" src="./icons/stacks/tailwindcss.svg" alt="./icons/stacks/tailwindcss.svg">
                           </label>
 
                           <label>
                             <input type="checkbox"  name="stack">
-                            <img class="icon" src="./icons/springboot.svg" alt="./icons/springboot.svg">
+                            <img class="icon" src="./icons/stacks/springboot.svg" alt="./icons/stacks/springboot.svg">
                             </label>
 
                               <label>
                                 <input type="checkbox"  name="stack">
-                                <img class="icon" src="./icons/nodejs.svg" alt="./icons/nodejs.svg">
+                                <img class="icon" src="./icons/stacks/nodejs.svg" alt="./icons/stacks/nodejs.svg">
                                 </label>
 
                                 <label>
                                   <input type="checkbox"  name="stack">
-                                  <img class="icon" src="./icons/mongodb.svg" alt="./icons/mongodb.svg">
+                                  <img class="icon" src="./icons/stacks/mongodb.svg" alt="./icons/stacks/mongodb.svg">
                                   </label>
 
                                   <label>
                                     <input type="checkbox"  name="stack">
-                                    <img class="icon" src="./icons/python.svg" alt="./icons/python.svg">
+                                    <img class="icon" src="./icons/stacks/python.svg" alt="./icons/stacks/python.svg">
                                     </label>
 
                                     <label>
                                       <input type="checkbox"  name="stack">
-                                      <img class="icon" src="./icons/c.svg" alt="./icons/c.svg">
+                                      <img class="icon" src="./icons/stacks/c.svg" alt="./icons/stacks/c.svg">
                                       </label>
 
                                       <label>
                                         <input type="checkbox"  name="stack">
-                                        <img class="icon" src="./icons/c++.svg" alt="./icons/c++.svg">
+                                        <img class="icon" src="./icons/stacks/c++.svg" alt="./icons/stacks/c++.svg">
                                         </label>
             </div>
 
@@ -272,7 +307,7 @@
 
       <div class="projects-container" id="projects-container">
 
-         <!-- <div class="project">
+        <!-- <div class="project">
 
           <div class="project-title">
             <span class="fa-solid fa-folder"></span>
@@ -294,13 +329,10 @@
         </div> -->
 
       </div>
-      </div>
-
-    </div>
-  </div>
+    </section>
 
 
-  <div class="project-page-container page active ">
+  <section class="project-page-container page">
 
     <header class="project-page-header-header" >
       
@@ -389,7 +421,7 @@
       <div class="form-tasks-options close">
           <div class="form-task-stacks">
 
-             <!-- <label>
+            <!-- <label>
               <input type="checkbox"  name="stack">
               <img class="icon" src="./icons/javascript.svg">
             </label> -->
@@ -406,59 +438,10 @@
 
     
     <div class="project-page-tasks-container">
+
       <!-- isso e uma lista lembra de lembra de trocar as tasgs -->
 
-      <!-- <div class="task">
-
-        <div class="task-checkbox-container">
-          <input class="task-checkbox" id="task-checkbox-only"  type="checkbox"><input/>
-          <label for="task-checkbox-only"></label>
-        </div>
-
-        <div class="task-title">
-          <span class="fa-solid fa-folder"></span>
-          <h4>landing page</h4>
-        </div>
-
-
-
-        <div class="task-spent-hours-div">
-          <span class="task-spent-hours">80</span>
-        </div>
-
-        <div class="project-page-task-stacks">
-          <img src="./icons/javascript.svg"></img>
-            <img src="./icons/react.svg"></img>
-              <img src="./icons/tailwindcss.svg"></img>
-                <img src="./icons/nodejs.svg"></img>
-                  <img src="./icons/mongodb.svg"></img>
-        </div>
-
-
-          <label for="project-page-task-edit-button" class="project-page-task-edit-label">
-            <button id="project-page-task-edit-button" class="project-page-task-edit-button" type="button"></button>
-            <span class="fa-solid fa-ellipsis"></span>
-          </label>
-
-
-          <div class="project-page-task-pop-up">
-
-            <ul>
-
-              <li> delete </li>
-
-              <li> edit </li>
-
-            </ul>     
-          
-          
-          </div>
-        </div> -->
-
-
-
-
-        <div class="task">
+        <!-- <div class="task">
 
           <div class="task-checkbox-container">
             <input class="task-checkbox" id="task-checkbox-only"  type="checkbox">
@@ -510,65 +493,14 @@
                 </li>
               </ul>
             </div>
+          </div> -->
 
-            
-          </div>
 
       </div>
-    </div>
+    </section>
+
     </main>
-  </section>
-
-
-  <div class="timer" id="littleTimer">
-    <div class="jk">
-
-      <div class="holder">
-
-        <label for="hour">
-        <input  type="text" name="timer_input" data-text="00" placeholder="00" class="input" id="hour"></input>
-      </label>
-
-      <label for="minute">
-        <span class="colon">:</span>
-        <input  type="text" name="timer_input" data-text="00" placeholder="30" class="input" id="minute"></input>
-      </label>
-
-      <label for="second">
-        <span class="colon">:</span>
-        <input  type="text" name="timer_input" data-text="00" placeholder="00" class="input" id="second"></input>
-      </label>
-
-      </div>
-
-      <div class="button">
-        <button id="reset" class="button fa-solid">reset</button>
-        <button id="pause" class="button fa-solid">pause</button>
-        <button id="start" class="button fa-solid">start</button>
-      </div>
-
-    </div>
-
-    <div class="progressIndicator">
-
-
-
-      <div class="circle-container center">
-        <div class="semicircle"></div>
-        <div class="semicircle"></div>
-        <div class="semicircle"></div>
-        <div class="outermost-circle"></div>
-      </div>
-    </div>
   </div>
-
-
-  <div>
-  </div>
-
-
-
-
 
   <div class="alert hide" >
     <span class="fas fa-exclamation-circle"></span>

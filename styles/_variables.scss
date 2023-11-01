@@ -80,82 +80,15 @@ $circle-container: rgb(127, 255, 110);
 
 
 
-#littleTimer{
-    min-width: 180px;
-    min-height: 50px;
-    position: absolute;
-    border-radius: 20px;
-    align-items: space-between;
-    font-size: 2.5px;
-    width: 180px;
-    height: 50px;
-    margin-bottom: 80px;
-    box-shadow:0 0 0.27em $greenShadowBorder, 0 0 2.38em $greenShadow;  
-
-    .jk{
-        width: 180px;
-        height: 50px;
-        margin: right 0em;
-        
-        .holder{
-            left: 1.1em;
-            position: absolute;
-            font-size: 5em;
-
-            #hour{
-                display: none;
-            }
-            #second{
-                display: none;
-            }
-            .colon{
-                display: none;
-            }
-        }
-    }
-    div.button{
-        position: relative;
-        justify-content: space-around;
-        width: 43em;
-        left: 12em;
-        
-        .button{
-            border-radius: 7px;
-            border: none;
-            color: white;
-            height: 2em;
-            opacity: 0.9;
-            cursor: pointer;
-
-            &:hover{
-                opacity: 1;
-           }
-        }
-        #start{
-            width: 6em;
-            background-color: $darkBlue;
-        }
-        #reset{
-            width: 2em;
-            background-color: $darkBlue;
-        }
-        #pause{
-            width: 2em;
-            background-color: $darkBlue;
-        }
-    }
-.progressIndicator{
-left: -17em;
-font-size: 1.3em; 
-}
-}
-
-
-
-
 
 #sidebar.open{
-   width: 17em;
+  width: 17em;
+
+  .sidebar--clock{
+    display: flex;
+  }
+
+
     .sidebar-menu{
         ul{
             align-items: start;
@@ -198,6 +131,7 @@ font-size: 1.3em;
 
 //animations 
 
+///task check
 @keyframes slice {//arrow
     60%{
       width: 100%;
@@ -298,3 +232,23 @@ font-size: 1.3em;
       -13px -18.5px 0 0px #4f29f0;
     }
   }
+////////
+
+
+
+@mixin size($width:inherit, $height:inherit) {
+  width: $width;
+  height: $height;
+}
+
+@mixin flex($vertical, $horizontal, $direction:row) {
+  display: flex;
+  align-items: $vertical;
+  justify-content: $horizontal;
+  flex-direction: $direction;
+}
+
+@mixin clip-path($shape) {
+  -webkit-clip-path: $shape;
+  clip-path: $shape; //compatibility reason
+}

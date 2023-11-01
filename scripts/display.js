@@ -1,4 +1,5 @@
 import { taskFormSubmit } from "./form.js";
+import { closeOnClickOutside, projects } from "./management.js";
 
 
 const mainProjectsContainer = document.querySelector("#projects-container");
@@ -23,18 +24,18 @@ const formTaskStacks = document.querySelector(".form-task-stacks");
 const tasksContainer = document.querySelector(".project-page-tasks-container");
 
 const icons = {
-    0: "./icons/javascript.svg",
-    1: "./icons/typescript.svg",
-    2: "./icons/react.svg",
-    3: "./icons/angular.svg",
-    4: "./icons/vue-js.svg",
-    5: "./icons/tailwindcss.svg",
-    6: "./icons/springboot.svg",
-    7: "./icons/nodejs.svg",
-    8: "./icons/mongodb.svg",
-    9: "./icons/python.svg",
-    10: "./icons/c.svg",
-    11: "./icons/c++.svg"
+    0: "./icons/stacks/javascript.svg",
+    1: "./icons/stacks/typescript.svg",
+    2: "./icons/stacks/react.svg",
+    3: "./icons/stacks/angular.svg",
+    4: "./icons/stacks/vue-js.svg",
+    5: "./icons/stacks/tailwindcss.svg",
+    6: "./icons/stacks/springboot.svg",
+    7: "./icons/stacks/nodejs.svg",
+    8: "./icons/stacks/mongodb.svg",
+    9: "./icons/stacks/python.svg",
+    10: "./icons/stacks/c.svg",
+    11: "./icons/stacks/c++.svg"
 };
 
 
@@ -62,7 +63,7 @@ const displaySidebarProject = (projects) => {
             sidebarProjectContainer.appendChild(sidebarProjectH4);
             sidebarProjectContainer.appendChild(sidebarProjectPrioritySpan);
             
-            projectAction(sidebarProjectContainer, project);//#just make a label the points to the project;
+            projectAction(sidebarProjectContainer, project);//#just make a label that points to the project;
 
             sidebarProjectsContainer.appendChild(sidebarProjectContainer);
         });
@@ -166,8 +167,7 @@ export const projectCreator = {
 
 
 
-
-  const taskCreator = {
+export const taskCreator = {
 
     checkbox: function(task) {
         const taskCheckboxDiv = document.createElement("div");
@@ -176,7 +176,8 @@ export const projectCreator = {
     
         taskCheckboxDiv.classList.add("task-checkbox-container")
         taskCheckbox.classList.add("task-checkbox");
-        taskCheckbox.checked = true;///       mecher aki
+
+        taskCheckbox.checked = task.done;
 
         taskCheckbox.id = `task-checkbox-${task.name}`;
         taskCheckbox.setAttribute("name", "task-checkbox");
@@ -188,7 +189,7 @@ export const projectCreator = {
     
         return taskCheckboxDiv;
     },
-  
+
     title: function(task) {
         const taskTitleDiv = document.createElement("div");
         const taskTitleH4 = document.createElement("h4");
@@ -200,7 +201,7 @@ export const projectCreator = {
     
         return taskTitleDiv;
     },
-  
+
     spentHours: function() {
         const taskSpentHoursDiv = document.createElement("div");
         const taskSpentHoursSpan = document.createElement("span");
@@ -222,7 +223,7 @@ export const projectCreator = {
 
         for(let i=0; i<task.stacks.length; i++){
             if(task.stacks[i] == true){
-               let taskStacksImgClone = taskStacksImg.cloneNode(true);
+                let taskStacksImgClone = taskStacksImg.cloneNode(true);
                 taskStacksDiv.appendChild(taskStacksImgClone);
     
                 taskStacksImgClone.setAttribute('src', icons[i]);
@@ -232,19 +233,26 @@ export const projectCreator = {
         return taskStacksDiv; 
     },
 
-    editButton: function() {
+    editButton: function(task) {
+        const taskName = task.name.replace(/\s/g, '');
+
+
         const editLabel = document.createElement("label");
-        editLabel.setAttribute("for", "task-edit-button");
+        editLabel.setAttribute("for",`task-edit-button-${taskName}`);
+        editLabel.setAttribute("id", `task-edit-label-${taskName}`);
         editLabel.classList.add("task-edit-label");
+        
+
 
         const editSpan = document.createElement("span");
         editSpan.classList.add("fa-solid", "fa-ellipsis");
 
         const editButton = document.createElement("button");
-        editButton.setAttribute("id", "task-edit-button");
+
+        editButton.setAttribute("id", `task-edit-button-${taskName}`);
         editButton.setAttribute("type", "button");
-        editButton.setAttribute("name", "task-edit-button");
-        editButton.classList.add("task-edit-button");
+        editButton.setAttribute("name", "task-edit-button", `task-edit-button-${taskName}`);
+        editButton.classList.add("task-edit-button", `task-edit-button-${taskName}`);
 
         editLabel.appendChild(editSpan);
         editLabel.appendChild(editButton);
@@ -252,22 +260,27 @@ export const projectCreator = {
         return editLabel;
     },
 
+
+
     popUp: function(task) {
+        const taskName = task.name.replace(/\s/g, '');
+
         const popUpDiv = document.createElement("div");
         popUpDiv.classList.add("task-pop-up", "close");
+        popUpDiv.setAttribute("id", `task-pop-up-${taskName}`);
 
         const ul = document.createElement("ul");
-
         const deleteLi = document.createElement("li");
         const deleteLabel = document.createElement("label");
-        deleteLabel.setAttribute("for", `${task.name}-task-pop-up-delete-button`);
-        deleteLabel.classList.add("task-pop-up-delete-button-label");
+        deleteLabel.setAttribute("for", `${taskName}-task-pop-up-delete-button`);
+        //deleteLabel.classList.add("task-pop-up-delete-button-label");
 
         const deleteButton = document.createElement("button");
-        deleteButton.setAttribute("id", `${task.name}-task-pop-up-delete-button`);
+        deleteButton.setAttribute("id", `${taskName}-task-pop-up-delete-button`);
         deleteButton.setAttribute("type", "button");
-        deleteButton.setAttribute("name", `${task.name}-task-pop-up-delete-button`);
-        deleteButton.classList.add(`${task.name}-task-pop-up-delete-button`);
+        deleteButton.setAttribute("name", `${taskName}-task-pop-up-delete-button`);
+        //deleteButton.classList.add(`${task.name}-task-pop-up-delete-button`);
+
 
         const deleteSpan = document.createElement("span");
         deleteSpan.textContent = "delete";
@@ -279,13 +292,14 @@ export const projectCreator = {
         const editLi = document.createElement("li");
         const editLabelPopUp = document.createElement("label");
         editLabelPopUp.setAttribute("for", "task-pop-up-edit-button");
-        editLabelPopUp.classList.add("task-pop-up-edit-button-label");
+        //editLabelPopUp.classList.add("task-pop-up-edit-button-label");
 
         const editButtonPopUp = document.createElement("button");
         editButtonPopUp.setAttribute("id", "task-pop-up-edit-button");
         editButtonPopUp.setAttribute("type", "button");
         editButtonPopUp.setAttribute("name", "task-pop-up-edit-button");
-        editButtonPopUp.classList.add("task-pop-up-edit-button");
+        //editButtonPopUp.classList.add("task-pop-up-edit-button");
+
 
         const editSpanPopUp = document.createElement("span");
         editSpanPopUp.textContent = "edit";
@@ -302,7 +316,7 @@ export const projectCreator = {
         return popUpDiv;
     },
 
-    createTask: function(task, project) {
+    create: function(task, project) {
         const taskContainer = document.createElement("div");
         taskContainer.classList.add("task");
 
@@ -314,12 +328,13 @@ export const projectCreator = {
         taskContainer.appendChild(this.popUp(task));
         
 
-       // taskAction(taskContainer, task, project);
-
         tasksContainer.appendChild(taskContainer);
+        taskAction(taskContainer, task, project);
+
+
     },
 
-    updateTask: function(taskContainer, task, project) {
+    update: function(taskContainer, task, project) {
         // Remove old task elements
         while (taskContainer.firstChild) {
             taskContainer.removeChild(taskContainer.firstChild);
@@ -330,56 +345,73 @@ export const projectCreator = {
         taskContainer.appendChild(this.title(task));
         taskContainer.appendChild(this.spentHours());
         taskContainer.appendChild(this.stacks(task));
-        taskContainer.appendChild(this.editButton());
-        taskContainer.appendChild(this.popUp());
+        taskContainer.appendChild(this.editButton(task));
+        taskContainer.appendChild(this.popUp(task));
 
-        //taskAction(taskContainer, task, project);
+        taskAction(taskContainer, task, project);
     },
 
-    deleteTask: function(taskContainer) {
+    delete: function(taskContainer) {
         tasksContainer.removeChild(taskContainer);
     },
 
-    displayTasks: function(project) {
+    display: function(project) {
         tasksContainer.innerHTML = "";
         const tasks = project.tasks;
 
         tasks.forEach(task => {
-            this.createTask(task);
+            this.create(task, project);
         });
     }
 };
 
 
 
-// const taskAction = (taskContainer, task, project) => {
 
-//     const taskCheckbox = taskContainer.querySelector(".task-checkbox");
+const taskAction = (taskContainer, task, project) => {
+const taskName = task.name.replace(/\s/g, '');
 
-//     const taskEditLabel = taskContainer.querySelector(".task-edit-label")
-
-//     const taskPopUp = taskContainer.querySelector(".task-pop-up")
-
-    
-
-//         taskCheckbox.addEventListener("click", ()=> {
-//             if(taskCheckbox.checked === true){
-//                 task.name += "+";//
-
-//                 taskCreator.updateTask(taskContainer, task, project);
-//             }
-//         })
+const taskCheckbox = taskContainer.querySelector(".task-checkbox");
+//popUp
+const taskEditButton = taskContainer.querySelector(`#task-edit-button-${taskName}`);
+const taskPopUp = taskContainer.querySelector(`#task-pop-up-${taskName}`);
+const taskEditLabel = taskContainer.querySelector(`#task-edit-label-${taskName}`);
+const deleteButton = taskContainer.querySelector(`#${taskName}-task-pop-up-delete-button`);
 
 
-//         taskEditLabel.addEventListener("click", ()=>{
-//             taskPopUp.classList.toggle("close");
-            
-//             onClickOutside(taskPopUp, taskEditLabel, ()=>{
-//             taskPopUp.classList.add("close");
-//             })
-//          })
+closeOnClickOutside(taskEditButton, taskPopUp, taskEditLabel);
 
-// }
+
+deleteButton.addEventListener("click", ()=> {
+
+    taskCreator.delete(taskContainer);
+    project.tasks = project.tasks.filter( (tas) => tas != task);
+    localStorage.setItem("projects", JSON.stringify(projects));
+})
+
+
+
+        taskCheckbox.addEventListener("click", ()=> {
+
+                task.done = taskCheckbox.checked;
+                localStorage.setItem("projects", JSON.stringify(projects));
+                taskCreator.update(taskContainer, task, project);
+        })
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -403,35 +435,13 @@ const projectAction = (container, project) => {
 
         displayTasksStacksOptions(project);
 
-        // project.tasks.forEach(task => {
-        //     taskCreator.displayTasks(task, project);
-        // })
 
-
-        taskCreator.displayTasks(project);
-
-
-
-
-
-
-
-
-
+        taskCreator.display(project);
 
 
         formTasks.addEventListener("submit", e => {
             e.preventDefault();
-
             taskFormSubmit(e, project);
-
-            tasksContainer.innerHTML = "";
-
-            taskCreator.displayTasks(project);
-
-
-
-
         });
 
         mainInnerProjects.classList.remove("active");

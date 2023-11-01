@@ -10,73 +10,11 @@
   display: flex;
 }
 
-#littleTimer {
-  min-width: 180px;
-  min-height: 50px;
-  position: absolute;
-  border-radius: 20px;
-  align-items: space-between;
-  font-size: 2.5px;
-  width: 180px;
-  height: 50px;
-  margin-bottom: 80px;
-  box-shadow: 0 0 0.27em rgb(37, 255, 37), 0 0 2.38em rgb(46, 184, 46);
-}
-#littleTimer .jk {
-  width: 180px;
-  height: 50px;
-  margin: right 0em;
-}
-#littleTimer .jk .holder {
-  left: 1.1em;
-  position: absolute;
-  font-size: 5em;
-}
-#littleTimer .jk .holder #hour {
-  display: none;
-}
-#littleTimer .jk .holder #second {
-  display: none;
-}
-#littleTimer .jk .holder .colon {
-  display: none;
-}
-#littleTimer div.button {
-  position: relative;
-  justify-content: space-around;
-  width: 43em;
-  left: 12em;
-}
-#littleTimer div.button .button {
-  border-radius: 7px;
-  border: none;
-  color: white;
-  height: 2em;
-  opacity: 0.9;
-  cursor: pointer;
-}
-#littleTimer div.button .button:hover {
-  opacity: 1;
-}
-#littleTimer div.button #start {
-  width: 6em;
-  background-color: rgb(14, 0, 40);
-}
-#littleTimer div.button #reset {
-  width: 2em;
-  background-color: rgb(14, 0, 40);
-}
-#littleTimer div.button #pause {
-  width: 2em;
-  background-color: rgb(14, 0, 40);
-}
-#littleTimer .progressIndicator {
-  left: -17em;
-  font-size: 1.3em;
-}
-
 #sidebar.open {
   width: 17em;
+}
+#sidebar.open .sidebar--clock {
+  display: flex;
 }
 #sidebar.open .sidebar-menu ul {
   align-items: start;
@@ -189,73 +127,11 @@
   display: flex;
 }
 
-#littleTimer {
-  min-width: 180px;
-  min-height: 50px;
-  position: absolute;
-  border-radius: 20px;
-  align-items: space-between;
-  font-size: 2.5px;
-  width: 180px;
-  height: 50px;
-  margin-bottom: 80px;
-  box-shadow: 0 0 0.27em rgb(37, 255, 37), 0 0 2.38em rgb(46, 184, 46);
-}
-#littleTimer .jk {
-  width: 180px;
-  height: 50px;
-  margin: right 0em;
-}
-#littleTimer .jk .holder {
-  left: 1.1em;
-  position: absolute;
-  font-size: 5em;
-}
-#littleTimer .jk .holder #hour {
-  display: none;
-}
-#littleTimer .jk .holder #second {
-  display: none;
-}
-#littleTimer .jk .holder .colon {
-  display: none;
-}
-#littleTimer div.button {
-  position: relative;
-  justify-content: space-around;
-  width: 43em;
-  left: 12em;
-}
-#littleTimer div.button .button {
-  border-radius: 7px;
-  border: none;
-  color: white;
-  height: 2em;
-  opacity: 0.9;
-  cursor: pointer;
-}
-#littleTimer div.button .button:hover {
-  opacity: 1;
-}
-#littleTimer div.button #start {
-  width: 6em;
-  background-color: rgb(14, 0, 40);
-}
-#littleTimer div.button #reset {
-  width: 2em;
-  background-color: rgb(14, 0, 40);
-}
-#littleTimer div.button #pause {
-  width: 2em;
-  background-color: rgb(14, 0, 40);
-}
-#littleTimer .progressIndicator {
-  left: -17em;
-  font-size: 1.3em;
-}
-
 #sidebar.open {
   width: 17em;
+}
+#sidebar.open .sidebar--clock {
+  display: flex;
 }
 #sidebar.open .sidebar-menu ul {
   align-items: start;
@@ -356,14 +232,14 @@
     box-shadow: 0 -21px 0 0px #4f29f0, 13px -19.5px 0 0px #4f29f0, 19px -13px 0 0px #4f29f0, 19px 13px 0 0px #4f29f0, 20px 0px 0 0px #4f29f0, 0 20px 0 0px #4f29f0, 12.5px 17.5px 0 0px #4f29f0, -19px 13px 0 0px #4f29f0, -13px 17.5px 0 0px #4f29f0, -20px 0px 0 0px #4f29f0, -19px -13px 0 0px #4f29f0, -13px -18.5px 0 0px #4f29f0;
   }
 }
-section.Management {
+.Management {
   justify-content: space-between;
   display: flex;
   width: 100vw;
   height: 100vh;
   margin: 0px;
 }
-section.Management main.projects {
+.Management main.projects {
   flex-direction: column;
   justify-self: center;
   align-self: center;
@@ -376,15 +252,15 @@ section.Management main.projects {
   color: #788690;
   z-index: 0;
 }
-section.Management main.projects .main-inner-projects {
+.Management main.projects .main-inner-projects {
   display: none;
   flex-direction: column;
   height: 100%;
 }
-section.Management main.projects .main-inner-projects.active {
+.Management main.projects .main-inner-projects.active {
   display: flex;
 }
-section.Management main.projects .header-info {
+.Management main.projects .header-info {
   display: flex;
   background-color: #241B2F;
   width: 100%;
@@ -392,28 +268,28 @@ section.Management main.projects .header-info {
   min-width: 465px;
   padding: 0.5em;
 }
-section.Management main.projects .header-info .project-header-tempo-task {
+.Management main.projects .header-info .project-header-tempo-task {
   margin: auto 0 auto 0;
   height: 2.5em;
   width: 2em;
 }
-section.Management main.projects .header-info .project-header-tempo-task > span {
+.Management main.projects .header-info .project-header-tempo-task > span {
   color: #816A94;
   cursor: pointer;
   font-size: 0.6em;
 }
-section.Management main.projects .header-info .project-header-tempo-task > span.selected {
+.Management main.projects .header-info .project-header-tempo-task > span.selected {
   color: #AA2335;
 }
-section.Management main.projects .header-info .project-header-tempo-container, section.Management main.projects .header-info .project-header-tasks-container {
+.Management main.projects .header-info .project-header-tempo-container, .Management main.projects .header-info .project-header-tasks-container {
   display: flex;
   justify-content: space-around;
   width: 100%;
 }
-section.Management main.projects .header-info .project-header-tempo-container.hide, section.Management main.projects .header-info .project-header-tasks-container.hide {
+.Management main.projects .header-info .project-header-tempo-container.hide, .Management main.projects .header-info .project-header-tasks-container.hide {
   display: none;
 }
-section.Management main.projects .header-info .div-span {
+.Management main.projects .header-info .div-span {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -426,14 +302,14 @@ section.Management main.projects .header-info .div-span {
   min-width: 4em;
   border-radius: 20px;
 }
-section.Management main.projects .header-info .div-span .text {
+.Management main.projects .header-info .div-span .text {
   font-size: 0.5em;
   color: #816A94;
 }
-section.Management main.projects .header-info .div-span .span-container {
+.Management main.projects .header-info .div-span .span-container {
   display: flex;
 }
-section.Management main.projects header.form-header {
+.Management main.projects header.form-header {
   padding: 1em;
   gap: 1em;
   display: flex;
@@ -443,18 +319,18 @@ section.Management main.projects header.form-header {
   margin: 0 auto 0.5em auto;
   position: relative;
 }
-section.Management main.projects header.form-header form#new-todo-form {
+.Management main.projects header.form-header form#new-todo-form {
   gap: 1em;
   display: flex;
   flex-direction: column;
 }
-section.Management main.projects header.form-header form#new-todo-form .header-header {
+.Management main.projects header.form-header form#new-todo-form .header-header {
   display: flex;
   height: 1.5em;
   width: 100%;
   gap: 0.5em;
 }
-section.Management main.projects header.form-header form#new-todo-form .header-header > input {
+.Management main.projects header.form-header form#new-todo-form .header-header > input {
   display: flex;
   border-radius: 5px;
   height: 2em;
@@ -468,13 +344,13 @@ section.Management main.projects header.form-header form#new-todo-form .header-h
   background-color: #2F273A;
   color: #878278;
 }
-section.Management main.projects header.form-header form#new-todo-form .header-header > input:focus {
+.Management main.projects header.form-header form#new-todo-form .header-header > input:focus {
   outline: none;
 }
-section.Management main.projects header.form-header form#new-todo-form .header-header > input:hover {
+.Management main.projects header.form-header form#new-todo-form .header-header > input:hover {
   background-color: #352C3F;
 }
-section.Management main.projects header.form-header form#new-todo-form .header-header > label {
+.Management main.projects header.form-header form#new-todo-form .header-header > label {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -488,23 +364,23 @@ section.Management main.projects header.form-header form#new-todo-form .header-h
   transition: 0.2s ease-in-out;
   color: #88858D;
 }
-section.Management main.projects header.form-header form#new-todo-form .header-header > label span {
+.Management main.projects header.form-header form#new-todo-form .header-header > label span {
   width: 1.4em;
   height: 1.4em;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-section.Management main.projects header.form-header form#new-todo-form .header-header > label:hover {
+.Management main.projects header.form-header form#new-todo-form .header-header > label:hover {
   background-color: #352C3F;
 }
-section.Management main.projects header.form-header form#new-todo-form .header-header > label input {
+.Management main.projects header.form-header form#new-todo-form .header-header > label input {
   display: none;
 }
-section.Management main.projects header.form-header form#new-todo-form .header-header > label button {
+.Management main.projects header.form-header form#new-todo-form .header-header > label button {
   display: none;
 }
-section.Management main.projects header.form-header form#new-todo-form .form-options {
+.Management main.projects header.form-header form#new-todo-form .form-options {
   display: flex;
   justify-content: space-between;
   width: 93%;
@@ -516,71 +392,71 @@ section.Management main.projects header.form-header form#new-todo-form .form-opt
   background-color: #171520;
   opacity: 0.93;
 }
-section.Management main.projects header.form-header form#new-todo-form .form-options.close {
+.Management main.projects header.form-header form#new-todo-form .form-options.close {
   display: none;
 }
-section.Management main.projects header.form-header form#new-todo-form .form-options .stacks {
+.Management main.projects header.form-header form#new-todo-form .form-options .stacks {
   display: flex;
   gap: 1em;
   flex-wrap: wrap;
   width: 9em;
   height: 5em;
 }
-section.Management main.projects header.form-header form#new-todo-form .form-options .stacks label {
+.Management main.projects header.form-header form#new-todo-form .form-options .stacks label {
   display: flex;
   width: 1em;
   height: 1em;
   cursor: pointer;
 }
-section.Management main.projects header.form-header form#new-todo-form .form-options .stacks label > img {
+.Management main.projects header.form-header form#new-todo-form .form-options .stacks label > img {
   width: 1em;
   height: 1em;
 }
-section.Management main.projects header.form-header form#new-todo-form .form-options .stacks label input[type=checkbox]:checked ~ .icon {
+.Management main.projects header.form-header form#new-todo-form .form-options .stacks label input[type=checkbox]:checked ~ .icon {
   filter: grayscale(0%);
 }
-section.Management main.projects header.form-header form#new-todo-form .form-options .stacks label > .icon {
+.Management main.projects header.form-header form#new-todo-form .form-options .stacks label > .icon {
   filter: grayscale(100%);
 }
-section.Management main.projects header.form-header form#new-todo-form .form-options .project-priority-form {
+.Management main.projects header.form-header form#new-todo-form .form-options .project-priority-form {
   height: 4em;
   margin: auto 0 auto 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-section.Management main.projects header.form-header form#new-todo-form .form-options .project-priority-form label {
+.Management main.projects header.form-header form#new-todo-form .form-options .project-priority-form label {
   width: 5em;
   display: flex;
   align-items: center;
 }
-section.Management main.projects header.form-header form#new-todo-form .form-options .project-priority-form label p {
+.Management main.projects header.form-header form#new-todo-form .form-options .project-priority-form label p {
   font-size: 0.8em;
 }
-section.Management main.projects header.form-header form#new-todo-form .form-options .project-priority-form label input[type=radio]:checked ~ span.normal + p {
+.Management main.projects header.form-header form#new-todo-form .form-options .project-priority-form label input[type=radio]:checked ~ span.normal + p {
   color: #FFD952;
 }
-section.Management main.projects header.form-header form#new-todo-form .form-options .project-priority-form label input[type=radio]:checked ~ span.minor + p {
+.Management main.projects header.form-header form#new-todo-form .form-options .project-priority-form label input[type=radio]:checked ~ span.minor + p {
   color: #25A85D;
 }
-section.Management main.projects header.form-header form#new-todo-form .form-options .project-priority-form label input[type=radio]:checked ~ span.critical + p {
+.Management main.projects header.form-header form#new-todo-form .form-options .project-priority-form label input[type=radio]:checked ~ span.critical + p {
   color: #E85656;
 }
-section.Management main.projects header.form-header form#new-todo-form .form-options .project-priority-form label span {
+.Management main.projects header.form-header form#new-todo-form .form-options .project-priority-form label span {
   border-radius: 50%;
   padding: 0.1em;
   margin-right: 0.5em;
 }
-section.Management main.projects header.form-header form#new-todo-form .form-options .project-priority-form label span.minor {
+.Management main.projects header.form-header form#new-todo-form .form-options .project-priority-form label span.minor {
   border: solid #25A85D;
 }
-section.Management main.projects header.form-header form#new-todo-form .form-options .project-priority-form label span.normal {
+.Management main.projects header.form-header form#new-todo-form .form-options .project-priority-form label span.normal {
   border: solid #FFD952;
 }
-section.Management main.projects header.form-header form#new-todo-form .form-options .project-priority-form label span.critical {
+.Management main.projects header.form-header form#new-todo-form .form-options .project-priority-form label span.critical {
   border: solid #E85656;
 }
-section.Management main.projects .project-header {
+.Management main.projects .project-header {
   display: flex;
   justify-content: space-between;
   width: 97%;
@@ -589,19 +465,19 @@ section.Management main.projects .project-header {
   font-size: 0.6em;
   margin: auto;
 }
-section.Management main.projects .project-header :nth-child(1) {
+.Management main.projects .project-header :nth-child(1) {
   display: flex;
   width: 17em;
 }
-section.Management main.projects .project-header :nth-child(2) {
+.Management main.projects .project-header :nth-child(2) {
   display: flex;
 }
-section.Management main.projects .project-header :nth-child(3) {
+.Management main.projects .project-header :nth-child(3) {
   display: flex;
   width: 10em;
   margin-right: 0.5em;
 }
-section.Management main.projects div.projects-container {
+.Management main.projects div.projects-container {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -609,13 +485,13 @@ section.Management main.projects div.projects-container {
   height: 100%;
   overflow: scroll;
 }
-section.Management main.projects div.projects-container:nth-child(1) {
+.Management main.projects div.projects-container:nth-child(1) {
   margin-top: 2em;
 }
-section.Management main.projects div.projects-container:focus {
+.Management main.projects div.projects-container:focus {
   outline: none;
 }
-section.Management main.projects div.projects-container .project {
+.Management main.projects div.projects-container .project {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -627,57 +503,57 @@ section.Management main.projects div.projects-container .project {
   font-size: 0.636em;
   flex-shrink: 0;
 }
-section.Management main.projects div.projects-container .project .project-title {
+.Management main.projects div.projects-container .project .project-title {
   display: flex;
   align-items: center;
   height: 100%;
   gap: 1em;
   width: 17em;
 }
-section.Management main.projects div.projects-container .project .project-priority {
+.Management main.projects div.projects-container .project .project-priority {
   width: 5em;
   display: flex;
   align-items: center;
 }
-section.Management main.projects div.projects-container .project .project-priority span {
+.Management main.projects div.projects-container .project .project-priority span {
   border-radius: 50%;
   padding: 0.1em;
   margin-right: 0.5em;
 }
-section.Management main.projects div.projects-container .project .project-priority span.minor {
+.Management main.projects div.projects-container .project .project-priority span.minor {
   border: solid #25A85D;
 }
-section.Management main.projects div.projects-container .project .project-priority span.normal {
+.Management main.projects div.projects-container .project .project-priority span.normal {
   border: solid #FFD952;
 }
-section.Management main.projects div.projects-container .project .project-priority span.critical {
+.Management main.projects div.projects-container .project .project-priority span.critical {
   border: solid #E85656;
 }
-section.Management main.projects div.projects-container .project .project-stacks {
+.Management main.projects div.projects-container .project .project-stacks {
   display: flex;
   align-items: center;
   width: 14em;
   margin-right: 0.5em;
   gap: 0.3em;
 }
-section.Management main.projects div.projects-container .project .project-stacks > img {
+.Management main.projects div.projects-container .project .project-stacks > img {
   width: 1.7152658662;
   height: 1.7152658662;
 }
-section.Management main.projects div.projects-container .project span {
+.Management main.projects div.projects-container .project span {
   margin-left: 0.5em;
 }
-section.Management main.projects div.projects-container .project:hover {
+.Management main.projects div.projects-container .project:hover {
   color: #7c3aed;
   background-color: #333041;
 }
-section.Management main.projects div.projects-container .project:hover div.project-priority.minor {
+.Management main.projects div.projects-container .project:hover div.project-priority.minor {
   color: #25A85D;
 }
-section.Management main.projects div.projects-container .project:hover div.project-priority.normal {
+.Management main.projects div.projects-container .project:hover div.project-priority.normal {
   color: #FFD952;
 }
-section.Management main.projects div.projects-container .project:hover div.project-priority.critical {
+.Management main.projects div.projects-container .project:hover div.project-priority.critical {
   color: #E85656;
 }
 
@@ -760,73 +636,11 @@ section.Management main.projects div.projects-container .project:hover div.proje
   display: flex;
 }
 
-#littleTimer {
-  min-width: 180px;
-  min-height: 50px;
-  position: absolute;
-  border-radius: 20px;
-  align-items: space-between;
-  font-size: 2.5px;
-  width: 180px;
-  height: 50px;
-  margin-bottom: 80px;
-  box-shadow: 0 0 0.27em rgb(37, 255, 37), 0 0 2.38em rgb(46, 184, 46);
-}
-#littleTimer .jk {
-  width: 180px;
-  height: 50px;
-  margin: right 0em;
-}
-#littleTimer .jk .holder {
-  left: 1.1em;
-  position: absolute;
-  font-size: 5em;
-}
-#littleTimer .jk .holder #hour {
-  display: none;
-}
-#littleTimer .jk .holder #second {
-  display: none;
-}
-#littleTimer .jk .holder .colon {
-  display: none;
-}
-#littleTimer div.button {
-  position: relative;
-  justify-content: space-around;
-  width: 43em;
-  left: 12em;
-}
-#littleTimer div.button .button {
-  border-radius: 7px;
-  border: none;
-  color: white;
-  height: 2em;
-  opacity: 0.9;
-  cursor: pointer;
-}
-#littleTimer div.button .button:hover {
-  opacity: 1;
-}
-#littleTimer div.button #start {
-  width: 6em;
-  background-color: rgb(14, 0, 40);
-}
-#littleTimer div.button #reset {
-  width: 2em;
-  background-color: rgb(14, 0, 40);
-}
-#littleTimer div.button #pause {
-  width: 2em;
-  background-color: rgb(14, 0, 40);
-}
-#littleTimer .progressIndicator {
-  left: -17em;
-  font-size: 1.3em;
-}
-
 #sidebar.open {
   width: 17em;
+}
+#sidebar.open .sidebar--clock {
+  display: flex;
 }
 #sidebar.open .sidebar-menu ul {
   align-items: start;
@@ -1478,144 +1292,72 @@ section.Management main.projects div.projects-container .project:hover div.proje
   background-color: #333041;
 }
 
-.timer {
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-end;
-  z-index: 10;
-  height: 100vh;
-  width: 100vw;
-  background-image: linear-gradient(to left bottom, #0e0028, #140f4d, #211474, #33179d, #4a16c7, #4d17ce, #4f18d4, #5219db, #401ec0, #301fa4, #231d89, #1a1a6e);
-  font-size: 18px;
-  color: rgb(233, 233, 233);
-  transition: 0.3s linear;
-}
-.timer .jk {
-  background-color: rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 0.27em rgb(14, 0, 65), 0 0 1.38em rgb(14, 0, 65);
-  position: absolute;
-  border-radius: 5em;
-  z-index: 6;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  height: 12em;
-}
-.timer .jk div.holder {
-  display: flex;
-}
-.timer .jk div.holder .colon {
-  font-size: 2.5em;
-}
-.timer .jk div.holder input, .timer .jk div.holder select, .timer .jk div.holder textarea {
-  color: white;
-  text-shadow: 0 0 9px rgb(68, 0, 255);
-  font-size: 2.7em;
-}
-.timer .jk div.holder input {
-  background-color: transparent;
-  border: none;
-  width: 1.1em;
-  outline: none;
-}
-.timer .jk div.holder input::-moz-placeholder {
-  color: rgb(255, 255, 255);
-}
-.timer .jk div.holder input::placeholder {
-  color: rgb(255, 255, 255);
-}
-.timer .jk div.button {
-  display: flex;
-  justify-content: space-around;
-  width: 15em;
-}
-.timer .jk div.button .button {
-  border-radius: 7px;
-  border: none;
-  color: white;
-  height: 3em;
-  opacity: 0.9;
-  cursor: pointer;
-}
-.timer .jk div.button .button:hover {
-  opacity: 1;
-}
-.timer .jk div.button #start {
-  background-color: rgb(26, 110, 26);
-  box-shadow: 0 0 0.27em rgb(37, 255, 37), 0 0 1.38em rgb(46, 184, 46);
-  width: 12em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.timer .jk div.button #reset {
-  background-color: rgb(110, 26, 26);
-  box-shadow: 0 0 0.27em rgb(255, 37, 37), 0 0 1.38em rgb(184, 46, 46);
-  width: 8em;
+.sidebar--clock {
   display: none;
-  justify-content: center;
+  justify-content: flex-end;
+  gap: 0.7em;
   align-items: center;
+  width: 80%;
+  height: 90%;
 }
-.timer .jk div.button #pause {
-  background-color: rgb(26, 26, 110);
-  box-shadow: 0 0 0.27em rgb(37, 37, 255), 0 0 1.38em rgb(48, 46, 184);
-  width: 8em;
+.sidebar--clock .clock--display {
+  display: flex;
+  color: #17D4FE;
+  font-size: 1.7em;
+  font-family: Orbitron;
+  letter-spacing: 7px;
+}
+.sidebar--clock label {
+  width: 1.5em;
+  height: 1.5em;
+  display: flex;
+  justify-content: flex-end;
+}
+.sidebar--clock label button {
   display: none;
-  justify-content: center;
-  align-items: center;
 }
-.timer .progressIndicator {
-  font-size: 1.5em;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 10em;
-  height: 10em;
+.sidebar--clock label.resetButtonLabel {
+  display: none;
 }
-.timer .progressIndicator .circle-container {
+
+.button {
+  width: 24px;
+  height: 24px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 15.15em;
-  height: 15.15em;
-  background-color: white;
-  box-shadow: 0 0 1.38em rgb(46, 184, 46);
+  justify-content: center;
+  flex-direction: row;
+  border: 1px solid #1e90ff;
+}
+.button--play {
   border-radius: 50%;
-  position: absolute;
-  overflow: hidden;
-}
-.timer .progressIndicator .circle-container .semicircle {
-  z-index: 8;
-  width: 50%;
   height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: 1s linear;
-  transform-origin: right center;
 }
-.timer .progressIndicator .circle-container .semicircle:nth-child(1) {
-  background-color: rgb(26, 110, 26);
-  z-index: 2;
+.button--play .button__shape {
+  width: 0.37em;
+  height: 1em;
+  background: rgb(255, 255, 255);
+  transition: 0.3s ease-in-out;
 }
-.timer .progressIndicator .circle-container .semicircle:nth-child(2) {
-  z-index: 3;
-  background-color: rgb(26, 110, 26);
+.button--play .button__shape--one {
+  -webkit-clip-path: polygon(0 0, 100% 25%, 100% 75%, 0% 100%);
+  clip-path: polygon(0 0, 100% 25%, 100% 75%, 0% 100%);
+  transform: translateX(2px);
 }
-.timer .progressIndicator .circle-container .semicircle:nth-child(3) {
-  z-index: 4;
-  background-color: rgb(255, 255, 255);
+.button--play .button__shape--two {
+  -webkit-clip-path: polygon(0 25%, 100% 50%, 100% 50%, 0 75%);
+  clip-path: polygon(0 25%, 100% 50%, 100% 50%, 0 75%);
+  transform: translateX(1.8px);
 }
-.timer .progressIndicator .circle-container .outermost-circle {
-  width: 14em;
-  height: 14em;
-  background-color: rgb(14, 0, 40);
-  border-radius: 50%;
-  z-index: 5;
+.button--active .button__shape--one {
+  -webkit-clip-path: polygon(0 15%, 50% 15%, 50% 85%, 0% 85%);
+  clip-path: polygon(0 15%, 50% 15%, 50% 85%, 0% 85%);
+  transform: translateX(2px);
+}
+.button--active .button__shape--two {
+  -webkit-clip-path: polygon(50% 15%, 100% 15%, 100% 85%, 50% 85%);
+  clip-path: polygon(50% 15%, 100% 15%, 100% 85%, 50% 85%);
+  transform: translateX(-1px);
 }
 
 *,

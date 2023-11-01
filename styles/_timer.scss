@@ -1,148 +1,86 @@
-.timer{
-    position: fixed;
-    display: flex;
-    justify-content: center;
+.sidebar--clock{
+    display: none;
+    justify-content: flex-end;
+    gap: .7em;
     align-items: center;
-    align-self: flex-end;
-    z-index: 10;
-    height: 100vh;
-    width: 100vw;
-    background-image: linear-gradient(to left bottom, #0e0028, #140f4d, #211474, #33179d, #4a16c7, #4d17ce, #4f18d4, #5219db, #401ec0, #301fa4, #231d89, #1a1a6e);
+    width: 80%;
+    height: 90%;
+    
 
-
-    font-size: 18px;
-    color: rgb(233, 233, 233);
-    transition: .3s linear;
-
-    .jk{
-        background-color: $lightGray;
-        box-shadow:0 0 0.27em $shadowBlue, 0 0 1.38em $shadowBlue;             
-        position: absolute;
-        border-radius: 5em;
-        z-index: 6;
+    .clock--display {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        height: 12em;
-
-        div.holder{
-            .colon{
-            font-size: 2.5em;
-            }
-
-            display: flex;
-            input, select, textarea{
-            color: white;
-            text-shadow: 0 0 9px $textShadow;
-            font-size: 2.7em;
-            }
-
-            input{
-                &::placeholder{
-                    color:rgb(255, 255, 255);
-                }
-                background-color: transparent;
-                border: none;
-                width: 1.1em;
-                outline: none;
-            }
-        }
-        div.button{
-            display: flex;
-            justify-content: space-around;
-            width: 15em;
-            
-            .button{
-                border-radius: 7px;
-                border: none;
-                color: white;
-                height: 3em;
-                opacity: 0.9;
-                cursor: pointer;
-
-                &:hover{
-                    opacity: 1;
-               }
-            }
-            #start{
-                background-color: $green;
-                box-shadow:0 0 0.27em $greenShadowBorder, 0 0 1.38em $greenShadow;                
-                width: 12em;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            #reset{
-                background-color: $red;
-                box-shadow:0 0 0.27em $redShadowBorder, 0 0 1.38em $redShadow; 
-                width: 8em;
-                display: none;
-                justify-content: center;
-                align-items: center;
-            }
-            #pause{
-                background-color: $Blue;
-                box-shadow:0 0 0.27em $BlueShadowBorder, 0 0 1.38em $blueShadow; 
-                width: 8em;
-                display: none;
-                justify-content: center;
-                align-items: center;
-            }
-        }
-    }
-    .progressIndicator{
-        font-size: 1.5em;
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 10em;
-        height: 10em;          //>>not
-
-    .circle-container{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 15.15em;
-        height: 15.15em;
-        background-color: white;
-        box-shadow: 0 0 1.38em $greenShadow; 
-        border-radius: 50%;
-        position: absolute;
-        overflow: hidden;
-        
-        .semicircle{
-            z-index: 8;
-            width: 50%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            transition: 1s linear;
-            transform-origin: right center;
-
-            &:nth-child(1){
-                background-color: $green;
-                z-index: 2;
-            }
-            &:nth-child(2){
-                z-index: 3;
-                background-color: $green;
-            }
-            &:nth-child(3){
-                z-index: 4;
-                background-color: rgb(255, 255, 255);
-            }
-        }
-        .outermost-circle{
-            width: 14em;
-            height: 14em;
-            background-color: $darkBlue;
-            border-radius: 50%;
-            z-index: 5;
-        }
+        color: #17D4FE;
+        font-size: 1.7em;
+        font-family: Orbitron;
+        letter-spacing: 7px;
     }
 
+
+    label{
+        width: 1.5em;
+        height: 1.5em;
+        display: flex;
+        justify-content: flex-end;
+
+        button{
+            display: none;
+        }
+
+        // &.startButtonLabel{
+        //   //  background-color: #777;
+
+        // }
+
+        &.resetButtonLabel{
+            display: none;
+        }
+
+
+    }
 }
+
+
+
+
+.button {
+    @include size(24px, 24px);
+    @include flex(center, center);
+    border: 1px solid #1e90ff;
+
+    &--play {
+        border-radius: 50%;
+        height: 100%;
+    }
+    &--play & {//refers to both the button and button--play; the last & keeps button scope as if there was no --play
+        &__shape {
+            width: .37em;
+            height: 1em;
+            background: rgb(255, 255, 255);
+            transition: .3s ease-in-out;
+
+            &--one {
+                @include clip-path(polygon(0 0, 100% 25%, 100% 75%, 0% 100%));
+                transform: translateX(2px);
+            }
+
+            &--two {
+                @include clip-path(polygon(0 25%, 100% 50%, 100% 50%, 0 75%));
+                transform: translateX(1.8px);
+            }
+        }
+    }
+    &--active & {//button and button--active
+        &__shape {
+
+            &--one {
+                @include clip-path(polygon(0 15%, 50% 15%, 50% 85%, 0% 85%));
+                transform: translateX(2px)
+            }
+            
+            &--two {
+                @include clip-path(polygon(50% 15%, 100% 15%, 100% 85%, 50% 85%));
+                transform: translateX(-1px)
+            }
+        }
+    }
 }

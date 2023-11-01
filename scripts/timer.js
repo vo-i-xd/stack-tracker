@@ -1,266 +1,88 @@
-  const timer = document.querySelector(".timer");
-  const jk = document.querySelector(".jk");
-  //const progressIndicator = querySelector(".progressIndicator");
 
-  const start = document.querySelector("#start");
-  const pause = document.querySelector("#pause");
-  const reset = document.querySelector("#reset");
+const clockDisplay = document.querySelector("#ClockDisplay");
+const startButton = document.querySelector("#startButton");
+const playButton = document.querySelector('.button--play');
+const webPageTitle = document.querySelector(".web-page-title");
 
-  const sec = document.querySelector("#second");
-  const min = document.querySelector("#minute");
-  const hour = document.querySelector("#hour");
+const projectsPageName = "stack time tracker";
+const oneMinute = 1000*60;
 
-  const semicircleOne = document.querySelector(".semicircle:nth-child(1)");
-  const semicircleTwo = document.querySelector(".semicircle:nth-child(2)");
-  const semicircleThree = document.querySelector(".semicircle:nth-child(3)");
+startButton.addEventListener('click', () => timer.pomodoroOnOff());
 
-  const holder = document.querySelector(".holder");
+const timer = {
+  intervalId: null,
+  startTime: 0,
+  elapsedTime: 0,
+  countDown: 0,
+  sumDown: 0,
+  paused: true,
+  pomodoro: true,
+  pomodoroLength: 30,
+  minutsToUpdade: 1,
 
-  let semigreen =0;
-  let samired = 0;
-
-  let countDown; 
-  let setFlow = true; //countDown = true //countUp = false;
-  let toggleTimer = false; // false no toggle yet;
-  
-  let startTime = 0;
-  let elapsedTime = 0;
-  let paused = true;
-  let intervalId;
-  let angle = 0;
+  pad: function(unit) {
+    return (("0") + unit).length > 2 ? unit : "0" + unit;
+  },
 
 
-function updateTime(){
+  updateTime: function () {
+    this.elapsedTime = (Math.floor((Date.now() - this.startTime) / 1000)) * 1000;
+    console.log()
 
-elapsedTime = (Math.floor( (Date.now() - startTime) / 1000) )*1000;
-
-if(setFlow){         
-
-//   if(countDown < 15*1000){
-// sec.style = "color:  rgb(211, 73, 73); font-size: 2.7em;";
-// min.style = "color:  rgb(211, 73, 73); font-size: 2.rem;";
-// hour.style = "color:  rgb(211, 73, 73); font-size: 2.rem;";
-// holder.style = "text-shadow: 0 0 20px rgb(68, 0, 255);";
-//   }            
-
-countDown =  sumDown - elapsedTime;
-angle =Math.floor((elapsedTime/sumDown)*360);
-}
-else{                                
+    this.countDown = this.pomodoro ? this.sumDown - this.elapsedTime : this.elapsedTime;
 
 
-countDown =  elapsedTime;
-angle = (Math.floor((elapsedTime/100))*3.6)/36;
-
-
-}
-console.log("\n\nstart:angle: " + angle);
-console.log("\ncountDown: " + countDown);
+    if(this.elapsedTime%(this.minutsToUpdade * oneMinute) === 0) console.log("1min passed");
 
 
 
 
- if( angle > 180 && angle<=360){
-   semicircleThree.style = "display: none;";
-   semicircleOne.style = `transform: rotate(180deg);`;
-   semicircleTwo.style = `transform: rotate(${angle}deg);`;
- }
- else if(angle<360){
+    if (this.countDown <= 0) this.stop();
 
-   semicircleThree.style = " display: block";
-   semicircleOne.style = `transform: rotate(${angle}deg)`;
-   semicircleTwo.style = `transform: rotate(${angle}deg)`;
- }
- else {
+    const sec = this.pad(Math.floor((this.countDown / 1000) % 60));
+    const min = this.pad(Math.floor((this.countDown / (1000 * 60)) % 60));
+    const hour = this.pad(Math.floor((this.countDown / (1000 * 60 * 60)) % 60));
 
-  semicircleOne.style = `transform: rotate(0deg); transition: 0s;`;
-  semicircleTwo.style = `transform: rotate(0deg); transition: 0s;`;
-  semicircleThree.style = "display: block;";
-  console.log("test077");
- }
+    const innerTimer = `${this.pad(hour)}:${this.pad(min)}:${this.pad(sec)}`;
 
-//  if( angle > 180){
-//   semicircleThree.style.display = "none";
-//   semicircleOne.style.transform = `rotate(180deg)`;
-//   semicircleTwo.style.transform = `rotate(${angle}deg)`;
-// }
-// else{          //decrescent
-//   semicircleThree.display = "block";
-//   semicircleOne.style.transform = `rotate(${angle}deg)`;
-//   semicircleTwo.style.transform = `rotate(${angle}deg)`;
-// }
+    clockDisplay.innerText = innerTimer;
+    const tabText = `${innerTimer} | ${projectsPageName}`;
+    webPageTitle.innerText = tabText;
+  },
+
+  stop: function() {
+    this.paused = true;
+    this.startTime = 0;
+    this.elapsedTime = 0;
+    this.countDown = Math.abs(this.countDown);
+    clearInterval(this.intervalId);
+    alert("it's over");
+  },
 
 
+  start: function () {
+    this.paused = false;
+
+    this.startTime = this.elapsedTime && this.pomodoro === false ? Date.now() - this.elapsedTime : Date.now();
+    this.elapsedTime = this.elapsedTime || 0;
+    this.sumDown = this.sumDown - this.elapsedTime || this.pomodoroLength * oneMinute;
+    this.intervalId = setInterval(() => this.updateTime(), 1000);
+  },
 
 
+  pomodoroOnOff: function() {
 
-if(countDown <= 0){//stop interval
+    if (this.paused) {
+      this.paused = false;      
+      playButton.classList.add('button--active');
+      this.start();
 
-  paused = true;
-  clearInterval(intervalId);
+    } else {
 
-  startTime = 0;
-  elapsedTime = 0;
-  currentTime = 0;
-
-setInterval(()=>{  
-start.style = "display: flex;"
-pause.style = "display: none;"
-reset.style = "display: none;"}, 1000);
-
-  pause.innerHTML ="pause";
-
-  sec.value = "00";
-  hour.value = "00";
-  min.value = "00";
-
-sec.style = "color: #fff ; font-size: 2.7em;";
-min.style = "color: #fff ; font-size: 2.7em;";
-hour.style = "color:#fff; font-size: 2.7em;";
-
- // window.alert("it's over");
- //countDown = Math.abs(countDown); we can work on that later put a - in front of the timer make it red, and bigger
- // and save that elapsed time when reache 0
-}
-    sec.value = pad(Math.floor((countDown / 1000) % 60));
-    min.value = pad(Math.floor((countDown / (1000 * 60)) % 60));
-    hour.value = pad(Math.floor((countDown / (1000 * 60 * 60)) % 60));
-
-    function pad(unit){
-        return (("0") + unit).length > 2 ? unit : "0" + unit;
+      console.log(this.elapsedTime);
+      this.paused = true;
+      clearInterval(this.intervalId);
+      playButton.classList.remove('button--active');
     }
-}
-
-
-
-  start.addEventListener("click", () => {
-
-      if(paused){
-          paused = false;
-          startTime = Date.now();
-
-          if(setFlow){
-            if(sec.value == 0 && min.value == 0 && hour.value == 0){
-            sumDown = 30*1000*60;  
-            }
-            else{
-            sumDown = (sec.value*1000) + (min.value*1000*60) + (hour.value*1000*60*60);
-            }}
-
-          intervalId = setInterval(updateTime, 1000);
-      }
-          start.style = "display: none;"
-          pause.style = "display: flex;"
-          reset.style = "display: flex;"
-          sec.style = "color: rgb(111, 0, 255); font-size: 2.7em;";
-          min.style = "color: rgb(111, 0, 255); font-size: 2.7em;";
-          hour.style = "color:rgb(111, 0, 255); font-size: 2.7em;";
-          semicircleThree.style.display = "block";
-          semicircleOne.style.transform = `rotate(0deg)`;
-          semicircleTwo.style.transform = `rotate(0deg)`;
-  });
-
-
-  pause.addEventListener("click", () => {
-    let checker = document.querySelector("#littleTimer");
-
-      if(!paused){
-
-        if(checker == null){
-          pause.innerHTML ="keep";
-          console.log("sddfkeep");
-        }
-        paused = true;
-        clearInterval(intervalId);
-      }
-      else{
-
-        if(checker == null){
-          pause.innerHTML ="pause";
-          console.log("sddfpause");
-        }
-          paused = false;
-          startTime = Date.now() - elapsedTime;
-          intervalId = setInterval(updateTime, 1000);
-      }
-  });
-
-
-  reset.addEventListener("click", () => {
-    let checker = document.querySelector("#littleTimer");
-      paused = true;
-      
-
-      startTime = 0;
-      elapsedTime = 0;
-      currentTime = 0;
-
-      start.style = "display: flex;"
-      pause.style = "display: none;"
-      reset.style = "display: none;"
-      sec.style = "color:  rgb(255, 255, 255);";
-      min.style = "color:  rgb(255, 255, 255);";
-      hour.style = "color:  rgb(255, 255, 255);";
-
-      if(checker == null){
-        pause.innerHTML ="pause";
-      }
-
-      sec.value = "00";
-      hour.value = "00";
-      min.value = "00";
-
-      clearInterval(intervalId);
-  });
-
-
-
-  function validDigits(text){
-    return text.replace(/^(?!([0-5]?[0-9]|60)$).*$/, "");
   }
-
-[sec, min, hour].forEach((el) => {
-    el.addEventListener("input", (e) => {
-      const updatedValue = validDigits(e.target.value);
-
-      e.target.value = updatedValue;
-    });
-  });
-////                                \\\..> > > new < < <..///
-
-
-timer.addEventListener("dblclick", ()=>{
-
-
-  
-if(!toggleTimer){
-  toggleTimer = true;
-  timer.id = "littleTimer";
-  start.classList.add("fa-play");
-  reset.classList.add("fa-stop");
-  pause.classList.add("fa-pause");
-  start.innerHTML = "";
-  reset.innerHTML = "";
-  pause.innerHTML = "";
 }
-else{
-  toggleTimer = false;
-  timer.removeAttribute('id');
-  start.classList.remove("fa-play");
-  reset.classList.remove("fa-stop");
-  pause.classList.remove("fa-pause");
-  start.innerHTML = "start";
-  reset.innerHTML = "reset";
-  pause.innerHTML = "pause";
-
-
-}
-
-
-
-  });
-
-
-
-  // header.classList.remove('open');
-  // noScrool.classList.remove('no_scrool');

@@ -1,178 +1,161 @@
 import { projectCreator, tabCleanner } from "./display.js";
-import { form_submit } from "./form.js";
+import { formSubmit } from "./form.js";
 //import { fetchData } from "./httpsRequests.js";
 
-const options_button = document.querySelector("#options-button");
-const options_button_label = document.querySelector(".options-button-label")
+const optionsButton = document.querySelector("#options-button");
+const optionsButtonLabel = document.querySelector(".options-button-label");
 
-//main projects
-const main_inner_projects = document.querySelector(".main-inner-projects");
+// Main projects
+const mainInnerProjects = document.querySelector(".main-inner-projects");
 
-//form
+// Form
 const form = document.querySelector("#new-todo-form");
 
+// Form display-task
+const projectOptionsTaskStacks = document.querySelector(".form-task-stacks");
 
-//form display-task
-const project_options_task_stacks = document.querySelector(".form-task-stacks");
+// Toggle main
+const projectHeaderTempoTotalContainer = document.querySelector(".project-header-tempo-container");
+const projectHeaderTasksContainer = document.querySelector(".project-header-tasks-container");
+const projectHeaderTempoTotalToggle = document.querySelector(".project-header-tempo");
+const projectHeaderTasksToggle = document.querySelector(".project-header-tasks");
 
-//toglle main
-const project_header_tempo_total_container = document.querySelector(".project-header-tempo-container");
-const project_header_tasks_container = document.querySelector(".project-header-tasks-container");
-const project_header_tempo_total_toggle = document.querySelector(".project-header-tempo");
-const project_header_tasks_toggle = document.querySelector(".project-header-tasks");
+const projectPageTasksContainer = document.querySelector(".project-page-tasks-container");
 
-const project_page_tasks_container = document.querySelector(".project-page-tasks-container");
+const projectTasksDiv = document.querySelector(".project-page-container");
 
-const project_tasks_div = document.querySelector(".project-page-container")
-
-
-//sidebar toggle
-const sidebar_title = document.querySelector(".inner-sidebar-title");
+// Sidebar toggle
+const sidebarTitle = document.querySelector(".inner-sidebar-title");
 const sidebar = document.querySelector("#sidebar");
 
-//display tasks toglle 
-const project_page_close_button = document.querySelector(".project-close");
+// Display tasks toggle
+const projectPageCloseButton = document.querySelector(".project-close");
 
-const projectPageTaskPopUp = document.querySelector(".task-pop-up");
-const projectPageTaskEditButton = document.querySelector(".task-edit-button");
-const projectPageTaskEditlabel = document.querySelector(".task-edit-label");
+const projectPageButtonTasksOptions = document.querySelector(".input-button-tasks-tag-options");
+const projectPageButtonTasksOptionsLabel = document.querySelector(".input-button-tasks-tag-options-label");
 
-const project_page_button_tasks_options = document.querySelector(".input-button-tasks-tag-options");
-const project_page_button_tasks_options_label = document.querySelector(".input-button-tasks-tag-options-label");
+const formOptions = document.querySelector(".form-options");
+const formTasksOptions = document.querySelector(".form-tasks-options");
 
-const form_options = document.querySelector(".form-options");
-const form_tasks_options = document.querySelector(".form-tasks-options");
-
-
-
+const projectPageHeaderTempoTotalContainer = document.querySelector(".project-page-header-tempo-container");
+const projectPageHeaderTasksContainer = document.querySelector(".project-page-header-tasks-container");
+const projectPageHeaderTempoTotalToggle = document.querySelector(".project-page-header-tempo");
+const projectPageHeaderTasksToggle = document.querySelector(".project-page-header-tasks");
 
 
 
 
-const project_page_header_tempo_total_container = document.querySelector(".project-page-header-tempo-container")
-const project_page_header_tasks_container = document.querySelector(".project-page-header-tasks-container");
-const project_page_header_tempo_total_toggle = document.querySelector(".project-page-header-tempo");
-const project_page_header_tasks_toggle = document.querySelector(".project-page-header-tasks");
+
+// window.addEventListener('beforeunload', (event) => {
+//     event.preventDefault();
+//     event.returnValue = '';
+// });
 
 
 
 
 export let projects;
 window.addEventListener("load", () => {
-  projects = JSON.parse(localStorage.getItem("projects")) || [];
-  console.log(typeof projects);
+    projects = JSON.parse(localStorage.getItem("projects")) || [];
+    console.log(typeof projects);
 
-  
-  //displayProject(projects);
-  projectCreator.display(projects);
-  //fetchData();
+    projectCreator.display(projects);
+  // fetchData();
 
-  form.addEventListener("submit", e => {
-    e.preventDefault(); 
-    form_submit(e);
-  })
+    form.addEventListener("submit", e => {
+        e.preventDefault();
+        formSubmit(e);
+    });
 });
 
 
-
-
-//toggles:
-sidebar_title.addEventListener("click", ()=>{
-sidebar.classList.toggle("open");
+// Toggles:
+sidebarTitle.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
 });
 
+closeOnClickOutside(optionsButton, formOptions, optionsButtonLabel);
+closeOnClickOutside(projectPageButtonTasksOptions, formTasksOptions, projectPageButtonTasksOptionsLabel);
 
-
-
-
-
-
-closeOnClickOutside(options_button, form_options, options_button_label);
-
-closeOnClickOutside(projectPageTaskEditButton, projectPageTaskPopUp, projectPageTaskEditlabel);
-
-closeOnClickOutside(project_page_button_tasks_options, form_tasks_options, project_page_button_tasks_options_label);
-
-
-
-
-
-
-project_page_close_button.addEventListener("click", ()=>{
-
-    project_options_task_stacks.innerHTML = "";
-    project_page_tasks_container.innerHTML = "";
-    main_inner_projects.classList.add("active");
-    project_tasks_div.classList.remove("active");
-    tabCleanner();
+projectPageCloseButton.addEventListener("click", () => {
+projectOptionsTaskStacks.innerHTML = "";
+projectPageTasksContainer.innerHTML = "";
+mainInnerProjects.classList.add("active");
+projectTasksDiv.classList.remove("active");
+tabCleanner()
 });
 
-project_header_tempo_total_toggle.addEventListener("click", ()=>{
-    project_header_tempo_total_container.classList.remove("hide");
-    project_header_tasks_container.classList.add("hide");
-    project_header_tempo_total_toggle.classList.add("selected");
-    project_header_tasks_toggle.classList.remove("selected");
- });
+toggleTempoTask(
+    projectHeaderTempoTotalToggle,
+    projectHeaderTempoTotalContainer,
+    projectHeaderTasksContainer,
+    projectHeaderTasksToggle );
 
-project_header_tasks_toggle.addEventListener("click", ()=>{
-    project_header_tempo_total_container.classList.add("hide");
-    project_header_tasks_container.classList.remove("hide");
-    project_header_tempo_total_toggle.classList.remove("selected");
-    project_header_tasks_toggle.classList.add("selected");
-});
+toggleTempoTask( 
+    projectHeaderTasksToggle,
+    projectHeaderTasksContainer,
+    projectHeaderTempoTotalContainer,
+    projectHeaderTempoTotalToggle );
 
-project_page_header_tempo_total_toggle.addEventListener("click", ()=>{
+toggleTempoTask(
+    projectPageHeaderTempoTotalToggle,
+    projectPageHeaderTempoTotalContainer,
+    projectPageHeaderTasksContainer,
+    projectPageHeaderTasksToggle );
 
-    project_page_header_tempo_total_container.classList.remove("hide");
-    project_page_header_tasks_container.classList.add("hide");
-    project_page_header_tempo_total_toggle.classList.add("selected");
-    project_page_header_tasks_toggle.classList.remove("selected");
- });
- 
-project_page_header_tasks_toggle.addEventListener("click", ()=>{
-    project_page_header_tempo_total_container.classList.add("hide");
-    project_page_header_tasks_container.classList.remove("hide");
-    project_page_header_tempo_total_toggle.classList.remove("selected");
-    project_page_header_tasks_toggle.classList.add("selected");
-});
+toggleTempoTask (
+    projectPageHeaderTasksToggle,
+    projectPageHeaderTasksContainer,
+    projectPageHeaderTempoTotalContainer,
+    projectPageHeaderTempoTotalToggle );
 
 
+function toggleTempoTask (button, buttonContainer, otherContainer, otherButton){
 
-
-
-
-function closeOnClickOutside(button, popUp, label){
-button.addEventListener("click", ()=>{
-    popUp.classList.toggle("close");
-
-    console.log("popUP",popUp);
-
-    onClickOutside(popUp, label, ()=>{
-    popUp.classList.add("close");
-
+    button.addEventListener("click", ()=>{
+        buttonContainer.classList.remove("hide");
+        otherContainer.classList.add("hide");
+    
+        otherButton.classList.remove("selected");
+        button.classList.add("selected");
     })
-});
-}
-
-const onClickOutside = (ele, prevent, cb) => {
-
-
-        const listener = (e) => clickListener(e, ele, prevent, cb);
-        document.addEventListener('click', listener);
+};
 
 
 
-const clickListener = (e, ele, prevent, cb) => {
+
+const onClickOutside = (e, popUp, label, cb, listener) => {
+
+
     let targetElement = e.target;
 
-    console.log(e.target);
-
-    if (prevent.contains(targetElement)) return;
-    
-    if (!ele.contains(targetElement)){
+    if (label.contains(targetElement)) return; 
+    if (!popUp.contains(targetElement)){
         cb();
         document.removeEventListener("click", listener);
+        isOnClickOutsideTrigged = false;
         return;
     };
 };
+
+let isOnClickOutsideTrigged = false;
+
+const clickListener = (popUp, label, cb) => {
+
+    if(!isOnClickOutsideTrigged){
+        const listener = (e) => onClickOutside(e, popUp, label, cb, listener);//passing a funtion as an argument of the own funtion really don't thought that that was going to work
+        document.addEventListener('click', listener);
+        isOnClickOutsideTrigged = true;
+    }
 };
+
+export function closeOnClickOutside(button, popUp, label){
+
+    
+    button.addEventListener("click", ()=>{
+
+
+        popUp.classList.toggle("close");
+        clickListener(popUp, label, ()=> popUp.classList.add("close"))
+    });
+    };
