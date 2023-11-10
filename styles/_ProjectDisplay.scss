@@ -1,9 +1,15 @@
 @import "./variables";
 
+
+
+
+
+
+
+
+
 .project-page-container{
     display: none;
-    align-items: center;
-    flex-direction: column;
     overflow: scroll;
     width: 100%;
     height: 100%;
@@ -16,13 +22,15 @@
     }
 
     &.active{
-        display: flex;
+        @include flex(center, column);
     }
+}
+
+
+
 
     .project-page-header-header{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        @include flex(center, row, space-between);
         width: 100%;
         background: $sidebarBg;
         opacity: .97;
@@ -31,11 +39,10 @@
             margin: .2em 1em .2em 1em;                    
         }
         button{
+            @include flex(1.1em, 1.1em);
             padding: 0;
             background: none;
             margin: .3em .3em 0em 0em;
-            width: 1.1em;
-            height: 1.1em;
             font-size: 1em;
             appearance: none;
             outline: inherit;
@@ -50,6 +57,8 @@
     }
 
 
+
+
     .project-page-info-header{
         display: flex;
         background-color: $violetDark;
@@ -61,15 +70,15 @@
 
         .project-page-header-tempo-task{
             margin: auto 0 auto 0;
-            height: 2.5em;
-            width: 2em;
+            @include size(2em, 2.5em);
+            
 
             >span{
                 color: #816A94;
                 cursor: pointer;
                 font-size: .6em;
                 &.selected{
-                    color: #AA2335;
+                color: #AA2335;
                 }
             }
         }
@@ -82,15 +91,11 @@
                 display: none;
             }
             .div-span{
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
+                @include flex(center, column, center);
+                @include size(5em, 3em);
                 font-size: larger;
                 color: #AA2335;
                 box-shadow: $boxShadowViolet800;
-                width: 5em;
-                height: 3em;
                 min-width: 4em;
                 border-radius: 20px;
                 .text{
@@ -101,15 +106,15 @@
                     display: flex;
                 }
             }
-        } 
-
+        }
     }
 
+
+
             form#project-page-add-task {
+                @include flex(initial, column);
                 padding: 1em;
                 gap: 1em;
-                display: flex;
-                flex-direction: column;
                 width: 100%;
                 background-color: $violetDark;
                 margin: 0 auto .5em auto;
@@ -142,12 +147,9 @@
                     }
     
                     >label{
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
+                        @include flex( center, row, center);
+                        @include size(1.4em, 1.4em);
                         font-size: 1rem;
-                        width: 1.4em;
-                        height: 1.4em;
                         border-radius: 0.5em;
                         color: #fff;
                         box-shadow: $blueShadow;
@@ -155,11 +157,8 @@
                         transition: 0.2s ease-in-out;
                         color: $defaultBtutton;
                         span{
-                            width: 1.4em;
-                            height: 1.4em;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
+                            @include flex( center, row, center);
+                            @include size(1.4em, 1.4em);
                         }
                         &:hover{
                             background-color: $inputTextBgHover;
@@ -174,10 +173,8 @@
                 }
 
                 .form-tasks-options{
-                    display: flex;
-                    justify-content: space-between;
-                    width: 93%;
-                    height: 6em;
+                    @include flex(initial, row, space-between);
+                    @include size(93%, 6em);
                     padding: .5em;
                     position: absolute;
                     top: 3.5em;
@@ -189,42 +186,47 @@
                     &.close{
                         display: none;
                     }
-                    
-                    .form-task-stacks{
-                        display: flex;
-                        gap: 1em;
-                        flex-wrap: wrap;
-                        width: 9em;
-                        height: 5em;
-    
-                        label{
-                            display: flex;
-                            width: 1em;
-                            height: 1em;
-                            cursor: pointer;
-                            >img{
-                                width: 1em;
-                                height: 1em;
-                            }
-                            input[type="checkbox"]{
-    
-                                &:checked ~ .icon{
-                                    filter: grayscale(0%);
-                            }
-                            }
-                            >.icon{
-                                filter: grayscale(100%);
-                            
-                            }
-                        }
-                    } 
                 }
-    
-    
-        }//cupid
-          .task-header{
+        }
+
+
+        .form-task-stacks{
             display: flex;
-            justify-content: space-between;
+            gap: 1em;
+            flex-wrap: wrap;
+            @include size(9em, 5em);
+
+            label{
+                display: flex;
+                @include size(1em, 1em);
+                cursor: pointer;
+                >img{
+                    @include size(1em, 1em);
+                }
+                input[type="checkbox"]{
+
+                    &:checked ~ .icon{
+                        filter: grayscale(0%);
+                }
+                }
+                >.icon{
+                    filter: grayscale(100%);
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+        .task-header{
+            @include flex(initial, row, space-between);
             width: 97%;
             gap: 1em;
             flex-shrink: 1;
@@ -232,10 +234,12 @@
             margin: auto;
             :nth-child(1){
                 display: flex;
-                width: 17em;
+                width: 35%;
+                margin-left: .7em;
             }
             :nth-child(2){
                 display: flex;
+                width: 24%;
             }
             :nth-child(3){
                 display: flex;
@@ -244,198 +248,232 @@
             }
         }
 
+
         div.project-page-tasks-container {
-            display: flex;
-            align-items: center;
-            flex-direction: column;
+            @include flex(center, column);
+            @include size(100%, 100%);
             overflow: scroll;
-            width: 100%;
-            height: 100%;
             &:nth-child(1){
                 margin-top: 2em;
             }
+        }
 
             .task {
                 position: relative;
-                display: flex;
-                align-items: center;
+                @include flex(center);
                 border-radius: 20px;
-                width: 97%;
-                gap: 1em;
+                width: 99%;
+                gap: .5em;
                 height: 2.5em;
                 margin: .5em 0 .5em 0;
                 font-size: .636em;
                 flex-shrink: 0;
                 transition: ease-in-out .03s;
 
-                .task-checkbox-container {
-                    position: relative;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                  
-                    label {
-                      position: relative;
-                      cursor: pointer;
-                      display: flex;
-                      align-items: center;
-                      transition: color 0.3s ease;
-                      margin-right: 20px;
-
-                      &::before,
-                      &::after {
-                        content: "";
-                        position: absolute;
-                      }
-                  
-                      &::before {
-                        height: 2px;
-                        width: 8px;
-                        top: 0em;
-                        left: -18px;
-                        background: red;
-                        border-radius: 2px;
-                        transition: background 0.3s ease;
-                      }
-                  
-                      &::after {
-                        height: 4px;
-                        width: 4px;
-                        top: 0px;
-                        left: -18px;
-                        border-radius: 50%;
-                      }
-                    }
-                  
-                    input.task-checkbox[type="checkbox"] {
-                      appearance: none;
-                      position: relative;
-                      height: 2em;
-                      width: 2em;
-                      outline: none;
-                      border: 0;
-                      margin: 0 0px 0 10px ;
-                      cursor: pointer;
-                      display: flex;
-                      align-items: center;                  
-                      &::before,
-                      &::after {
-                        content: "";
-                        position: absolute;
-                        height: 2px;
-                        border-radius: 2px;
-                        background-color: rgb(43, 255, 0);
-                      }
-                  
-                      &::before {
-                        right: 60%;
-                        transform-origin: right bottom;
-                      }
-                  
-                      &::after {
-                        width: 0px;
-                        left: 40%;
-                        transform-origin: left bottom;
-                      }
-                
-                      &:checked {
-                        &::before {
-                          animation: check-01 0.4s ease forwards;
-                        }
-                  
-                        &::after {
-                          animation: check-02 0.4s ease forwards;
-                        }
-                  
-                        + label::before {
-                          background: green;
-                          animation: slice 0.4s ease forwards;
-                        }
-                  
-                        + label::after {
-                          animation: firework 0.5s ease forwards 0.1s;
-                        }
-                      }
-                    }
-                  }
-
-                  &:hover {
+                &:hover {
                     color: $projecColortHover;
                     background-color: $hover;
             }
+}
 
-                .task-title {
-                    display: flex;
-                    align-items: center;
-                    height: 100%;
-                    gap: 1em;
-                    width: 59em;
-                    min-width: 10em;
-                    margin-right:6em ;
-                    flex-shrink: 1;
-                }
-                .task-spent-hours-div{
-                    width:55em;
-                    flex-shrink: 1;
-                }
-                .project-page-task-stacks{
-                    display: flex;
-                    width: 10em;
-                    margin-right: .5em;
-                    gap: .3em;
-                    flex-shrink: 0;
-                }
 
-                label{
-                    font-size: 1rem;
-                    cursor: pointer;
-                    transition: 0.2s ease-in-out;
-                    span{
-                        width: 1.4em;
-                        height: 1.4em;
-                        display: flex;
-                        align-items: center;
-                    }
-                    button{
-                        display: none;
-                    }
-                }
 
-                .task-pop-up{
-                    position: absolute;
-                    z-index: 1;
-                    border-radius: 7px;                    
-                    height: 3.5em;
-                    width: 4.5em;
-                    right: 1.3em;
-                    bottom: -3.2em;
-                    background-color: #463465;
-                    &.close{
-                        display: none;
-                    }
 
-                    ul{
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: space-around;
-                        align-items: center;
-                        height: 100%;
-                        list-style: none;
-                        li{
-                            margin-left: .7em;
-                            width: 80%;
-                            margin: auto 0px auto 0px;
-                            cursor: pointer;
-                            label{
+.task__checkbox {
+    @include flex(center, row, center);
+    position: relative;
 
-                            span{
-                                color: #A59CAF;
-                                font-size: .7em;
-                            }
-                            }             
-                        }
-                    }
-                }
+
+    label {
+    @include flex(center);
+    position: relative;
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+    }
+
+    &::before {
+        height: 2px;
+        width: 8px;
+        top: 0em;
+        left: -18px;
+        background: red;
+        border-radius: 2px;
+        transition: background 0.3s ease;
+    }
+
+    &::after {
+
+        height: 4px;
+        width: 4px;
+        top: 0px;
+        left: -18px;
+        border-radius: 50%;
+    }
+    }
+
+    input.task__checkbox-input[type="checkbox"] {
+    appearance: none;
+    position: relative;
+    @include flex(center);
+    @include size(2em, 2em);
+    outline: none;
+    border: 0;
+
+    margin: 0 0px 0 10px ;
+    cursor: pointer;               
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        height: 2px;
+        border-radius: 2px;
+        background-color: rgb(43, 255, 0);
+    }
+
+    &::before {
+        right: 60%;
+        transform-origin: right bottom;
+    }
+
+    &::after {
+        width: 0px;
+        left: 40%;
+        transform-origin: left bottom;
+    }
+
+    &:checked {
+        &::before {
+        animation: check-01 0.4s ease forwards;
         }
-   }
+
+        &::after {
+        animation: check-02 0.4s ease forwards;
+        }
+
+        + label::before {
+        background: green;
+        animation: slice 0.4s ease forwards;
+        }  
+        + label::after {
+        animation: firework 0.5s ease forwards 0.1s;
+        }
+    }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.task__clock{//the rest is on the timer.scss
+    @include flex(center, row, flex-start);
+    margin-right: 1em;
+
+    label{
+        @include size(1.5em, 1.5em);
+        display: flex;
+    }
+}
+
+
+
+
+
+
+.task__title {
+    @include flex(center);
+    @include size(45%, 100%);
+    min-width: 7em;
+    margin-right:6em ;
+    flex-shrink: 1;
+}
+
+.task__spent-hours{
+    width:35%;
+    flex-shrink: 1;
+}
+
+.task__stacks{
+    display: flex;
+    width: 10em;
+    margin-right: .5em;
+    gap: .3em;
+    flex-shrink: 0;
+}
+
+
+
+label.task__edit-label{
+    right: .625rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    span{
+        @include flex(center);
+        @include size(1.4em, 1.4em);
+    }
+}
+
+
+
+
+
+
+.task__pop-up{
+    &--active{
+        display: block;
+    }
+    display: none;
+
+    position: absolute;
+    z-index: 1;
+    border-radius: 7px;                    
+    height: 3.5em;
+    width: 4.5em;
+    right: 1.3em;
+    bottom: -3.2em;
+    background-color: #463465;
+
+    ul{
+        @include flex(center, column, space-between);
+        height: 100%;
+        list-style: none;
+        li{
+            margin-left: .7em;
+            width: 80%;
+            margin: auto 0px;
+            
+            font-size: 1.3em;
+            label{
+
+            span{
+                cursor: pointer;
+                color: #A59CAF;
+                font-size: .8em;
+                margin: auto 0px;
+                font-family: 'Ubuntu', sans-serif;
+
+            }
+            }             
+        }
+    }
 }

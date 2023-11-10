@@ -743,8 +743,6 @@
 }
 .project-page-container {
   display: none;
-  align-items: center;
-  flex-direction: column;
   overflow: scroll;
   width: 100%;
   height: 100%;
@@ -757,24 +755,31 @@
 }
 .project-page-container.active {
   display: flex;
-}
-.project-page-container .project-page-header-header {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.project-page-header-header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
   width: 100%;
   background: #171520;
   opacity: 0.97;
 }
-.project-page-container .project-page-header-header h2 {
+.project-page-header-header h2 {
   margin: 0.2em 1em 0.2em 1em;
 }
-.project-page-container .project-page-header-header button {
+.project-page-header-header button {
+  display: flex;
+  align-items: 1.1em;
+  flex-direction: 1.1em;
+  justify-content: flex-start;
   padding: 0;
   background: none;
   margin: 0.3em 0.3em 0em 0em;
-  width: 1.1em;
-  height: 1.1em;
   font-size: 1em;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -785,10 +790,11 @@
   color: #88858D;
   transition: ease-in-out 0.15s;
 }
-.project-page-container .project-page-header-header button:hover {
+.project-page-header-header button:hover {
   color: #E85656;
 }
-.project-page-container .project-page-info-header {
+
+.project-page-info-header {
   display: flex;
   background-color: #241B2F;
   width: 100%;
@@ -797,65 +803,68 @@
   padding: 0.5em;
   z-index: 1;
 }
-.project-page-container .project-page-info-header .project-page-header-tempo-task {
+.project-page-info-header .project-page-header-tempo-task {
   margin: auto 0 auto 0;
-  height: 2.5em;
   width: 2em;
+  height: 2.5em;
 }
-.project-page-container .project-page-info-header .project-page-header-tempo-task > span {
+.project-page-info-header .project-page-header-tempo-task > span {
   color: #816A94;
   cursor: pointer;
   font-size: 0.6em;
 }
-.project-page-container .project-page-info-header .project-page-header-tempo-task > span.selected {
+.project-page-info-header .project-page-header-tempo-task > span.selected {
   color: #AA2335;
 }
-.project-page-container .project-page-info-header .project-page-header-tempo-container, .project-page-container .project-page-info-header .project-page-header-tasks-container {
+.project-page-info-header .project-page-header-tempo-container, .project-page-info-header .project-page-header-tasks-container {
   display: flex;
   justify-content: space-around;
   width: 100%;
 }
-.project-page-container .project-page-info-header .project-page-header-tempo-container.hide, .project-page-container .project-page-info-header .project-page-header-tasks-container.hide {
+.project-page-info-header .project-page-header-tempo-container.hide, .project-page-info-header .project-page-header-tasks-container.hide {
   display: none;
 }
-.project-page-container .project-page-info-header .project-page-header-tempo-container .div-span, .project-page-container .project-page-info-header .project-page-header-tasks-container .div-span {
+.project-page-info-header .project-page-header-tempo-container .div-span, .project-page-info-header .project-page-header-tasks-container .div-span {
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  width: 5em;
+  height: 3em;
   font-size: larger;
   color: #AA2335;
   box-shadow: 0px 0px 5px 0px #5b21b6;
-  width: 5em;
-  height: 3em;
   min-width: 4em;
   border-radius: 20px;
 }
-.project-page-container .project-page-info-header .project-page-header-tempo-container .div-span .text, .project-page-container .project-page-info-header .project-page-header-tasks-container .div-span .text {
+.project-page-info-header .project-page-header-tempo-container .div-span .text, .project-page-info-header .project-page-header-tasks-container .div-span .text {
   font-size: 0.5em;
   color: #816A94;
 }
-.project-page-container .project-page-info-header .project-page-header-tempo-container .div-span .span-container, .project-page-container .project-page-info-header .project-page-header-tasks-container .div-span .span-container {
+.project-page-info-header .project-page-header-tempo-container .div-span .span-container, .project-page-info-header .project-page-header-tasks-container .div-span .span-container {
   display: flex;
 }
-.project-page-container form#project-page-add-task {
+
+form#project-page-add-task {
+  display: flex;
+  align-items: initial;
+  flex-direction: column;
+  justify-content: flex-start;
   padding: 1em;
   gap: 1em;
-  display: flex;
-  flex-direction: column;
   width: 100%;
   background-color: #241B2F;
   margin: 0 auto 0.5em auto;
   position: relative;
 }
-.project-page-container form#project-page-add-task header.project-page-header {
+form#project-page-add-task header.project-page-header {
   display: flex;
   justify-content: space-between;
   width: 100%;
   min-width: 100px;
   gap: 0.5em;
 }
-.project-page-container form#project-page-add-task header.project-page-header > input {
+form#project-page-add-task header.project-page-header > input {
   display: flex;
   border-radius: 5px;
   height: 2em;
@@ -869,19 +878,20 @@
   background-color: #2F273A;
   color: #878278;
 }
-.project-page-container form#project-page-add-task header.project-page-header > input:focus {
+form#project-page-add-task header.project-page-header > input:focus {
   outline: none;
 }
-.project-page-container form#project-page-add-task header.project-page-header > input:hover {
+form#project-page-add-task header.project-page-header > input:hover {
   background-color: #352C3F;
 }
-.project-page-container form#project-page-add-task header.project-page-header > label {
+form#project-page-add-task header.project-page-header > label {
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 1rem;
+  flex-direction: row;
+  justify-content: center;
   width: 1.4em;
   height: 1.4em;
+  font-size: 1rem;
   border-radius: 0.5em;
   color: #fff;
   box-shadow: rgb(48, 46, 184);
@@ -889,24 +899,27 @@
   transition: 0.2s ease-in-out;
   color: #88858D;
 }
-.project-page-container form#project-page-add-task header.project-page-header > label span {
+form#project-page-add-task header.project-page-header > label span {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
   width: 1.4em;
   height: 1.4em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
-.project-page-container form#project-page-add-task header.project-page-header > label:hover {
+form#project-page-add-task header.project-page-header > label:hover {
   background-color: #352C3F;
 }
-.project-page-container form#project-page-add-task header.project-page-header > label input {
+form#project-page-add-task header.project-page-header > label input {
   display: none;
 }
-.project-page-container form#project-page-add-task header.project-page-header > label button {
+form#project-page-add-task header.project-page-header > label button {
   display: none;
 }
-.project-page-container form#project-page-add-task .form-tasks-options {
+form#project-page-add-task .form-tasks-options {
   display: flex;
+  align-items: initial;
+  flex-direction: row;
   justify-content: space-between;
   width: 93%;
   height: 6em;
@@ -918,34 +931,38 @@
   z-index: 1;
   opacity: 0.93;
 }
-.project-page-container form#project-page-add-task .form-tasks-options.close {
+form#project-page-add-task .form-tasks-options.close {
   display: none;
 }
-.project-page-container form#project-page-add-task .form-tasks-options .form-task-stacks {
+
+.form-task-stacks {
   display: flex;
   gap: 1em;
   flex-wrap: wrap;
   width: 9em;
   height: 5em;
 }
-.project-page-container form#project-page-add-task .form-tasks-options .form-task-stacks label {
+.form-task-stacks label {
   display: flex;
   width: 1em;
   height: 1em;
   cursor: pointer;
 }
-.project-page-container form#project-page-add-task .form-tasks-options .form-task-stacks label > img {
+.form-task-stacks label > img {
   width: 1em;
   height: 1em;
 }
-.project-page-container form#project-page-add-task .form-tasks-options .form-task-stacks label input[type=checkbox]:checked ~ .icon {
+.form-task-stacks label input[type=checkbox]:checked ~ .icon {
   filter: grayscale(0%);
 }
-.project-page-container form#project-page-add-task .form-tasks-options .form-task-stacks label > .icon {
+.form-task-stacks label > .icon {
   filter: grayscale(100%);
 }
-.project-page-container .task-header {
+
+.task-header {
   display: flex;
+  align-items: initial;
+  flex-direction: row;
   justify-content: space-between;
   width: 97%;
   gap: 1em;
@@ -953,61 +970,75 @@
   font-size: 0.6em;
   margin: auto;
 }
-.project-page-container .task-header :nth-child(1) {
+.task-header :nth-child(1) {
   display: flex;
-  width: 17em;
+  width: 35%;
+  margin-left: 0.7em;
 }
-.project-page-container .task-header :nth-child(2) {
+.task-header :nth-child(2) {
   display: flex;
+  width: 24%;
 }
-.project-page-container .task-header :nth-child(3) {
+.task-header :nth-child(3) {
   display: flex;
   width: 10em;
   margin-right: 0.5em;
 }
-.project-page-container div.project-page-tasks-container {
+
+div.project-page-tasks-container {
   display: flex;
   align-items: center;
   flex-direction: column;
-  overflow: scroll;
+  justify-content: flex-start;
   width: 100%;
   height: 100%;
+  overflow: scroll;
 }
-.project-page-container div.project-page-tasks-container:nth-child(1) {
+div.project-page-tasks-container:nth-child(1) {
   margin-top: 2em;
 }
-.project-page-container div.project-page-tasks-container .task {
+
+.task {
   position: relative;
   display: flex;
   align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
   border-radius: 20px;
-  width: 97%;
-  gap: 1em;
+  width: 99%;
+  gap: 0.5em;
   height: 2.5em;
   margin: 0.5em 0 0.5em 0;
   font-size: 0.636em;
   flex-shrink: 0;
   transition: ease-in-out 0.03s;
 }
-.project-page-container div.project-page-tasks-container .task .task-checkbox-container {
-  position: relative;
+.task:hover {
+  color: #7c3aed;
+  background-color: #333041;
+}
+
+.task__checkbox {
   display: flex;
   align-items: center;
+  flex-direction: row;
   justify-content: center;
+  position: relative;
 }
-.project-page-container div.project-page-tasks-container .task .task-checkbox-container label {
+.task__checkbox label {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
   position: relative;
   cursor: pointer;
-  display: flex;
-  align-items: center;
   transition: color 0.3s ease;
-  margin-right: 20px;
 }
-.project-page-container div.project-page-tasks-container .task .task-checkbox-container label::before, .project-page-container div.project-page-tasks-container .task .task-checkbox-container label::after {
+.task__checkbox label::before, .task__checkbox label::after {
   content: "";
   position: absolute;
 }
-.project-page-container div.project-page-tasks-container .task .task-checkbox-container label::before {
+.task__checkbox label::before {
   height: 2px;
   width: 8px;
   top: 0em;
@@ -1016,96 +1047,114 @@
   border-radius: 2px;
   transition: background 0.3s ease;
 }
-.project-page-container div.project-page-tasks-container .task .task-checkbox-container label::after {
+.task__checkbox label::after {
   height: 4px;
   width: 4px;
   top: 0px;
   left: -18px;
   border-radius: 50%;
 }
-.project-page-container div.project-page-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox] {
+.task__checkbox input.task__checkbox-input[type=checkbox] {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
   position: relative;
-  height: 2em;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
   width: 2em;
+  height: 2em;
   outline: none;
   border: 0;
   margin: 0 0px 0 10px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
 }
-.project-page-container div.project-page-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox]::before, .project-page-container div.project-page-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox]::after {
+.task__checkbox input.task__checkbox-input[type=checkbox]::before, .task__checkbox input.task__checkbox-input[type=checkbox]::after {
   content: "";
   position: absolute;
   height: 2px;
   border-radius: 2px;
   background-color: rgb(43, 255, 0);
 }
-.project-page-container div.project-page-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox]::before {
+.task__checkbox input.task__checkbox-input[type=checkbox]::before {
   right: 60%;
   transform-origin: right bottom;
 }
-.project-page-container div.project-page-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox]::after {
+.task__checkbox input.task__checkbox-input[type=checkbox]::after {
   width: 0px;
   left: 40%;
   transform-origin: left bottom;
 }
-.project-page-container div.project-page-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox]:checked::before {
+.task__checkbox input.task__checkbox-input[type=checkbox]:checked::before {
   animation: check-01 0.4s ease forwards;
 }
-.project-page-container div.project-page-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox]:checked::after {
+.task__checkbox input.task__checkbox-input[type=checkbox]:checked::after {
   animation: check-02 0.4s ease forwards;
 }
-.project-page-container div.project-page-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox]:checked + label::before {
+.task__checkbox input.task__checkbox-input[type=checkbox]:checked + label::before {
   background: green;
   animation: slice 0.4s ease forwards;
 }
-.project-page-container div.project-page-tasks-container .task .task-checkbox-container input.task-checkbox[type=checkbox]:checked + label::after {
+.task__checkbox input.task__checkbox-input[type=checkbox]:checked + label::after {
   animation: firework 0.5s ease forwards 0.1s;
 }
-.project-page-container div.project-page-tasks-container .task:hover {
-  color: #7c3aed;
-  background-color: #333041;
-}
-.project-page-container div.project-page-tasks-container .task .task-title {
+
+.task__clock {
   display: flex;
   align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-right: 1em;
+}
+.task__clock label {
+  width: 1.5em;
+  height: 1.5em;
+  display: flex;
+}
+
+.task__title {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 45%;
   height: 100%;
-  gap: 1em;
-  width: 59em;
-  min-width: 10em;
+  min-width: 7em;
   margin-right: 6em;
   flex-shrink: 1;
 }
-.project-page-container div.project-page-tasks-container .task .task-spent-hours-div {
-  width: 55em;
+
+.task__spent-hours {
+  width: 35%;
   flex-shrink: 1;
 }
-.project-page-container div.project-page-tasks-container .task .project-page-task-stacks {
+
+.task__stacks {
   display: flex;
   width: 10em;
   margin-right: 0.5em;
   gap: 0.3em;
   flex-shrink: 0;
 }
-.project-page-container div.project-page-tasks-container .task label {
+
+label.task__edit-label {
+  right: 0.625rem;
   font-size: 1rem;
   cursor: pointer;
   transition: 0.2s ease-in-out;
 }
-.project-page-container div.project-page-tasks-container .task label span {
-  width: 1.4em;
-  height: 1.4em;
+label.task__edit-label span {
   display: flex;
   align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 1.4em;
+  height: 1.4em;
 }
-.project-page-container div.project-page-tasks-container .task label button {
+
+.task__pop-up {
   display: none;
-}
-.project-page-container div.project-page-tasks-container .task .task-pop-up {
   position: absolute;
   z-index: 1;
   border-radius: 7px;
@@ -1115,26 +1164,29 @@
   bottom: -3.2em;
   background-color: #463465;
 }
-.project-page-container div.project-page-tasks-container .task .task-pop-up.close {
-  display: none;
+.task__pop-up--active {
+  display: block;
 }
-.project-page-container div.project-page-tasks-container .task .task-pop-up ul {
+.task__pop-up ul {
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
   align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
   height: 100%;
   list-style: none;
 }
-.project-page-container div.project-page-tasks-container .task .task-pop-up ul li {
+.task__pop-up ul li {
   margin-left: 0.7em;
   width: 80%;
-  margin: auto 0px auto 0px;
-  cursor: pointer;
+  margin: auto 0px;
+  font-size: 1.3em;
 }
-.project-page-container div.project-page-tasks-container .task .task-pop-up ul li label span {
+.task__pop-up ul li label span {
+  cursor: pointer;
   color: #A59CAF;
-  font-size: 0.7em;
+  font-size: 0.8em;
+  margin: auto 0px;
+  font-family: "Ubuntu", sans-serif;
 }
 
 .sidebar {
@@ -1325,8 +1377,8 @@
   height: 24px;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: row;
+  justify-content: center;
   border: 1px solid #1e90ff;
 }
 .button--play {
@@ -1387,5 +1439,8 @@ body {
 
 input[type=checkbox], [type=radio] {
   display: none;
-  cursor: pointer;
+}
+
+button {
+  display: none;
 }/*# sourceMappingURL=style.css.map */

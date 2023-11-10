@@ -13,7 +13,6 @@ body {
     box-sizing: border-box;
 }
 
-
 html{
     font-size: 22px;
 }
@@ -32,15 +31,10 @@ body{
 }
 input[type="checkbox"], [type="radio"]{
     display: none;
-    cursor: pointer;
 }
 
 
 
-    // &::before{
-    //     position: absolute;
-    //     content:'';
-    //     bottom: 0px;
-    //     z-index: -1;
-    //     transition: 1s;
-    //     }
+button{
+display: none;
+}

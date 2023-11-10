@@ -16,6 +16,8 @@
     }
 
 
+
+
     label{
         width: 1.5em;
         height: 1.5em;
@@ -25,12 +27,6 @@
         button{
             display: none;
         }
-
-        // &.startButtonLabel{
-        //   //  background-color: #777;
-
-        // }
-
         &.resetButtonLabel{
             display: none;
         }
@@ -44,7 +40,7 @@
 
 .button {
     @include size(24px, 24px);
-    @include flex(center, center);
+    @include flex(center, row, center);
     border: 1px solid #1e90ff;
 
     &--play {
@@ -69,6 +65,7 @@
             }
         }
     }
+    
     &--active & {//button and button--active
         &__shape {
 

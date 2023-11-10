@@ -1,15 +1,64 @@
+import { projects } from "./management.js";
 
 const clockDisplay = document.querySelector("#ClockDisplay");
-const startButton = document.querySelector("#startButton");
-const playButton = document.querySelector('.button--play');
+const sidebarStartButton = document.querySelector("#startButton");
+const sidebarPlayButton = document.querySelector('.button--play');
 const webPageTitle = document.querySelector(".web-page-title");
 
 const projectsPageName = "stack time tracker";
 const oneMinute = 1000*60;
 
-startButton.addEventListener('click', () => timer.pomodoroOnOff());
+sidebarStartButton.addEventListener('click', () => timer.pomodoroOnOff(sidebarPlayButton));
 
-const timer = {
+let lastTask;
+let lastPlayButton;
+
+
+
+
+const pad = (unit) => {
+  return (("0") + unit).length > 2 ? unit : "0" + unit;
+}
+
+export const ToHrMin = (ms, pHr=false, pMin=false, PSec=false )=>{
+  const sec = PSec?
+  pad(Math.floor(ms/1000 %60)) :
+  "";
+
+  const min = pMin?
+  pad(Math.floor(ms/(1000 * 60)%60)) +
+  (sec?":":"") :
+  "";
+
+  const hr = pHr?
+  pad(Math.floor( ms/(1000 * 60 * 60))) + 
+  (min?":":"") :
+  "";
+
+  return  `${hr}${min}${sec}`;
+  };
+
+  
+const updateProjetSpentTime = (project)=>{
+project.tasks.forEach(task => {
+
+
+});
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+export const timer = {
   intervalId: null,
   startTime: 0,
   elapsedTime: 0,
@@ -20,30 +69,33 @@ const timer = {
   pomodoroLength: 30,
   minutsToUpdade: 1,
 
-  pad: function(unit) {
-    return (("0") + unit).length > 2 ? unit : "0" + unit;
-  },
 
 
-  updateTime: function () {
+
+
+  updateTime: function (task, project) {
     this.elapsedTime = (Math.floor((Date.now() - this.startTime) / 1000)) * 1000;
     console.log()
 
     this.countDown = this.pomodoro ? this.sumDown - this.elapsedTime : this.elapsedTime;
 
+    console.log(projects);
 
-    if(this.elapsedTime%(this.minutsToUpdade * oneMinute) === 0) console.log("1min passed");
+    if(this.elapsedTime%(this.minutsToUpdade * oneMinute) === 0) {
 
+      task.spentTime += this.minutsToUpdade * oneMinute;
+      project.spentTime += this.minutsToUpdade * oneMinute;
+      console.log(project.spentTime);
 
+      localStorage.setItem("projects", JSON.stringify(projects));
+      console.log(task);
+    }
 
 
     if (this.countDown <= 0) this.stop();
 
-    const sec = this.pad(Math.floor((this.countDown / 1000) % 60));
-    const min = this.pad(Math.floor((this.countDown / (1000 * 60)) % 60));
-    const hour = this.pad(Math.floor((this.countDown / (1000 * 60 * 60)) % 60));
+    const innerTimer = ToHrMin(this.countDown, true, true, true);
 
-    const innerTimer = `${this.pad(hour)}:${this.pad(min)}:${this.pad(sec)}`;
 
     clockDisplay.innerText = innerTimer;
     const tabText = `${innerTimer} | ${projectsPageName}`;
@@ -59,30 +111,58 @@ const timer = {
     alert("it's over");
   },
 
-
-  start: function () {
+  start: function (task, project) {
     this.paused = false;
 
     this.startTime = this.elapsedTime && this.pomodoro === false ? Date.now() - this.elapsedTime : Date.now();
     this.elapsedTime = this.elapsedTime || 0;
     this.sumDown = this.sumDown - this.elapsedTime || this.pomodoroLength * oneMinute;
-    this.intervalId = setInterval(() => this.updateTime(), 1000);
+    this.intervalId = setInterval(() => this.updateTime(task, project), 1000);
   },
 
+  pomodoroOnOff: function(playButton, task, project){
 
-  pomodoroOnOff: function() {
+
+const isActive = sidebarPlayButton.classList.contains("button--active");
+const activetask = document.querySelectorAll(".button--active")[1];
+
+
+  if(isActive && activetask !== playButton && playButton !== sidebarPlayButton){
+
+    activetask.classList.remove('button--active');
+    playButton.classList.add('button--active');
+    clearInterval(this.intervalId);
+    this.start(task, project);
+    lastPlayButton = playButton;
+    lastTask = task;
+    return;
+  }
+
+  if(sidebarPlayButton === playButton){
+  console.log("wtf");
+  playButton = lastPlayButton;
+  task = lastTask;
+  }
+
+
 
     if (this.paused) {
-      this.paused = false;      
+      this.paused = false;
       playButton.classList.add('button--active');
-      this.start();
-
+      sidebarPlayButton.classList.add('button--active');
+      this.start(task, project);
+      
     } else {
-
-      console.log(this.elapsedTime);
       this.paused = true;
       clearInterval(this.intervalId);
-      playButton.classList.remove('button--active');
+      activetask.classList.remove('button--active');
+      sidebarPlayButton.classList.remove('button--active');
+      console.log("wtf2");
     }
+    lastPlayButton = playButton;
+    lastTask = task;
+
+
   }
 }
+

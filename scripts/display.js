@@ -1,5 +1,6 @@
-import { taskFormSubmit } from "./form.js";
+import { taskFormSubmit } from "./taskFormSubmit.js";
 import { closeOnClickOutside, projects } from "./management.js";
+import { timer, ToHrMin } from "./timer.js";
 
 
 const mainProjectsContainer = document.querySelector("#projects-container");
@@ -13,11 +14,19 @@ const projectTasksDiv = document.querySelector(".project-page-container");
 
 //header
 const projectPageTitle = document.querySelector(".project-page-title");
-const projectPageHours = document.querySelector(".project-page-hours-concluidas");
-const projectPageTasksConcluidas = document.querySelector(".project-page-tasks-concluidas");
-const projectPageHoursEstimadas = document.querySelector(".project-page-hours-stimadas");
-const projectPageTasksEstimadas = document.querySelector(".project-page-tasks-pendentes");
+
+
+const projectPageHours = document.querySelector(".project-page-hours");
+const projectPageHoursWeek = document.querySelector(".project-page-hours-week");
+
+
+
+const projectPagetasksDone = document.querySelector(".project-page-tasks-done");
+const projectPagetasksWeek = document.querySelector(".project-page-tasks-week");
+const projectPageTaskstoday = document.querySelector(".project-page-tasks-today");
+
 //form
+
 const formTasks = document.querySelector("#project-page-add-task");
 const formTaskStacks = document.querySelector(".form-task-stacks");
 
@@ -78,7 +87,7 @@ export const projectCreator = {
         return container;
     },
 
-    title: function(project) {
+    title: function(project) {  
         const projectTitleDiv = document.createElement("div");
         const projectTitleSpan = document.createElement("span");
         const projectTitleH4 = document.createElement("h4");
@@ -123,12 +132,17 @@ export const projectCreator = {
                 projectStacksDiv.appendChild(projectStacksImgClone);
                 projectStacksImgClone.setAttribute('src', icons[i]);
                 projectStacksImgClone.setAttribute('alt', icons[i]);
-            }
-        }
+            };
+        };
         return projectStacksDiv;
     },
 
+
+
     display: function(projects) {
+
+        if(!projects.length) return;        
+
         mainProjectsContainer.innerHTML ="";
         sidebarProjectsContainer.innerHTML = "";
 
@@ -139,6 +153,7 @@ export const projectCreator = {
             container.appendChild(this.stacks(project));
 
             projectAction(container, project);
+
 
             displaySidebarProject(projects);
             mainProjectsContainer.appendChild(container);
@@ -152,11 +167,31 @@ export const projectCreator = {
 
 
 
+// function pad(unit) {
+//     return (("0") + unit).length > 2 ? unit : "0" + unit;
+// };
 
 
 
 
+// const ToHrMin = (ms, PSec=false, pMin=false, pHr=false)=>{
 
+// const sec = PSec?
+// pad(ms/1000%60) :
+// "";
+
+// const min = pMin?
+// pad(ms/(1000 * 60)%60) + (sec?":":"") :
+// "";
+
+// const hr = pHr?
+// pad(Math.floor(ms/(1000 * 60 * 60))) + (min?":":"") :
+// "";
+
+// return  `${hr}${min}${sec}`;
+// }
+
+// console.log(ToHrMin(5400000, false, true, true));
 
 
 
@@ -169,47 +204,83 @@ export const projectCreator = {
 
 export const taskCreator = {
 
-    checkbox: function(task) {
+    checkbox: function(task, taskName) {
         const taskCheckboxDiv = document.createElement("div");
-        const taskCheckbox = document.createElement("input");
         const taskCheckboxLabel = document.createElement("label");
-    
-        taskCheckboxDiv.classList.add("task-checkbox-container")
-        taskCheckbox.classList.add("task-checkbox");
+        const taskCheckboxInput = document.createElement("input");
 
-        taskCheckbox.checked = task.done;
+        taskCheckboxDiv.classList.add("task__checkbox");
+        taskCheckboxInput.classList.add("task__checkbox-input");
 
-        taskCheckbox.id = `task-checkbox-${task.name}`;
-        taskCheckbox.setAttribute("name", "task-checkbox");
-        taskCheckbox.setAttribute("type", "checkbox");
-        taskCheckboxLabel.setAttribute("for", `task-checkbox-${task.name}`);
+        taskCheckboxInput.checked = task.done;
+
+        taskCheckboxInput.id = `task-checkbox--${taskName}`;
+        taskCheckboxInput.setAttribute("name", "task-checkbox");
+        taskCheckboxInput.setAttribute("type", "checkbox");
+        taskCheckboxLabel.setAttribute("for", `task-checkbox--${taskName}`);
     
-        taskCheckboxDiv.appendChild(taskCheckbox);
+        taskCheckboxDiv.appendChild(taskCheckboxInput);
         taskCheckboxDiv.appendChild(taskCheckboxLabel);
-    
+
         return taskCheckboxDiv;
     },
+
+    clock: function(taskName){
+
+
+        const taskClockDiv = document.createElement("div");
+        const taskClockLabel = document.createElement("label");
+        const buttonDiv = document.createElement("div");
+        const buttonShapeOne = document.createElement("div");
+        const buttonShapeTwo = document.createElement("div");
+        const startButton = document.createElement("button");
+
+        taskClockDiv.classList.add("task__clock");        
+        taskClockLabel.setAttribute("for", `startButton-${taskName}`);
+
+        //taskClockLabel.classList.add("task__clock-startButtonLabel");        
+        buttonDiv.classList.add("button", "button--play");
+    
+        buttonShapeOne.classList.add("button__shape", "button__shape--one");
+        buttonShapeTwo.classList.add("button__shape", "button__shape--two");
+
+        buttonDiv.appendChild(buttonShapeOne);
+        buttonDiv.appendChild(buttonShapeTwo);
+        taskClockLabel.appendChild(buttonDiv);
+        
+        startButton.id = `startButton-${taskName}`;
+        startButton.classList.add("button__start");
+
+        taskClockLabel.appendChild(startButton);
+        taskClockDiv.appendChild(taskClockLabel);
+
+        return taskClockDiv;
+
+        
+    },
+
 
     title: function(task) {
         const taskTitleDiv = document.createElement("div");
         const taskTitleH4 = document.createElement("h4");
     
-        taskTitleDiv.classList.add("task-title");
+        taskTitleDiv.classList.add("task__title");
         taskTitleH4.innerHTML = task.name;
-    
+
         taskTitleDiv.appendChild(taskTitleH4);
     
         return taskTitleDiv;
     },
 
-    spentHours: function() {
+
+    spentHours: function(task) {
         const taskSpentHoursDiv = document.createElement("div");
         const taskSpentHoursSpan = document.createElement("span");
     
-        taskSpentHoursDiv.classList.add("task-spent-hours-div");
-        taskSpentHoursSpan.classList.add("task-spent-hours");
-        taskSpentHoursSpan.innerHTML = "99";
-    
+        taskSpentHoursDiv.classList.add("task__spent-hours");
+        taskSpentHoursSpan.classList.add("task__spent-hours-text");
+        taskSpentHoursSpan.innerHTML = ToHrMin(task.spentTime, true, true);
+
         taskSpentHoursDiv.appendChild(taskSpentHoursSpan);
     
         return taskSpentHoursDiv;
@@ -219,7 +290,7 @@ export const taskCreator = {
         const taskStacksDiv = document.createElement("div");
         const taskStacksImg = document.createElement("img");
     
-        taskStacksDiv.classList.add("project-page-task-stacks");
+        taskStacksDiv.classList.add("task__stacks");
 
         for(let i=0; i<task.stacks.length; i++){
             if(task.stacks[i] == true){
@@ -233,15 +304,12 @@ export const taskCreator = {
         return taskStacksDiv; 
     },
 
-    editButton: function(task) {
-        const taskName = task.name.replace(/\s/g, '');
-
+    editButton: function(taskName) {
 
         const editLabel = document.createElement("label");
         editLabel.setAttribute("for",`task-edit-button-${taskName}`);
         editLabel.setAttribute("id", `task-edit-label-${taskName}`);
-        editLabel.classList.add("task-edit-label");
-        
+        editLabel.classList.add("task__edit-label");
 
 
         const editSpan = document.createElement("span");
@@ -252,7 +320,7 @@ export const taskCreator = {
         editButton.setAttribute("id", `task-edit-button-${taskName}`);
         editButton.setAttribute("type", "button");
         editButton.setAttribute("name", "task-edit-button", `task-edit-button-${taskName}`);
-        editButton.classList.add("task-edit-button", `task-edit-button-${taskName}`);
+        editButton.classList.add("task__edit-button", `task__edit-button-${taskName}`);
 
         editLabel.appendChild(editSpan);
         editLabel.appendChild(editButton);
@@ -262,11 +330,10 @@ export const taskCreator = {
 
 
 
-    popUp: function(task) {
-        const taskName = task.name.replace(/\s/g, '');
+    popUp: function(taskName) {
 
         const popUpDiv = document.createElement("div");
-        popUpDiv.classList.add("task-pop-up", "close");
+        popUpDiv.classList.add("task__pop-up", "task__pop-up--close");
         popUpDiv.setAttribute("id", `task-pop-up-${taskName}`);
 
         const ul = document.createElement("ul");
@@ -317,24 +384,27 @@ export const taskCreator = {
     },
 
     create: function(task, project) {
+        const taskName = (`${project.name}-${task.name}`).replace(/\s/g, '');
         const taskContainer = document.createElement("div");
         taskContainer.classList.add("task");
 
-        taskContainer.appendChild(this.checkbox(task));
+        taskContainer.appendChild(this.checkbox(task, taskName));
+        taskContainer.appendChild(this.clock(taskName));
         taskContainer.appendChild(this.title(task));
-        taskContainer.appendChild(this.spentHours());
+        taskContainer.appendChild(this.spentHours(task));
         taskContainer.appendChild(this.stacks(task));
-        taskContainer.appendChild(this.editButton(task));
-        taskContainer.appendChild(this.popUp(task));
+        taskContainer.appendChild(this.editButton(taskName));
+        taskContainer.appendChild(this.popUp(taskName));
         
 
         tasksContainer.appendChild(taskContainer);
-        taskAction(taskContainer, task, project);
+        taskAction(taskContainer, task, project, taskName);
 
 
     },
 
     update: function(taskContainer, task, project) {
+        const taskName = (`${project.name}-${task.name}`).replace(/\s/g, '');
         // Remove old task elements
         while (taskContainer.firstChild) {
             taskContainer.removeChild(taskContainer.firstChild);
@@ -342,13 +412,14 @@ export const taskCreator = {
 
         // Add updated task elements
         taskContainer.appendChild(this.checkbox(task));
+        taskContainer.appendChild(this.clock(task));
         taskContainer.appendChild(this.title(task));
-        taskContainer.appendChild(this.spentHours());
+        taskContainer.appendChild(this.spentHours(task));
         taskContainer.appendChild(this.stacks(task));
         taskContainer.appendChild(this.editButton(task));
         taskContainer.appendChild(this.popUp(task));
 
-        taskAction(taskContainer, task, project);
+        taskAction(taskContainer, task, project, taskName);
     },
 
     delete: function(taskContainer) {
@@ -356,6 +427,7 @@ export const taskCreator = {
     },
 
     display: function(project) {
+
         tasksContainer.innerHTML = "";
         const tasks = project.tasks;
 
@@ -367,71 +439,80 @@ export const taskCreator = {
 
 
 
+const taskAction = (taskContainer, task, project, taskName) => {
 
-const taskAction = (taskContainer, task, project) => {
-const taskName = task.name.replace(/\s/g, '');
+const taskCheckbox = taskContainer.querySelector(".task__checkbox-input");
 
-const taskCheckbox = taskContainer.querySelector(".task-checkbox");
+const CLockButtonStart = taskContainer.querySelector(`#startButton-${taskName}`);
+const CLockButtonanimation = taskContainer.querySelector(".button--play");
+
+
+
 //popUp
 const taskEditButton = taskContainer.querySelector(`#task-edit-button-${taskName}`);
 const taskPopUp = taskContainer.querySelector(`#task-pop-up-${taskName}`);
 const taskEditLabel = taskContainer.querySelector(`#task-edit-label-${taskName}`);
+
 const deleteButton = taskContainer.querySelector(`#${taskName}-task-pop-up-delete-button`);
 
 
-closeOnClickOutside(taskEditButton, taskPopUp, taskEditLabel);
 
+
+
+if(CLockButtonanimation) CLockButtonStart.addEventListener("click", () =>{
+    timer.pomodoroOnOff(CLockButtonanimation, task, project)
+});
+
+
+
+
+
+
+closeOnClickOutside(taskEditButton, taskPopUp, taskEditLabel, "task__pop-up--active");
 
 deleteButton.addEventListener("click", ()=> {
 
     taskCreator.delete(taskContainer);
     project.tasks = project.tasks.filter( (tas) => tas != task);
     localStorage.setItem("projects", JSON.stringify(projects));
-})
+});
+
+
+taskCheckbox.addEventListener("click", ()=> {
+
+    task.done = taskCheckbox.checked;
+    localStorage.setItem("projects", JSON.stringify(projects));
+    taskCreator.update(taskContainer, task, project);
+});
 
 
 
-        taskCheckbox.addEventListener("click", ()=> {
 
-                task.done = taskCheckbox.checked;
-                localStorage.setItem("projects", JSON.stringify(projects));
-                taskCreator.update(taskContainer, task, project);
-        })
 };
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const projectAction = (container, project) => {
-    container.addEventListener("click", () => {
-        formTaskStacks.innerHTML = "";
-        tasksContainer.innerHTML = "";
 
-        projectPageTitle.innerHTML = project.name;
-        projectPageHours.innerHTML = "777";
-        projectPageTasksConcluidas.innerHTML = "996";
-        projectPageHoursEstimadas.innerHTML = "1000";
-        projectPageTasksEstimadas.innerHTML = "1";
+    container.addEventListener("click", () => {
+        formTaskStacks.textContent = "";
+        tasksContainer.textContent = "";
+
+
+        projectPageTitle.textContent = project.name;
+
+
+        projectPageHours.textContent = ToHrMin(project.spentTime, true, true);
+        projectPageHoursWeek.textContent = "77"
+        // projectPageTaskstoday
+
+
+        projectPagetasksDone.textContent = project.tasks.reduce((acc, c) => acc += c.done ? 1 : 0, 0);
+
+        projectPagetasksWeek.textContent = "22";
+        projectPageTaskstoday.textContent = "1";
+
+    
 
         displayTasksStacksOptions(project);
 

@@ -57,15 +57,17 @@ const projectPageHeaderTasksToggle = document.querySelector(".project-page-heade
 export let projects;
 window.addEventListener("load", () => {
     projects = JSON.parse(localStorage.getItem("projects")) || [];
-    console.log(typeof projects);
+    console.log(typeof []);
 
-    projectCreator.display(projects);
-  // fetchData();
 
     form.addEventListener("submit", e => {
         e.preventDefault();
         formSubmit(e);
     });
+    projectCreator.display(projects);
+  // fetchData();
+
+
 });
 
 
@@ -74,8 +76,8 @@ sidebarTitle.addEventListener("click", () => {
     sidebar.classList.toggle("open");
 });
 
-closeOnClickOutside(optionsButton, formOptions, optionsButtonLabel);
-closeOnClickOutside(projectPageButtonTasksOptions, formTasksOptions, projectPageButtonTasksOptionsLabel);
+closeOnClickOutside(optionsButton, formOptions, optionsButtonLabel, "close");
+closeOnClickOutside(projectPageButtonTasksOptions, formTasksOptions, projectPageButtonTasksOptionsLabel, "close");
 
 projectPageCloseButton.addEventListener("click", () => {
 projectOptionsTaskStacks.innerHTML = "";
@@ -149,13 +151,12 @@ const clickListener = (popUp, label, cb) => {
     }
 };
 
-export function closeOnClickOutside(button, popUp, label){
 
-    
+export function closeOnClickOutside(button, popUp, label, toggle ){
+
     button.addEventListener("click", ()=>{
 
-
-        popUp.classList.toggle("close");
-        clickListener(popUp, label, ()=> popUp.classList.add("close"))
+        popUp.classList.toggle(toggle);
+        clickListener(popUp, label, ()=> popUp.classList.toggle(toggle));
     });
     };

@@ -130,7 +130,6 @@ $circle-container: rgb(127, 255, 110);
 
 
 //animations 
-
 ///task check
 @keyframes slice {//arrow
     60%{
@@ -170,7 +169,6 @@ $circle-container: rgb(127, 255, 110);
       transform: rotate(45deg);
     }
   }
-
 
 
 
@@ -235,17 +233,16 @@ $circle-container: rgb(127, 255, 110);
 ////////
 
 
-
 @mixin size($width:inherit, $height:inherit) {
   width: $width;
   height: $height;
 }
 
-@mixin flex($vertical, $horizontal, $direction:row) {
+@mixin flex($vertical:initial, $direction:row, $horizontal:flex-start) {
   display: flex;
   align-items: $vertical;
-  justify-content: $horizontal;
   flex-direction: $direction;
+  justify-content: $horizontal;
 }
 
 @mixin clip-path($shape) {
