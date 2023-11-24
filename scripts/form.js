@@ -23,10 +23,7 @@ export const formSubmit = (e) =>{
     }
     if(formValidation(e, projects,  arrayStacks, "project")){
 
-    // arrayStacks = [];
-    // for(let i=0; i<e.target.elements.stack.length; i++){
-    //     arrayStacks.push(e.target.elements.stack[i].checked);
-    // }
+
     const project = {
         name: projectName,
         stacks: arrayStacks,
@@ -37,7 +34,7 @@ export const formSubmit = (e) =>{
        //estimatedTime: 0
     };
 
-    console.log(typeof projects);
+    console.log(project);
     
     projects.push(project);
     localStorage.setItem("projects", JSON.stringify(projects));
@@ -130,5 +127,3 @@ const alertMsgFunction = ()=>{
         alert.classList.add("hide");
         },5000);
 };
-
-

@@ -1,6 +1,7 @@
-import { projectCreator, tabCleanner } from "./display.js";
+import { projectCreator, tabCleanner, updateHeader} from "./display.js";
 import { formSubmit } from "./form.js";
 //import { fetchData } from "./httpsRequests.js";
+// import { dates } from './management';wtf
 
 const optionsButton = document.querySelector("#options-button");
 const optionsButtonLabel = document.querySelector(".options-button-label");
@@ -45,6 +46,62 @@ const projectPageHeaderTasksToggle = document.querySelector(".project-page-heade
 
 
 
+let now = new Date();
+let startDay = new Date().setHours(0,0,0,0);
+let timePassedSinceStart = new Date() - startDay;
+
+let dateOfMonth = now.getDate();
+
+let dayOfWeek = now.getDay();
+let startOfWeek = new Date(now);//creates a copy of the now date object so it does not afect the original one
+startOfWeek.setDate(dateOfMonth - dayOfWeek)
+startOfWeek.setHours(0,0,0,0);
+
+
+
+function datesUpdate() {
+    now = new Date();
+    startDay = new Date();
+    startDay.setHours(0,0,0,0);
+    timePassedSinceStart = new Date() - startDay;
+
+    dateOfMonth = now.getDate();
+
+    dayOfWeek = now.getDay();
+    startOfWeek = new Date(now);
+    startOfWeek.setDate(dateOfMonth - dayOfWeek);
+    startOfWeek.setHours(0,0,0,0);
+    console.log("7");
+};
+
+export const dates = {
+
+    update: datesUpdate,
+
+    startDay: startDay,
+
+    startOfWeek: startOfWeek,
+
+    dayOfWeek: dayOfWeek,
+    
+    dateOfMonth: dateOfMonth,
+    
+    timePassedSinceStart: timePassedSinceStart,
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // window.addEventListener('beforeunload', (event) => {
 //     event.preventDefault();
@@ -57,7 +114,6 @@ const projectPageHeaderTasksToggle = document.querySelector(".project-page-heade
 export let projects;
 window.addEventListener("load", () => {
     projects = JSON.parse(localStorage.getItem("projects")) || [];
-    console.log(typeof []);
 
 
     form.addEventListener("submit", e => {
@@ -65,7 +121,6 @@ window.addEventListener("load", () => {
         formSubmit(e);
     });
     projectCreator.display(projects);
-  // fetchData();
 
 
 });

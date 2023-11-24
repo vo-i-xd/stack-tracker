@@ -1,6 +1,7 @@
 import { taskFormSubmit } from "./taskFormSubmit.js";
-import { closeOnClickOutside, projects } from "./management.js";
-import { timer, ToHrMin } from "./timer.js";
+import { closeOnClickOutside, projects, dates } from "./management.js";
+import { timer, ToHrMin, autoActiveTaskClock } from "./timer.js";
+// import { projectCreator } from './display';wtf man
 
 
 const mainProjectsContainer = document.querySelector("#projects-container");
@@ -16,14 +17,45 @@ const projectTasksDiv = document.querySelector(".project-page-container");
 const projectPageTitle = document.querySelector(".project-page-title");
 
 
+
+
+
+//header project page
 const projectPageHours = document.querySelector(".project-page-hours");
 const projectPageHoursWeek = document.querySelector(".project-page-hours-week");
-
-
+const projectPageHoursToday = document.querySelector(".project-page-hours-today");
 
 const projectPagetasksDone = document.querySelector(".project-page-tasks-done");
 const projectPagetasksWeek = document.querySelector(".project-page-tasks-week");
 const projectPageTaskstoday = document.querySelector(".project-page-tasks-today");
+
+
+//header projects
+const projectsHours = document.querySelector(".projects-hours");
+const projectsHoursWeek = document.querySelector(".projects-hours-week");
+const projectsHoursToday = document.querySelector(".projects-hours-today");
+
+const projectsDone = document.querySelector(".projects-done");
+const projectsDoneWeek = document.querySelector(".projects-week");
+const projectsDoneToday = document.querySelector(".projects-today");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //form
 
@@ -46,6 +78,14 @@ const icons = {
     10: "./icons/stacks/c.svg",
     11: "./icons/stacks/c++.svg"
 };
+
+
+
+
+
+
+
+
 
 
 const displaySidebarProject = (projects) => {
@@ -87,7 +127,7 @@ export const projectCreator = {
         return container;
     },
 
-    title: function(project) {  
+    title: function(project) {
         const projectTitleDiv = document.createElement("div");
         const projectTitleSpan = document.createElement("span");
         const projectTitleH4 = document.createElement("h4");
@@ -156,51 +196,11 @@ export const projectCreator = {
 
 
             displaySidebarProject(projects);
+            updateHeader(projects);
             mainProjectsContainer.appendChild(container);
         });
     }
 };
-
-
-
-
-
-
-
-// function pad(unit) {
-//     return (("0") + unit).length > 2 ? unit : "0" + unit;
-// };
-
-
-
-
-// const ToHrMin = (ms, PSec=false, pMin=false, pHr=false)=>{
-
-// const sec = PSec?
-// pad(ms/1000%60) :
-// "";
-
-// const min = pMin?
-// pad(ms/(1000 * 60)%60) + (sec?":":"") :
-// "";
-
-// const hr = pHr?
-// pad(Math.floor(ms/(1000 * 60 * 60))) + (min?":":"") :
-// "";
-
-// return  `${hr}${min}${sec}`;
-// }
-
-// console.log(ToHrMin(5400000, false, true, true));
-
-
-
-
-
-
-
-
-
 
 export const taskCreator = {
 
@@ -212,7 +212,8 @@ export const taskCreator = {
         taskCheckboxDiv.classList.add("task__checkbox");
         taskCheckboxInput.classList.add("task__checkbox-input");
 
-        taskCheckboxInput.checked = task.done;
+        taskCheckboxInput.checked = task.doneLog[0];
+        console.log(task.doneLog);
 
         taskCheckboxInput.id = `task-checkbox--${taskName}`;
         taskCheckboxInput.setAttribute("name", "task-checkbox");
@@ -237,8 +238,8 @@ export const taskCreator = {
 
         taskClockDiv.classList.add("task__clock");        
         taskClockLabel.setAttribute("for", `startButton-${taskName}`);
+        taskClockLabel.classList.add(taskName);
 
-        //taskClockLabel.classList.add("task__clock-startButtonLabel");        
         buttonDiv.classList.add("button", "button--play");
     
         buttonShapeOne.classList.add("button__shape", "button__shape--one");
@@ -249,21 +250,20 @@ export const taskCreator = {
         taskClockLabel.appendChild(buttonDiv);
         
         startButton.id = `startButton-${taskName}`;
+
         startButton.classList.add("button__start");
 
         taskClockLabel.appendChild(startButton);
         taskClockDiv.appendChild(taskClockLabel);
 
         return taskClockDiv;
-
-        
     },
 
 
     title: function(task) {
         const taskTitleDiv = document.createElement("div");
         const taskTitleH4 = document.createElement("h4");
-    
+
         taskTitleDiv.classList.add("task__title");
         taskTitleH4.innerHTML = task.name;
 
@@ -279,7 +279,16 @@ export const taskCreator = {
     
         taskSpentHoursDiv.classList.add("task__spent-hours");
         taskSpentHoursSpan.classList.add("task__spent-hours-text");
-        taskSpentHoursSpan.innerHTML = ToHrMin(task.spentTime, true, true);
+
+
+
+        const totalTime = task.timeLog.reduce((acc, c) => acc += c.time, 0);
+        taskSpentHoursSpan.innerHTML = ToHrMin(totalTime, true, true);
+
+
+
+
+
 
         taskSpentHoursDiv.appendChild(taskSpentHoursSpan);
     
@@ -311,7 +320,6 @@ export const taskCreator = {
         editLabel.setAttribute("id", `task-edit-label-${taskName}`);
         editLabel.classList.add("task__edit-label");
 
-
         const editSpan = document.createElement("span");
         editSpan.classList.add("fa-solid", "fa-ellipsis");
 
@@ -340,13 +348,11 @@ export const taskCreator = {
         const deleteLi = document.createElement("li");
         const deleteLabel = document.createElement("label");
         deleteLabel.setAttribute("for", `${taskName}-task-pop-up-delete-button`);
-        //deleteLabel.classList.add("task-pop-up-delete-button-label");
 
         const deleteButton = document.createElement("button");
         deleteButton.setAttribute("id", `${taskName}-task-pop-up-delete-button`);
         deleteButton.setAttribute("type", "button");
         deleteButton.setAttribute("name", `${taskName}-task-pop-up-delete-button`);
-        //deleteButton.classList.add(`${task.name}-task-pop-up-delete-button`);
 
 
         const deleteSpan = document.createElement("span");
@@ -359,13 +365,11 @@ export const taskCreator = {
         const editLi = document.createElement("li");
         const editLabelPopUp = document.createElement("label");
         editLabelPopUp.setAttribute("for", "task-pop-up-edit-button");
-        //editLabelPopUp.classList.add("task-pop-up-edit-button-label");
 
         const editButtonPopUp = document.createElement("button");
         editButtonPopUp.setAttribute("id", "task-pop-up-edit-button");
         editButtonPopUp.setAttribute("type", "button");
         editButtonPopUp.setAttribute("name", "task-pop-up-edit-button");
-        //editButtonPopUp.classList.add("task-pop-up-edit-button");
 
 
         const editSpanPopUp = document.createElement("span");
@@ -396,7 +400,6 @@ export const taskCreator = {
         taskContainer.appendChild(this.editButton(taskName));
         taskContainer.appendChild(this.popUp(taskName));
         
-
         tasksContainer.appendChild(taskContainer);
         taskAction(taskContainer, task, project, taskName);
 
@@ -405,25 +408,28 @@ export const taskCreator = {
 
     update: function(taskContainer, task, project) {
         const taskName = (`${project.name}-${task.name}`).replace(/\s/g, '');
+        
         // Remove old task elements
         while (taskContainer.firstChild) {
             taskContainer.removeChild(taskContainer.firstChild);
         }
 
         // Add updated task elements
-        taskContainer.appendChild(this.checkbox(task));
-        taskContainer.appendChild(this.clock(task));
+        taskContainer.appendChild(this.checkbox(task, taskName));
+        taskContainer.appendChild(this.clock(taskName));
         taskContainer.appendChild(this.title(task));
         taskContainer.appendChild(this.spentHours(task));
         taskContainer.appendChild(this.stacks(task));
-        taskContainer.appendChild(this.editButton(task));
-        taskContainer.appendChild(this.popUp(task));
+        taskContainer.appendChild(this.editButton(taskName));
+        taskContainer.appendChild(this.popUp(taskName));
 
         taskAction(taskContainer, task, project, taskName);
+        updateTaskHeader(project);
     },
 
     delete: function(taskContainer) {
         tasksContainer.removeChild(taskContainer);
+        
     },
 
     display: function(project) {
@@ -446,8 +452,6 @@ const taskCheckbox = taskContainer.querySelector(".task__checkbox-input");
 const CLockButtonStart = taskContainer.querySelector(`#startButton-${taskName}`);
 const CLockButtonanimation = taskContainer.querySelector(".button--play");
 
-
-
 //popUp
 const taskEditButton = taskContainer.querySelector(`#task-edit-button-${taskName}`);
 const taskPopUp = taskContainer.querySelector(`#task-pop-up-${taskName}`);
@@ -455,38 +459,27 @@ const taskEditLabel = taskContainer.querySelector(`#task-edit-label-${taskName}`
 
 const deleteButton = taskContainer.querySelector(`#${taskName}-task-pop-up-delete-button`);
 
-
-
-
-
-if(CLockButtonanimation) CLockButtonStart.addEventListener("click", () =>{
-    timer.pomodoroOnOff(CLockButtonanimation, task, project)
+CLockButtonStart.addEventListener("click", () =>{
+    timer.pomodoroOnOff(CLockButtonanimation, task, taskName, project)
 });
-
-
-
-
-
 
 closeOnClickOutside(taskEditButton, taskPopUp, taskEditLabel, "task__pop-up--active");
 
 deleteButton.addEventListener("click", ()=> {
 
-    taskCreator.delete(taskContainer);
+    taskCreator.delete(taskContainer, project);
     project.tasks = project.tasks.filter( (tas) => tas != task);
     localStorage.setItem("projects", JSON.stringify(projects));
+    updateTaskHeader(project);
 });
 
 
 taskCheckbox.addEventListener("click", ()=> {
 
-    task.done = taskCheckbox.checked;
+    task.doneLog = [taskCheckbox.checked, new Date().getTime()];
     localStorage.setItem("projects", JSON.stringify(projects));
     taskCreator.update(taskContainer, task, project);
 });
-
-
-
 
 };
 
@@ -498,45 +491,168 @@ const projectAction = (container, project) => {
         formTaskStacks.textContent = "";
         tasksContainer.textContent = "";
 
-
-        projectPageTitle.textContent = project.name;
-
-
-        projectPageHours.textContent = ToHrMin(project.spentTime, true, true);
-        projectPageHoursWeek.textContent = "77"
-        // projectPageTaskstoday
-
-
-        projectPagetasksDone.textContent = project.tasks.reduce((acc, c) => acc += c.done ? 1 : 0, 0);
-
-        projectPagetasksWeek.textContent = "22";
-        projectPageTaskstoday.textContent = "1";
-
-    
+        dates.update();
+        updateTaskHeader(project);
 
         displayTasksStacksOptions(project);
-
-
         taskCreator.display(project);
 
 
         formTasks.addEventListener("submit", e => {
             e.preventDefault();
             taskFormSubmit(e, project);
+            updateTaskHeader(project);
         });
+
+        autoActiveTaskClock();
+
+
+
+
+
 
         mainInnerProjects.classList.remove("active");
         projectTasksDiv.classList.add("active");
     });
 
-    // Add other functions here
+    // Add others functions here
+};
+
+export function updateHeader(projects) {
+
+
+    const totalTime = projects.reduce((acc, c) =>{
+
+        return  acc += c.tasks.reduce((acc, c) =>{
+
+            return acc += c.timeLog.reduce( (acc, c) => {
+
+                return acc += c.time;
+
+            }, 0)
+        }, 0)
+        }, 0)
+
+    const hoursInTheWeek =  projects.reduce((acc, c) =>{
+        
+        return  acc += c.tasks.reduce((acc, c) =>{
+    
+            return acc += c.timeLog.reduce( (acc, c) => {
+            
+                return acc += c.createAt >= dates.startOfWeek ? c.time:0;
+    
+                }, 0)
+            }, 0)
+        }, 0)
+
+    const hoursToday =  projects.reduce((acc, c) =>{
+        
+            return  acc += c.tasks.reduce((acc, c) =>{
+        
+                return acc += c.timeLog.reduce( (acc, c) => {
+                
+                    return acc += c.createAt >= dates.startDay ? c.time:0;
+        
+                    }, 0)
+                }, 0)
+        }, 0)
+
+
+
+
+
+
+//i want to get the project done when all its tasks are done
+            const totalProjectsDone =  projects.reduce((done, project) =>{
+                const projectLength = project.tasks.length;
+
+                return  done += project.tasks.
+                reduce((tasksDone, task) => tasksDone += task.doneLog[0] ? 1:0 , 0) === projectLength ?1:0
+
+                }, 0)
+
+//i want to get the project done when all its tasks are done but i also need to get the time when the last task has been finished
+const totalProjectsDoneWeek =  projects.reduce((done, project) =>{
+    const projectLength = project.tasks.length;
+    let lastTask = 0;
+
+    return  done += project.tasks.
+    reduce((tasksDone, task) => {
+        
+        lastTask = lastTask > task.doneLog[1] ? lastTask:task.doneLog[1];
+
+        return tasksDone += task.doneLog[0] ? 1:0}, 0)  
+        === projectLength && lastTask >= dates.startOfWeek ?1:0
+
+    }, 0);
+
+    const totalProjectsDoneToday =  projects.reduce((done, project) =>{//its not working the way it should
+        const projectLength = project.tasks.length;
+        let lastTask = 0;
+    
+    
+        return  done += project.tasks.
+        reduce((tasksDone, task) => {
+            
+            lastTask = lastTask > task.doneLog[1] ? lastTask:task.doneLog[1];
+            
+            console.log(task.name);
+            console.log("lastTask: ",lastTask);
+            console.log("dates.startDay: ", dates.startDay);
+            console.log(lastTask >= dates.startDay);
+    
+            return tasksDone += task.doneLog[0] ? 1:0}, 0) === projectLength && lastTask >= dates.startDay ?1:0
+
+        }, 0)
+
+        console.log(totalProjectsDoneToday)
+
+    projectsHours.textContent =   ToHrMin(totalTime, true, true);
+
+    projectsHoursWeek.textContent = ToHrMin(hoursInTheWeek, true, true);
+
+    projectsHoursToday.textContent = ToHrMin(hoursToday, true, true);
+
+    projectsDone.textContent = totalProjectsDone;
+    projectsDoneWeek.textContent = totalProjectsDoneWeek;
+    projectsDoneToday.textContent = totalProjectsDoneToday;
 };
 
 
+function updateTaskHeader(project){
+    projectPageTitle.textContent = project.name;
 
+        const totalTime = project.tasks.reduce((acc, c) => {
+            return acc += (c.timeLog.reduce((acc, log) => {
+                return acc += log.time;
+            }, 0));
+        }, 0);
 
+        const timeInTheWeek = project.tasks.reduce((acc, c) => {
+            return acc += (c.timeLog.reduce((acc, log) => {
+                return acc += (log.createAt >= dates.startOfWeek ? log.time : 0);
+            }, 0));
+        }, 0);
 
+        const timeToday = project.tasks.reduce((acc, c) => {
+            return acc += (c.timeLog.reduce((acc, log) => {
+                return acc += (log.createAt >= dates.startDay ? log.time : 0);
+            }, 0));
+        }, 0);
 
+        projectPageHours.textContent = ToHrMin(totalTime, true, true);
+        projectPageHoursWeek.textContent = ToHrMin(timeInTheWeek, true, true);        
+        projectPageHoursToday.textContent = ToHrMin(timeToday, true, true);
+
+        projectPagetasksDone.textContent = 
+        project.tasks.reduce((acc, c) => acc += c.doneLog[0] ? 1 : 0, 0) +'/'+ project.tasks.length
+
+        projectPagetasksWeek.textContent =
+        project.tasks.reduce((acc, c) => acc += c.doneLog[1] >= dates.startOfWeek && c.doneLog[0] ? 1:0, 0);
+
+        projectPageTaskstoday.textContent = 
+        project.tasks.reduce((acc, c) => acc += c.doneLog[1] >= dates.startDay && c.doneLog[0] ? 1:0, 0);
+}
 
 
 
@@ -571,7 +687,6 @@ const displayTasksStacksOptions = (project) => {
 
 
 
-
 const tabSwitchers = ()=>{
     const dataSwitchers = document.querySelectorAll("[data-switcher]");
 
@@ -582,7 +697,7 @@ const tabSwitchers = ()=>{
             let targetElement = e.target; // clicked element
 
 
-            console.log("targetElement: ",targetElement);
+            //console.log("targetElement: ",targetElement);
 
 
                 if (!targetElement.matches("[data-switcher]")) {

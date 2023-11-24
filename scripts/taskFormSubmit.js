@@ -7,6 +7,7 @@ import { formValidation } from "./form.js";
 
 export const taskFormSubmit = (e, project) => {
 
+    
 
     let array_task_true_false = [];
 
@@ -20,12 +21,12 @@ export const taskFormSubmit = (e, project) => {
 
         let array_task_stacks = [...project.stacks];
         let task_stacks_index = [];
-
         for (let i = 0; i < project.stacks.length; i++) {
             if (project.stacks[i]) {
                 task_stacks_index.push(i); /// pega o index da array
             }
         };
+
 
         for (let i = 0; i < array_task_true_false.length; i++) {
             array_task_stacks[task_stacks_index[i]] = array_task_true_false[i];
@@ -34,12 +35,16 @@ export const taskFormSubmit = (e, project) => {
         const task = {
             name: e.target.elements.content.value,
             stacks: array_task_stacks,
-            done: false,
             spentTime: 0,
-            createAt: new Date().getTime()
+            createAt: new Date().getTime(),
+            timeLog: [],
+            doneLog: [false]
         };
+        console.log(task);
+        
 
         project.tasks.push(task);
+        //console.log(project);
         localStorage.setItem("projects", JSON.stringify(projects));
 
         e.target.reset();
